@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
+  selector: 'lisa-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.sass']
 })
