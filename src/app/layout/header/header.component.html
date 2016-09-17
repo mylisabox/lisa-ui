@@ -1,7 +1,8 @@
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container-fluid">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"><span
+      <button type="button" class="navbar-toggle collapsed" (click)="isMenuCollapsed = !isMenuCollapsed"
+              data-toggle="collapse" data-target=".navbar-collapse"><span
         class="sr-only">Toggle navigation</span>
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
@@ -12,17 +13,89 @@
         <img alt="L.I.S.A." src="/images/logo.png">
       </a>
     </div>
-    <div class="navbar-collapse">
+    <div class="collapse navbar-collapse" (collapsed)="collapsed($event)"
+         (expanded)="expanded($event)"
+         [collapse]="isMenuCollapsed">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">Scenes</a></li>
-        <li><a href="#">Plugins</a></li>
-        <li><a href="#">Shop</a></li>
+        <li routerLink="/home" routerLinkActive="active" class="active" (click)="isMenuCollapsed = true"><a href="#">Home</a>
+        </li>
+        <li routerLink="/scenes" routerLinkActive="active" (click)="isMenuCollapsed = true"><a href="#">Scenes</a></li>
+        <li routerLink="/plugins" routerLinkActive="active" (click)="isMenuCollapsed = true"><a href="#">Plugins</a>
+        </li>
+        <li routerLink="/shop" routerLinkActive="active" (click)="isMenuCollapsed = true"><a href="#">Shop</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Profil</a></li>
+        <li routerLink="/profile" routerLinkActive="active" (click)="isMenuCollapsed = true"><a href="#"><span
+          class="glyphicon glyphicon-user"></span>
+          Profile</a></li>
         <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        <li>
+          <a id="dLabel" role="button"
+             (click)="isNotificationCollapsed = !isNotificationCollapsed; isMenuCollapsed = true"
+             data-toggle="dropdown" data-target="#">
+            <i class="glyphicon glyphicon-bell"></i>
+          </a>
+        </li>
       </ul>
     </div>
   </div>
 </nav>
+<ul class="dropdown-menu notifications" role="menu" aria-labelledby="dLabel" (collapsed)="collapsed($event)"
+    (expanded)="expanded($event)"
+    [collapse]="isNotificationCollapsed">
+
+  <div class="notification-heading">
+    <h4 class="menu-title">Notifications</h4>
+    <h4 class="menu-title pull-right" routerLink="/notifications" routerLinkActive="active">
+      <a href="#">View all<i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+    </h4>
+  </div>
+  <li class="divider"></li>
+  <div class="notifications-wrapper">
+    <a class="content" href="#">
+
+      <div class="notification-item">
+        <h4 class="item-title">Evaluation Deadline 1 · day ago</h4>
+        <p class="item-info">Marketing 101, Video Assignment</p>
+      </div>
+
+    </a>
+    <a class="content" href="#">
+      <div class="notification-item">
+        <h4 class="item-title">Evaluation Deadline 1 · day ago</h4>
+        <p class="item-info">Marketing 101, Video Assignment</p>
+      </div>
+    </a>
+    <a class="content" href="#">
+      <div class="notification-item">
+        <h4 class="item-title">Evaluation Deadline 1 • day ago</h4>
+        <p class="item-info">Marketing 101, Video Assignment</p>
+      </div>
+    </a>
+    <a class="content" href="#">
+      <div class="notification-item">
+        <h4 class="item-title">Evaluation Deadline 1 • day ago</h4>
+        <p class="item-info">Marketing 101, Video Assignment</p>
+      </div>
+
+    </a>
+    <a class="content" href="#">
+      <div class="notification-item">
+        <h4 class="item-title">Evaluation Deadline 1 • day ago</h4>
+        <p class="item-info">Marketing 101, Video Assignment</p>
+      </div>
+    </a>
+    <a class="content" href="#">
+      <div class="notification-item">
+        <h4 class="item-title">Evaluation Deadline 1 • day ago</h4>
+        <p class="item-info">Marketing 101, Video Assignment</p>
+      </div>
+    </a>
+  </div>
+  <li class="divider"></li>
+  <div class="notification-footer">
+    <h4 class="menu-title" routerLink="/notifications" routerLinkActive="active">
+      <a href="#">View all<i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+    </h4>
+  </div>
+</ul>
