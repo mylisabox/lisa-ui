@@ -3,7 +3,7 @@ import {Component, OnInit} from '@angular/core';
 @Component({
   selector: 'lisa-plugins',
   templateUrl: './plugins.component.html',
-  styleUrls: ['./plugins.component.sass']
+  styleUrls: ['./plugins.component.scss']
 })
 export class PluginsComponent implements OnInit {
 

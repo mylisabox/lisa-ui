@@ -15,7 +15,7 @@
       "prefix": "lisa",
       "mobile": false,
       "styles": [
-        "styles.sass"
+        "styles.scss"
       ],
       "scripts": [],
       "environments": {
@@ -38,7 +38,7 @@
     }
   },
   "defaults": {
-    "styleExt": "sass",
+    "styleExt": "scss",
     "prefixInterfaces": false
   }
 }

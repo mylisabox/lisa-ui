@@ -12,6 +12,7 @@ import {ScenesComponent} from './pages/scenes/scenes.component';
 import {PluginsComponent} from './pages/plugins/plugins.component';
 import {HeaderComponent} from './layout/header/header.component';
 import {FooterComponent} from './layout/footer/footer.component';
+import {AlertModule, DatepickerModule} from 'ng2-bootstrap/ng2-bootstrap';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,8 @@ import {FooterComponent} from './layout/footer/footer.component';
     FooterComponent
   ],
   imports: [
+    AlertModule,
+    DatepickerModule,
     BrowserModule,
     FormsModule,
     HttpModule
