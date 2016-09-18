@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'lisa-header',
@@ -9,7 +10,7 @@ export class HeaderComponent implements OnInit {
   public isMenuCollapsed: boolean = true;
   public isNotificationCollapsed: boolean = true;
 
-  constructor() {
+  constructor(private authService: AuthService) {
   }
 
   ngOnInit() {
@@ -21,6 +22,10 @@ export class HeaderComponent implements OnInit {
 
   public expanded(event: any): void {
     console.log(event);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

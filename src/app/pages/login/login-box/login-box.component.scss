@@ -1,0 +1,7 @@
+@import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+
+.login-box {
+  width: 320px;
+  height: 220px;
+  background-color: lighten($gray-light, 28%);
+}

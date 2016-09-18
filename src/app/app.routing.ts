@@ -9,17 +9,18 @@ import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.compo
 import {ProfileComponent} from "./pages/profile/profile.component";
 import {ShopComponent} from "./pages/shop/shop.component";
 import {NotificationComponent} from "./pages/notification/notification.component";
+import {AuthGuard} from './common/auth.guard';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'plugins', component: PluginsComponent},
-  {path: 'scenes', component: ScenesComponent},
-  {path: 'shop', component: ShopComponent},
-  {path: 'settings', component: SettingsComponent},
-  {path: 'notifications', component: NotificationComponent},
-  {path: 'home', component: HomeComponent},
-  {path: '', component: HomeComponent},
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
+  {path: 'plugins', component: PluginsComponent, canActivate: [AuthGuard]},
+  {path: 'scenes', component: ScenesComponent, canActivate: [AuthGuard]},
+  {path: 'shop', component: ShopComponent, canActivate: [AuthGuard]},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
+  {path: 'notifications', component: NotificationComponent, canActivate: [AuthGuard]},
+  {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
   {path: '**', component: PageNotFoundComponent}
 ];
 

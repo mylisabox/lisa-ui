@@ -1,0 +1,14 @@
+<div class="login-box center-block shadow-box">
+  <form role="form" (submit)="login($event, identifier.value, password.value)">
+    <div class="form-group">
+      <label for="identifier">Email</label>
+      <input type="text" #identifier class="form-control" id="identifier" placeholder="Email"
+             value="jimmy.aumard@gmail.com">
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" #password class="form-control" id="password" placeholder="Password" value="adminadmin">
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>

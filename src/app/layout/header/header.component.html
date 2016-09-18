@@ -28,7 +28,7 @@
         <li routerLink="/profile" routerLinkActive="active" (click)="isMenuCollapsed = true"><a href="#"><span
           class="glyphicon glyphicon-user"></span>
           Profile</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        <li><a href="#" (click)="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
         <li>
           <a id="dLabel" role="button"
              (click)="isNotificationCollapsed = !isNotificationCollapsed; isMenuCollapsed = true"

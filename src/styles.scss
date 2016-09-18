@@ -1,19 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @charset "UTF-8";
 
-$backgroundColor: #ecf0f1;
-$themeColor: #1bbc9b;
-/*
-$lightTextColor: #FFF;
-$darkTextColor: #252525;
-$disableColor: #cfcfcf;
-$lightBgColor: #bec3c7;
-*/
-
-$icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
-$brand-primary: $themeColor;
-//$headings-color: $brand-primary;
-$body-bg: $backgroundColor;
+@import "variables";
 
 @import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
@@ -21,6 +9,9 @@ body {
   padding-top: 60px;
 }
 
-.navbar-brand {
-  padding: 0;
+.shadow-box {
+  padding: 20px;
+  -webkit-box-shadow: 0 0 10px #CCC;
+  -moz-box-shadow: 0 0 10px #CCC;
+  box-shadow: 0 0 10px #CCC;
 }

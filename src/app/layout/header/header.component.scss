@@ -1,5 +1,14 @@
 /* CSS used here will be applied after bootstrap.css */
 @import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../../../variables";
+
+.navbar-inverse {
+  border-bottom: 1px solid $themeColor;
+}
+
+.navbar-brand {
+  padding: 0;
+}
 
 .dropdown-menu.notifications {
   position: fixed;
