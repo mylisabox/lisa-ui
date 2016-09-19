@@ -15,3 +15,15 @@ body {
   -moz-box-shadow: 0 0 10px #CCC;
   box-shadow: 0 0 10px #CCC;
 }
+
+.left-menu li a {
+  text-transform: uppercase;
+}
+
+.left-menu .glyphicon {
+  margin-right: 5px;
+}
+
+.pointer {
+  cursor: pointer;
+}

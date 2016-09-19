@@ -7,6 +7,7 @@
     "start": "ng serve",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
+    "extract": "ng-xi18n",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor"
   },
@@ -23,6 +24,7 @@
     "bootstrap-sass": "^3.3.7",
     "core-js": "^2.4.1",
     "ng2-bootstrap": "^1.1.5",
+    "ng2-translate": "^2.5.0",
     "rxjs": "5.0.0-beta.12",
     "ts-helpers": "^1.1.1",
     "zone.js": "^0.6.23"

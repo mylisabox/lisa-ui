@@ -17,18 +17,25 @@
          (expanded)="expanded($event)"
          [collapse]="isMenuCollapsed">
       <ul class="nav navbar-nav">
-        <li routerLink="/home" routerLinkActive="active" class="active" (click)="isMenuCollapsed = true"><a href="#">Home</a>
+        <li routerLink="/home" routerLinkActive="active" class="active" (click)="isMenuCollapsed = true"><a
+          class="pointer" i18n="Home menu label">Home</a>
         </li>
-        <li routerLink="/scenes" routerLinkActive="active" (click)="isMenuCollapsed = true"><a href="#">Scenes</a></li>
-        <li routerLink="/plugins" routerLinkActive="active" (click)="isMenuCollapsed = true"><a href="#">Plugins</a>
+        <li routerLink="/scenes" routerLinkActive="active" (click)="isMenuCollapsed = true"><a class="pointer"
+                                                                                               i18n="Scenes menu label">Scenes</a>
         </li>
-        <li routerLink="/shop" routerLinkActive="active" (click)="isMenuCollapsed = true"><a href="#">Shop</a></li>
+        <li routerLink="/plugins" routerLinkActive="active" (click)="isMenuCollapsed = true"><a class="pointer"
+                                                                                                i18n="Plugins menu label">Plugins</a>
+        </li>
+        <li routerLink="/shop" routerLinkActive="active" (click)="isMenuCollapsed = true"><a class="pointer"
+                                                                                             i18n="Shop menu label">Shop</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li routerLink="/profile" routerLinkActive="active" (click)="isMenuCollapsed = true"><a href="#"><span
-          class="glyphicon glyphicon-user"></span>
+        <li routerLink="/profile" routerLinkActive="active" (click)="isMenuCollapsed = true">
+          <a class="pointer" i18n="Profile menu label"><span class="glyphicon glyphicon-user"></span>
           Profile</a></li>
-        <li><a href="#" (click)="logout()"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+        <li><a class="pointer" (click)="logout()" i18n="Logout menu label"><span
+          class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         <li>
           <a id="dLabel" role="button"
              (click)="isNotificationCollapsed = !isNotificationCollapsed; isMenuCollapsed = true"

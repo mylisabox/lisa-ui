@@ -1,0 +1,25 @@
+.left-menu {
+  background: white;
+  padding: 0;
+}
+
+.left-menu li {
+  border-bottom: 1px solid #444;
+  cursor: pointer;
+  transition: transform .5s ease-in-out;
+}
+
+.left-menu li:last-child {
+  border-bottom: none;
+}
+
+.left-menu li a {
+  border-radius: 0;
+}
+
+.left-menu li.rooms.active {
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  transform: rotate(90deg);
+}

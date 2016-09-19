@@ -13,4 +13,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
   }
 
+  loadFavorites() {
+
+  }
+
+  loadNewDevices() {
+
+  }
+
 }

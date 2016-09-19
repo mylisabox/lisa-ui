@@ -1,21 +1,35 @@
 <div class="row">
 
   <!-- Navigation Buttons -->
-  <div class="col-md-3">
-    <ul class="nav nav-pills nav-stacked" id="myTabs">
-      <li class="active"><a href="#home" data-toggle="pill">Favorites</a></li>
-      <li><a href="#profile" data-toggle="pill">Rooms</a></li>
-      <li><a href="#messages" data-toggle="pill">New devices</a></li>
+  <div class="col-md-3 left-menu shadow-box">
+    <ul class="nav nav-pills nav-stacked">
+      <li class="active">
+        <a (click)="loadFavorites()">
+          <span class="glyphicon glyphicon-star"></span>Favorites
+          <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+        </a>
+      </li>
+      <li class="rooms">
+        <a>
+          <span class="glyphicon glyphicon-home"></span>Rooms
+          <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+        </a>
+      </li>
+      <li>
+        <a (click)="loadNewDevices()">
+          <span class="glyphicon glyphicon-dashboard"></span>New devices
+          <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+        </a>
+      </li>
     </ul>
   </div>
 
   <!-- Content -->
   <div class="col-md-9">
     <div class="tab-content">
-      <div class="tab-pane active" id="home">Home</div>
-      <div class="tab-pane" id="profile">Profile</div>
-      <div class="tab-pane" id="messages">Messages</div>
+      <div class="tab-pane active" id="favorites">Favorites</div>
+      <div class="tab-pane" id="rooms">Rooms</div>
+      <div class="tab-pane" id="newdevices">New devices</div>
     </div>
   </div>
-
 </div>

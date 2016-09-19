@@ -4,8 +4,8 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {routing, appRoutingProviders}  from './app.routing';
-import {HttpModule, Http} from '@angular/http';
-import {AuthGuard} from './common/auth.guard';
+import {HttpModule} from '@angular/http';
+import {AuthGuard, provideAuthGuard} from './common/auth.guard';
 import {AuthService} from './services/auth.service';
 
 import {AppComponent} from './app.component';
@@ -32,9 +32,6 @@ import {ImageButtonComponent} from './components/widget/image-button/image-butto
 import {CameraComponent} from './components/widget/camera/camera.component';
 import {SliderComponent} from './components/widget/slider/slider.component';
 import {LoginBoxComponent} from './pages/login/login-box/login-box.component';
-import {AuthHttp, AuthConfig} from "angular2-jwt";
-import {contentHeaders} from "./common/headers";
-import {Globals} from "./common/globals";
 
 @NgModule({
   declarations: [
@@ -65,28 +62,16 @@ import {Globals} from "./common/globals";
     LoginBoxComponent
   ],
   imports: [
-    routing,
     AlertModule,
     DatepickerModule,
     CollapseModule,
     ButtonsModule,
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    routing
   ],
-  providers: [appRoutingProviders, {
-    provide: AuthHttp,
-    useFactory: (http: Http) => {
-      const config: AuthConfig = new AuthConfig({
-        noJwtError: true,
-        tokenName: Globals.tokenKey,
-        headerPrefix: 'JWT ',
-        globalHeaders: [contentHeaders.toJSON()]
-      });
-      return new AuthHttp(config, http);
-    },
-    deps: [Http]
-  }, AuthGuard, AuthService],
+  providers: [appRoutingProviders, provideAuthGuard, AuthGuard, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
