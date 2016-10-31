@@ -13,7 +13,7 @@ platformBrowserDynamic().bootstrapModule(AppModule,
   {
     providers: [
       //{provide: TRANSLATIONS, useValue: TRANSLATION},
-      {provide: TRANSLATIONS_FORMAT, useValue: 'xlf'},
-      {provide: LOCALE_ID, useValue: 'fr'}
+      //{provide: TRANSLATIONS_FORMAT, useValue: 'xlf'},
+      //{provide: LOCALE_ID, useValue: 'fr'}
     ]
   });

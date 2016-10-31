@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
 import {Globals} from "../../../common/globals";
+import {WebsocketService} from "../../../interfaces/websocket-service";
 
 @Component({
   selector: 'lisa-login-box',
@@ -10,7 +11,7 @@ import {Globals} from "../../../common/globals";
 })
 export class LoginBoxComponent implements OnInit {
 
-  constructor(private router: Router, private authService: AuthService) {
+  constructor(private router: Router, private authService: AuthService, private websocketService: WebsocketService) {
   }
 
   ngOnInit() {
@@ -22,6 +23,7 @@ export class LoginBoxComponent implements OnInit {
       response => {
         localStorage.setItem(Globals.tokenKey, response.json().token);
         console.log(response.json());
+        this.websocketService.init();
         this.router.navigate(['/home']);
       },
       error => {

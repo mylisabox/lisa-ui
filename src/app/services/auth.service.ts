@@ -12,6 +12,10 @@ export class AuthService {
   constructor(private router: Router, private http: Http, private authHttp: AuthHttp) {
   }
 
+  getToken() {
+    return localStorage.getItem(Globals.tokenKey)
+  }
+
   isConnected() {
     if (localStorage.getItem(Globals.tokenKey) && tokenNotExpired(Globals.tokenKey)) {
       return true;
@@ -39,5 +43,4 @@ export class AuthService {
       }
     );
   }
-
 }

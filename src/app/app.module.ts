@@ -32,6 +32,9 @@ import {ImageButtonComponent} from './components/widget/image-button/image-butto
 import {CameraComponent} from './components/widget/camera/camera.component';
 import {SliderComponent} from './components/widget/slider/slider.component';
 import {LoginBoxComponent} from './pages/login/login-box/login-box.component';
+import {NotificationService} from "./services/notification.service";
+import {WebsocketService} from "./interfaces/websocket-service";
+import {BROWSER_WEBSOCKET_PROVIDERS} from "./services/websocket-front.service";
 
 @NgModule({
   declarations: [
@@ -71,7 +74,7 @@ import {LoginBoxComponent} from './pages/login/login-box/login-box.component';
     HttpModule,
     routing
   ],
-  providers: [appRoutingProviders, provideAuthGuard, AuthGuard, AuthService],
+  providers: [appRoutingProviders, provideAuthGuard, AuthGuard, AuthService, WebsocketService, NotificationService, BROWSER_WEBSOCKET_PROVIDERS],
   bootstrap: [AppComponent]
 })
 export class AppModule {
