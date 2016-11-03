@@ -1,0 +1,44 @@
+@import "../../../variables";
+
+:host {
+  position: fixed;
+  top: 60px;
+  right: 10px;
+  width: 350px;
+  height: 100%;
+  z-index: 1;
+}
+
+.notification {
+  position: relative;
+  width: 100%;
+  float: right;
+  min-height: 75px;
+  background: white;
+  border: 1px solid $darkColor;
+  margin-bottom: $defaultPadding;
+  -webkit-transition: all 0.8s;
+  -moz-transition: all 0.8s;
+  transition: all 0.8s;
+}
+
+.notification .content {
+  padding: $defaultPadding;
+}
+
+.notification h3 {
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+}
+
+.icon {
+  position: absolute;
+  top: $defaultPadding;
+  right: $defaultPadding;
+}
+
+.actions {
+  text-align: right;
+}
+

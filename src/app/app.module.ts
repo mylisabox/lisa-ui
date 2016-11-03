@@ -35,6 +35,7 @@ import {LoginBoxComponent} from './pages/login/login-box/login-box.component';
 import {NotificationService} from "./services/notification.service";
 import {WebsocketService} from "./interfaces/websocket-service";
 import {BROWSER_WEBSOCKET_PROVIDERS} from "./services/websocket-front.service";
+import {NotificationManagerComponent} from './components/notification-manager/notification-manager.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import {BROWSER_WEBSOCKET_PROVIDERS} from "./services/websocket-front.service";
     ImageButtonComponent,
     CameraComponent,
     SliderComponent,
-    LoginBoxComponent
+    LoginBoxComponent,
+    NotificationManagerComponent
   ],
   imports: [
     AlertModule,

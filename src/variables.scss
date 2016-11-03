@@ -1,5 +1,7 @@
 $backgroundColor: #ecf0f1;
 $themeColor: #1bbc9b;
+$defaultPadding: 15px;
+$darkColor: #252525;
 /*
 $lightTextColor: #FFF;
 $darkTextColor: #252525;
@@ -8,7 +10,7 @@ $lightBgColor: #bec3c7;
 */
 
 $font-family-sans-serif: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
-;
+
 $icon-font-path: "../node_modules/bootstrap-sass/assets/fonts/bootstrap/";
 $brand-primary: $themeColor;
 //$headings-color: $brand-primary;

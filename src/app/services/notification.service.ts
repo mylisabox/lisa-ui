@@ -1,8 +1,20 @@
 import {Injectable}    from '@angular/core';
+import {Router} from "@angular/router";
+import {Subject} from "rxjs";
+import {NotificationEvent} from "../models/notification-event.type";
 
 @Injectable()
 export class NotificationService {
-  manageNotification(notification: any) {
+  private emitter: Subject<NotificationEvent> = new Subject<NotificationEvent>();
+
+  constructor(private router: Router) {
+  }
+
+  getChangeEmitter() {
+    return this.emitter;
+  }
+
+  private _manageDesktopNotification(notification: any) {
     if (window.Notification) {
       if (window.Notification.permission === "granted") {
         const notify = new window.Notification(notification.title || 'L.I.S.A.',
@@ -13,33 +25,58 @@ export class NotificationService {
           });
         notify.onclick = () => {
           notify.close();
-          console.log('TODO');
+          this._onDesktopNotificationClicked(notification)
         };
       } else if (window.Notification.permission === "default") {
-        window.Notification.requestPermission(() => this.manageNotification(notification));
+        window.Notification.requestPermission(() => this._manageDesktopNotification(notification));
       } else {
-        // TODO setup an html notification
-      }
-    } else if (window.webkitNotifications) {
-      if (window.webkitNotifications.checkPermission() === 0) {
-        const desktopNotification = window.webkitNotifications.createNotification(
-          '/images/logo.png',
-          notification.title || 'L.I.S.A.', notification.description || 'new notification');
-        desktopNotification.nativeNotification = notification;
-        /*desktopNotification.ondisplay = function () {
-         };
-         desktopNotification.onclose = function () {
-         };*/
-        desktopNotification.onclick = function () {
-          desktopNotification.hide();
-          console.log('TODO');
-        };
-        desktopNotification.show();
-      } else if (window.webkitNotifications.checkPermission() === 1) {
-        window.webkitNotifications.requestPermission(() => this.manageNotification(notification));
-      } else {
-        // TODO setup an html notification
+        this._showHTMLNotification(notification)
       }
     }
+    else {
+      this._showHTMLNotification(notification)
+    }
+  }
+
+  manageNotification(notification: any) {
+    if (notification.defaultAction || notification.addAction) {
+      this._manageDesktopNotification({
+        title: 'New notification',
+        description: 'Click to see the new notification'
+      });
+      this._showHTMLNotification(notification);
+    }
+    else {
+      this._manageDesktopNotification(notification);
+      this._showHTMLNotification(notification);
+      /*else if (window.webkitNotifications) {
+       if (window.webkitNotifications.checkPermission() === 0) {
+       const desktopNotification = window.webkitNotifications.createNotification(
+       '/images/logo.png',
+       notification.title || 'L.I.S.A.', notification.description || 'new notification');
+       desktopNotification.nativeNotification = notification;
+
+       desktopNotification.onclick = function () {
+       desktopNotification.hide();
+       this._onDesktopNotificationClicked(notification)
+       };
+       desktopNotification.show();
+       } else if (window.webkitNotifications.checkPermission() === 1) {
+       window.webkitNotifications.requestPermission(() => this.manageNotification(notification));
+       } else {
+       this._showHTMLNotification(notification)
+       }
+       }*/
+    }
+  }
+
+  private _showHTMLNotification(notification: any) {
+    if (notification.id) {
+      this.emitter.next({command: 'set', notification: notification});
+    }
+  }
+
+  private _onDesktopNotificationClicked(notification: any) {
+    this.router.navigate(['/notifications']);
   }
 }
