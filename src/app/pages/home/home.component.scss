@@ -1,3 +1,5 @@
+@import "../../../variables";
+
 .left-menu {
   background: white;
   padding: 0;
@@ -7,6 +9,7 @@
   border-bottom: 1px solid #444;
   cursor: pointer;
   transition: transform .5s ease-in-out;
+  margin: 0;
 }
 
 .left-menu li:last-child {
@@ -17,9 +20,126 @@
   border-radius: 0;
 }
 
-.left-menu li.rooms.active {
+.left-menu .glyphicon {
+  margin-right: 5px;
+}
+
+.left-menu li a {
+  text-transform: uppercase;
+}
+
+.left-menu li.rooms.active .pull-right {
   -ms-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
   transform: rotate(90deg);
 }
+
+.left-menu li .pull-right {
+  -webkit-transition: all 0.8s ease-in-out;
+  -moz-transition: all 0.8s ease-in-out;
+  -o-transition: all 0.8s ease-in-out;
+  transition: all 0.8s ease-in-out;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.left-menu .roomsList li .pull-right {
+  cursor: pointer;
+  color: $lightTextColor;
+  padding: 0 5px;
+  -ms-transform: rotate(0deg);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.left-menu .roomsList li:hover .pull-right {
+  color: $darkTextColor;
+}
+
+:host /deep/ .widget {
+  background: white;
+}
+
+dashboard {
+  margin-top: -10px;
+}
+
+.left-menu .roomsList li a {
+  text-transform: none;
+}
+
+.roomsList {
+  height: 0;
+  -webkit-transition: height 0.8s ease-in-out;
+  -moz-transition: height 0.8s ease-in-out;
+  -o-transition: height 0.8s ease-in-out;
+  transition: height 0.8s ease-in-out;
+  overflow: hidden;
+}
+
+.roomsList li a input {
+  width: 70%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  color: $darkTextColor;
+  background-color: transparent;
+}
+
+.roomsList li:first-child {
+  border-top: 1px solid grey !important;
+}
+
+.roomsList li, .addRoomContainer {
+  position: relative;
+  border-bottom: 1px solid grey !important;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.roomsList li a {
+  color: $lightTextColor;
+  padding: 10px 10px 10px 35px;
+}
+
+.roomsList li a:hover {
+  color: $darkTextColor;
+}
+
+.addRoomContainer {
+  border-bottom: none;
+  padding: 0 0 0 35px;
+  height: 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.addRoomContainer::after {
+  content: "+";
+  position: absolute;
+  right: 18px;
+  top: -5px;
+  font-size: 35px;
+  color: $lightTextColor;
+}
+
+.addRoomContainer input {
+  border: none;
+  height: 38px;
+  width: 100%;
+  font-size: 16px;
+  color: $lightTextColor;
+}
+

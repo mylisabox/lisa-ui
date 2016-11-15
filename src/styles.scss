@@ -1,12 +1,22 @@
 @charset "UTF-8";
 /* You can add global styles to this file, and also import other style files */
-
 @import "variables";
-
 @import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+@media (min-width: 1200px) {
+  .container {
+    width: 95%;
+  }
+}
 
 body {
   padding-top: 60px;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .shadow-box {
@@ -14,14 +24,6 @@ body {
   -webkit-box-shadow: 0 0 10px #CCC;
   -moz-box-shadow: 0 0 10px #CCC;
   box-shadow: 0 0 10px #CCC;
-}
-
-.left-menu li a {
-  text-transform: uppercase;
-}
-
-.left-menu .glyphicon {
-  margin-right: 5px;
 }
 
 .pointer {

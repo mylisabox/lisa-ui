@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewContainerRef} from "@angular/core";
 import {WebsocketService} from "./interfaces/websocket-service";
 import {AuthService} from "./services/auth.service";
 
@@ -8,13 +8,14 @@ import {AuthService} from "./services/auth.service";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  constructor(private websocketService: WebsocketService, private authService: AuthService) {
-
+  constructor(private _viewContainerRef: ViewContainerRef,
+              private _websocketService: WebsocketService,
+              private _authService: AuthService) {
   }
 
   ngOnInit() {
-    if (this.authService.isConnected()) {
-      this.websocketService.init();
+    if (this._authService.isConnected()) {
+      this._websocketService.init();
     }
   }
 }

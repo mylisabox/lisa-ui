@@ -2,12 +2,12 @@ $backgroundColor: #ecf0f1;
 $themeColor: #1bbc9b;
 $defaultPadding: 15px;
 $darkColor: #252525;
-/*
-$lightTextColor: #FFF;
-$darkTextColor: #252525;
-$disableColor: #cfcfcf;
+$darkTextColor: $darkColor;
+$lightTextColor: #808080;
+
+//$lightTextColor: #FFF;
+//$disableColor: #cfcfcf;
 $lightBgColor: #bec3c7;
-*/
 
 $font-family-sans-serif: "Raleway", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 

@@ -7,6 +7,7 @@
   width: 350px;
   height: 100%;
   z-index: 1;
+  pointer-events: none;
 }
 
 .notification {
@@ -20,6 +21,7 @@
   -webkit-transition: all 0.8s;
   -moz-transition: all 0.8s;
   transition: all 0.8s;
+  pointer-events: all;
 }
 
 .notification .content {
