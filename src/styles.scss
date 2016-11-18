@@ -19,6 +19,20 @@ ul {
   padding: 0;
 }
 
+.boot-loading {
+  position: fixed;
+  text-align: center;
+  width: 300px;
+  height: 300px;
+  top: 50%;
+  left: 50%;
+  color: $darkTextColor;
+  margin-top: -150px;
+  margin-left: -150px;
+  font-weight: bold;
+  font-size: 16pt;
+}
+
 .shadow-box {
   padding: 20px;
   -webkit-box-shadow: 0 0 10px #CCC;
@@ -26,28 +40,32 @@ ul {
   box-shadow: 0 0 10px #CCC;
 }
 
+.no-events {
+  pointer-events: none;
+}
+
 .pointer {
   cursor: pointer;
 }
 
-.materialLink {
+.material-link {
   cursor: pointer;
   font-weight: bold;
 }
 
-.materialLink:hover {
+.material-link:hover {
   text-decoration: none;
 }
 
 /*
 ==============================================
-slideLeft
+slide-left
 ==============================================
 */
 
-.slideLeft {
-  animation-name: slideLeft;
-  -webkit-animation-name: slideLeft;
+.slide-left {
+  animation-name: slide-left;
+  -webkit-animation-name: slide-left;
 
   animation-duration: 1s;
   -webkit-animation-duration: 1s;
@@ -58,7 +76,7 @@ slideLeft
   visibility: visible !important;
 }
 
-@keyframes slideLeft {
+@keyframes slide-left {
   0% {
     transform: translateX(150%);
   }
@@ -79,36 +97,15 @@ slideLeft
   }
 }
 
-@-webkit-keyframes slideLeft {
-  0% {
-    -webkit-transform: translateX(150%);
-  }
-  50% {
-    -webkit-transform: translateX(-8%);
-  }
-  65% {
-    -webkit-transform: translateX(4%);
-  }
-  80% {
-    -webkit-transform: translateX(-4%);
-  }
-  95% {
-    -webkit-transform: translateX(2%);
-  }
-  100% {
-    -webkit-transform: translateX(0%);
-  }
-}
-
 /*
 ==============================================
-slideRight
+slide-right
 ==============================================
 */
 
-.slideRight {
-  animation-name: slideRight;
-  -webkit-animation-name: slideRight;
+.slide-right {
+  animation-name: slide-right;
+  -webkit-animation-name: slide-right;
 
   animation-duration: 1s;
   -webkit-animation-duration: 1s;
@@ -119,7 +116,7 @@ slideRight
   visibility: visible !important;
 }
 
-@keyframes slideRight {
+@keyframes slide-right {
   0% {
     transform: translateX(-150%);
   }
@@ -140,24 +137,32 @@ slideRight
   }
 }
 
-@-webkit-keyframes slideRight {
-  0% {
-    -webkit-transform: translateX(-150%);
-  }
-  50% {
-    -webkit-transform: translateX(8%);
-  }
-  65% {
-    -webkit-transform: translateX(-4%);
-  }
-  80% {
-    -webkit-transform: translateX(4%);
-  }
-  95% {
-    -webkit-transform: translateX(-2%);
-  }
-  100% {
-    -webkit-transform: translateX(0%);
-  }
+/*
+==============================================
+flex stuff
+==============================================
+*/
+
+/*Stack child items vertically*/
+.vbox {
+  display: flex;
+
+  /*Align children vetically*/
+  flex-direction: column;
+  align-content: flex-start;
+
+  overflow: hidden; /*Prevent extending beyond boundaries*/
 }
+
+/*Stack child items horizontally*/
+.hbox {
+  display: flex;
+
+  /*Align children horizontally*/
+  flex-direction: row;
+  align-content: flex-start;
+
+  overflow: hidden; /*Prevent extending beyond boundaries*/
+}
+
 

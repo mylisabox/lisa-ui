@@ -14,7 +14,7 @@ export abstract class ApiService<T extends Model> {
 
   }
 
-  private _buildHeaders() {
+  protected _buildHeaders() {
     let headers = new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'JWT ' + this._authService.getToken()
@@ -22,7 +22,7 @@ export abstract class ApiService<T extends Model> {
     return headers;
   }
 
-  private _buildOptions() {
+  protected _buildOptions() {
     let options = new RequestOptions({headers: this._buildHeaders()}); // Create a request option
     return options;
   }
@@ -51,8 +51,8 @@ export abstract class ApiService<T extends Model> {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  public destroyItem(item: T): Observable<T> {
-    return this._http.delete(`${Globals.getUrl(this._path)}/${item.id}`, this._buildOptions())
+  public destroyItem(itemId: string): Observable<T> {
+    return this._http.delete(`${Globals.getUrl(this._path)}/${itemId}`, this._buildOptions())
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }

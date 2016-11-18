@@ -20,7 +20,7 @@ import {AlertModule, ButtonsModule, DatepickerModule, CollapseModule, ModalModul
 import {Ng2DashboardModule} from "ng2-dashboard";
 import {ShopComponent} from "./pages/shop/shop.component";
 import {NotificationComponent} from "./pages/notification/notification.component";
-import {WidgetComponent} from "./components/widget/widget.component";
+import {WidgetLISAComponent} from "./components/widget/widget.component";
 import {BaseElementComponent} from "./components/widget/base-element/base-element.component";
 import {VboxComponent} from "./components/widget/vbox/vbox.component";
 import {HboxComponent} from "./components/widget/hbox/hbox.component";
@@ -39,6 +39,10 @@ import {BROWSER_WEBSOCKET_PROVIDERS} from "./services/websocket-front.service";
 import {NotificationManagerComponent} from "./components/notification-manager/notification-manager.component";
 import {FocusDirective} from "./directives/focus.directive";
 import {ConfirmModalComponent} from "./components/modals/confirm-modal/confirm-modal.component";
+import {WidgetHeaderComponent} from "./components/widget/widget-header/widget-header.component";
+import {WidgetContentComponent} from "./components/widget/widget-content/widget-content.component";
+import {DeviceService} from "./services/device.service";
+import {FavoriteService} from "./services/favorite.service";
 
 @NgModule({
   declarations: [
@@ -54,7 +58,7 @@ import {ConfirmModalComponent} from "./components/modals/confirm-modal/confirm-m
     PageNotFoundComponent,
     ShopComponent,
     NotificationComponent,
-    WidgetComponent,
+    WidgetLISAComponent,
     BaseElementComponent,
     VboxComponent,
     HboxComponent,
@@ -69,7 +73,12 @@ import {ConfirmModalComponent} from "./components/modals/confirm-modal/confirm-m
     LoginBoxComponent,
     NotificationManagerComponent,
     FocusDirective,
-    ConfirmModalComponent
+    ConfirmModalComponent,
+    WidgetHeaderComponent,
+    WidgetContentComponent
+  ],
+  entryComponents: [
+    WidgetLISAComponent
   ],
   imports: [
     AlertModule,
@@ -88,6 +97,8 @@ import {ConfirmModalComponent} from "./components/modals/confirm-modal/confirm-m
     provideAuthGuard,
     AuthGuard,
     RoomService,
+    DeviceService,
+    FavoriteService,
     AuthService,
     WebsocketService,
     NotificationService,

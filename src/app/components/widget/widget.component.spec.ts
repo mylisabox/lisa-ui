@@ -1,11 +1,10 @@
 /* tslint:disable:no-unused-variable */
 
-import {TestBed, async} from '@angular/core/testing';
-import {WidgetComponent} from './widget.component';
+import {WidgetLISAComponent} from "./widget.component";
 
 describe('Component: Widget', () => {
   it('should create an instance', () => {
-    let component = new WidgetComponent();
+    let component = new WidgetLISAComponent();
     expect(component).toBeTruthy();
   });
 });

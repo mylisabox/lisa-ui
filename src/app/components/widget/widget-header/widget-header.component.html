@@ -1,0 +1,12 @@
+<div class="no-events">
+  <span *ngIf="!_isEditMode">{{device.name}}</span>
+  <input *ngIf="_isEditMode" #nameInput focus (keyup.enter)="updateName(nameInput.value)" value="{{device.name}}"/>
+  <div class="widget-actions" [ngClass]="{'slide-left': _isToolbarOpen}">
+    <span class="glyphicon glyphicon-remove pull-right" (click)="_isToolbarOpen = false; _isEditMode = false"></span>
+    <span class="glyphicon glyphicon-pencil pull-right" (click)="_isEditMode = true"></span>
+    <span class="glyphicon glyphicon-trash pull-right" (click)="removeFromDashboard()"></span>
+  </div>
+  <span class="glyphicon glyphicon-cog pull-right" (click)="_isToolbarOpen = true"></span>
+  <span class="glyphicon glyphicon-star pull-right" [ngClass]="{active: device.isFavorite}"
+        (click)="toggleFavorite()"></span>
+</div>

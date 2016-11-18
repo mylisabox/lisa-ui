@@ -21,7 +21,7 @@
 }
 
 .left-menu .glyphicon {
-  margin-right: 5px;
+  margin-right: 10px;
 }
 
 .left-menu li a {
@@ -46,7 +46,7 @@
   transform: rotate(0deg);
 }
 
-.left-menu .roomsList li .pull-right {
+.left-menu .rooms-list li .pull-right {
   cursor: pointer;
   color: $lightTextColor;
   padding: 0 5px;
@@ -56,23 +56,26 @@
   transform: rotate(0deg);
 }
 
-.left-menu .roomsList li:hover .pull-right {
+.left-menu .rooms-list li:hover .pull-right, .left-menu .rooms-list li a.active .pull-right {
   color: $darkTextColor;
+}
+
+.left-menu .rooms-list li a.active {
+  background: #eeeeee;
+  color: $darkTextColor;
+  font-weight: bold;
 }
 
 :host /deep/ .widget {
   background: white;
+  padding: 0;
 }
 
-dashboard {
-  margin-top: -10px;
-}
-
-.left-menu .roomsList li a {
+.left-menu .rooms-list li a {
   text-transform: none;
 }
 
-.roomsList {
+.rooms-list {
   height: 0;
   -webkit-transition: height 0.8s ease-in-out;
   -moz-transition: height 0.8s ease-in-out;
@@ -81,7 +84,7 @@ dashboard {
   overflow: hidden;
 }
 
-.roomsList li a input {
+.rooms-list li a input {
   width: 70%;
   margin: 0;
   padding: 0;
@@ -90,11 +93,11 @@ dashboard {
   background-color: transparent;
 }
 
-.roomsList li:first-child {
+.rooms-list li:first-child {
   border-top: 1px solid grey !important;
 }
 
-.roomsList li, .addRoomContainer {
+.rooms-list li, .add-room-container {
   position: relative;
   border-bottom: 1px solid grey !important;
   cursor: pointer;
@@ -109,16 +112,16 @@ dashboard {
   user-select: none;
 }
 
-.roomsList li a {
+.rooms-list li a {
   color: $lightTextColor;
-  padding: 10px 10px 10px 35px;
+  padding: 10px 10px 10px 45px;
 }
 
-.roomsList li a:hover {
+.rooms-list li a:hover {
   color: $darkTextColor;
 }
 
-.addRoomContainer {
+.add-room-container {
   border-bottom: none;
   padding: 0 0 0 35px;
   height: 40px;
@@ -126,7 +129,7 @@ dashboard {
   position: relative;
 }
 
-.addRoomContainer::after {
+.add-room-container::after {
   content: "+";
   position: absolute;
   right: 18px;
@@ -135,7 +138,7 @@ dashboard {
   color: $lightTextColor;
 }
 
-.addRoomContainer input {
+.add-room-container input {
   border: none;
   height: 38px;
   width: 100%;

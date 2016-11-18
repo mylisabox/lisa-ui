@@ -1,0 +1,7 @@
+:host {
+  display: flex;
+}
+
+:host /deep/ div {
+  display: flex;
+}

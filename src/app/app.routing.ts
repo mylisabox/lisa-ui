@@ -1,5 +1,5 @@
-import {ModuleWithProviders} from '@angular/core';
-import {Routes, RouterModule} from '@angular/router';
+import {ModuleWithProviders} from "@angular/core";
+import {Routes, RouterModule} from "@angular/router";
 import {HomeComponent} from "./pages/home/home.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {PluginsComponent} from "./pages/plugins/plugins.component";
@@ -9,7 +9,7 @@ import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.compo
 import {ProfileComponent} from "./pages/profile/profile.component";
 import {ShopComponent} from "./pages/shop/shop.component";
 import {NotificationComponent} from "./pages/notification/notification.component";
-import {AuthGuard} from './common/auth.guard';
+import {AuthGuard} from "./common/auth.guard";
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -20,7 +20,7 @@ const appRoutes: Routes = [
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
   {path: 'notifications', component: NotificationComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent, canActivate: [AuthGuard]},
-  {path: '', component: HomeComponent, canActivate: [AuthGuard]},
+  {path: '', component: LoginComponent},
   {path: '**', component: PageNotFoundComponent}
 ];
 

@@ -1,0 +1,66 @@
+@import "../../../../variables";
+
+:host {
+  position: relative;
+  color: black;
+  padding: 12px 15px 10px 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: left;
+  border-bottom: 1px solid $disableColor;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: move;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 42px;
+}
+
+.glyphicon-cog, .glyphicon-star {
+  color: $lightTextColor;
+  cursor: pointer;
+  pointer-events: all;
+}
+
+.glyphicon-cog:hover {
+  color: $darkTextColor;
+}
+
+.glyphicon-star:hover, .glyphicon-star.active {
+  color: $themeColor;
+}
+
+.glyphicon-star {
+  margin-right: 10px;
+}
+
+.widget-actions {
+  position: absolute;
+  padding: 12px;
+  right: 3px;
+  top: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  pointer-events: all;
+  z-index: 1;
+  visibility: hidden;
+}
+
+.widget-actions .glyphicon {
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+.widget-actions .glyphicon:first-child {
+  margin-right: 0;
+}
+
+input {
+  border: none;
+  pointer-events: all;
+  width: 70%;
+}

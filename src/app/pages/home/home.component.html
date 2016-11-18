@@ -14,22 +14,23 @@
           <span class="glyphicon glyphicon-home"></span>Rooms
           <span class="glyphicon glyphicon-chevron-right pull-right"></span>
         </a>
-        <div class="roomsList" #roomsList>
+        <div class="rooms-list" #roomsList>
           <ul class="nav nav-pills nav-stacked">
             <li *ngFor="let room of _rooms">
 
-              <a *ngIf="_currentEditedRoom!=room" (click)="retrieveDevicesForRoom(room)">
+              <a *ngIf="_currentEditedRoom!=room" (click)="retrieveDevicesForRoom(room)"
+                 [ngClass]="{'active': _currentSelectedRoom == room}">
                 <span>{{room.name}}</span>
                 <span (click)="editRoom(room)" class="glyphicon glyphicon-pencil pull-right"></span>
               </a>
               <a *ngIf="_currentEditedRoom==room">
                 <input #nameInput focus (keyup.enter)="updateRoom(room, nameInput.value)" value="{{room.name}}"/>
                 <span (click)="clearEditRoom()" class="glyphicon glyphicon-remove pull-right"></span>
-                <span (click)="modalDeleteRoom.show()" class="glyphicon glyphicon-trash pull-right"></span>
+                <span (click)="askForRemoveRoom(room)" class="glyphicon glyphicon-trash pull-right"></span>
               </a>
             </li>
           </ul>
-          <div class="addRoomContainer" (click)="addRoom($event)">
+          <div class="add-room-container" (click)="addRoom($event)">
             <input #roomInput (keyup.enter)="addRoom()" type="text" placeholder="Add room"/>
           </div>
         </div>
@@ -46,15 +47,7 @@
   <!-- Content -->
   <div class="col-md-9">
     <div class="tab-content">
-      <dashboard #dashboard [widgetsSize]="[300, 150]">
-        <widget *ngFor="let item of [1, 2, 3, 4, 5, 6]; let i = index;" [widgetId]="i">
-          <div class="head">Widget {{i}}</div>
-        </widget>
-      </dashboard>
-      <!--div class="tab-pane active" id="favorites">Favorites</div>
-      <div class="tab-pane" id="rooms">Rooms</div>
-      <div class="tab-pane" id="newdevices">New devices</div>
-    </div-->
+      <dashboard #dashboard [margin]="dashboardMargin" [widgetsSize]="widgetsSize"></dashboard>
     </div>
   </div>
 </div>

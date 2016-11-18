@@ -36,16 +36,18 @@ export class WebsocketFrontService {
     });
 
     primus.on('create', (model, data) => {
-      console.log('create', model, data)
+      console.log('create', model, data);
       this._emitter.next({command: 'create', type: model, item: data, id: data.id});
     });
 
     primus.on('update', (model, data) => {
-      console.log('update', data)
+      console.log('update', data);
+      this._emitter.next({command: 'update', type: model, item: data, id: data.id});
     });
 
     primus.on('destroy', (model, data) => {
-      console.log('destroy', data)
+      console.log('destroy', data);
+      this._emitter.next({command: 'destroy', type: model, item: data, id: data.id});
     });
 
     primus.on('notification', data => {
@@ -59,6 +61,7 @@ export class WebsocketFrontService {
     });
 
     primus.join('room');
+    primus.join('device');
     primus.join('notification');
   }
 
