@@ -16,7 +16,9 @@ const TAB_TYPE = {
   FAV: 0,
   ROOMS: 1,
   NEW_DEVICES: 2
-}
+};
+
+const ROOM_LINE_HEIGHT = 42.5;
 
 @Component({
   selector: 'lisa-home',
@@ -31,12 +33,13 @@ export class HomeComponent implements OnInit {
   @ViewChild('roomInput') roomInput: ElementRef;
   @ViewChild('dashboard') dashboard: DashboardComponent;
   @ViewChild('modalDeleteRoom') modalDeleteRoom: ConfirmModalComponent;
-  @Input() widgetsSize: number[] = [300, 150];
+  @Input() widgetsSize: number[] = [300, 160];
   @Input() dashboardMargin: number = 10;
   private _devices: Device[] = [];
 
   private listener: Subscription;
   private _rooms: Room[] = [];
+  private _roomsListOpen = false;
   private _currentEditedRoom: Room;
   private _currentSelectedRoom: Room;
   private _currentTab: number = TAB_TYPE.FAV;
@@ -73,7 +76,7 @@ export class HomeComponent implements OnInit {
             else if (event.command === 'destroy') {
               this._rooms = this._rooms.filter(room => room.id != event.item);
             }
-            this._renderer.setElementStyle(this.roomsList.nativeElement, 'height', ((this._rooms.length + 1) * 40) + 'px');
+            this._renderer.setElementStyle(this.roomsList.nativeElement, 'height', ((this._rooms.length + 1) * ROOM_LINE_HEIGHT) + 'px');
             break;
           default:
             break;
@@ -113,20 +116,22 @@ export class HomeComponent implements OnInit {
 
   toggleRooms() {
     if (this.roomsList.nativeElement.offsetHeight === 0) {
-      this._currentTab = TAB_TYPE.ROOMS;
-      this._renderer.setElementStyle(this.roomsList.nativeElement, 'height', ((this._rooms.length + 1) * 40) + 'px');
+      this._roomsListOpen = true;
+      this._renderer.setElementStyle(this.roomsList.nativeElement, 'height', ((this._rooms.length + 1) * ROOM_LINE_HEIGHT) + 'px');
     }
     else {
-      this._currentTab = TAB_TYPE.NONE;
+      this._roomsListOpen = false;
       this._renderer.setElementStyle(this.roomsList.nativeElement, 'height', '0px');
     }
   }
 
   addRoom(event) {
-    if (!event || event.target != this.roomInput.nativeElement) {
-      this._roomApi.postItem({name: this.roomInput.nativeElement.value}).subscribe((room: Room) => {
-        this.roomInput.nativeElement.value = '';
-      });
+    if (this.roomInput.nativeElement.value != "") {
+      if (!event || event.target != this.roomInput.nativeElement) {
+        this._roomApi.postItem({name: this.roomInput.nativeElement.value}).subscribe((room: Room) => {
+          this.roomInput.nativeElement.value = '';
+        });
+      }
     }
   }
 
@@ -159,6 +164,7 @@ export class HomeComponent implements OnInit {
   }
 
   retrieveDevicesForRoom(room: Room) {
+    this._currentTab = TAB_TYPE.ROOMS;
     if (this._currentSelectedRoom != room) {
       this._currentSelectedRoom = room;
       this._roomApi.getRoomDevices(room.id).subscribe(
@@ -173,16 +179,16 @@ export class HomeComponent implements OnInit {
   private _onResize() {
     if (window.innerWidth < 500) {
       this.dashboardMargin = 10;
-      this.widgetsSize = [this.dashboard.width - this.dashboardMargin, 150];
+      this.widgetsSize = [this.dashboard.width - this.dashboardMargin, 160];
     }
     else if (window.innerWidth < 750) {
       this.dashboardMargin = 10;
-      this.widgetsSize = [this.dashboard.width / 2 - this.dashboardMargin, 150];
+      this.widgetsSize = [this.dashboard.width / 2 - this.dashboardMargin, 160];
     }
     else {
       this.dashboardMargin = 20;
       const nbColumn = Math.floor(this.dashboard.width / (300 + this.dashboardMargin));
-      this.widgetsSize = [this.dashboard.width / nbColumn - this.dashboardMargin, 150];
+      this.widgetsSize = [this.dashboard.width / nbColumn - this.dashboardMargin, 160];
     }
   }
 

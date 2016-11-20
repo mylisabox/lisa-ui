@@ -31,6 +31,7 @@ export class WidgetLISAComponent extends WidgetComponent implements OnInit {
               protected _renderer: Renderer) {
     super(_ngEl, _renderer);
     this._renderer.setElementClass(this._ngEl.nativeElement, 'shadow-box', true);
+    this._renderer.setElementClass(this._ngEl.nativeElement, 'vbox', true);
   }
 
   ngOnInit() {

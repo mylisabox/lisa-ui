@@ -4,7 +4,7 @@ import {NotificationService} from "./notification.service";
 import {AuthService} from "./auth.service";
 import {Globals} from "../common/globals";
 import {Subject} from "rxjs";
-import {WebsocketEvent} from "../models/websocket-event.type";
+import {WebsocketEvent} from "../interfaces/websocket-event.type";
 
 @Injectable()
 export class WebsocketFrontService {

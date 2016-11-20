@@ -1,5 +1,6 @@
 import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.component";
 import {ProfileComponent} from "./pages/profile/profile.component";
+import {ColorPickerModule} from "angular2-color-picker";
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
@@ -43,6 +44,7 @@ import {WidgetHeaderComponent} from "./components/widget/widget-header/widget-he
 import {WidgetContentComponent} from "./components/widget/widget-content/widget-content.component";
 import {DeviceService} from "./services/device.service";
 import {FavoriteService} from "./services/favorite.service";
+import {SpaceComponent} from "./components/widget/space/space.component";
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import {FavoriteService} from "./services/favorite.service";
     FocusDirective,
     ConfirmModalComponent,
     WidgetHeaderComponent,
-    WidgetContentComponent
+    WidgetContentComponent,
+    SpaceComponent
   ],
   entryComponents: [
     WidgetLISAComponent
@@ -83,6 +86,7 @@ import {FavoriteService} from "./services/favorite.service";
   imports: [
     AlertModule,
     ModalModule,
+    ColorPickerModule,
     Ng2DashboardModule,
     DatepickerModule,
     CollapseModule,

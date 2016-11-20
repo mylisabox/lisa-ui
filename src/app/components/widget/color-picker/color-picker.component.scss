@@ -1,0 +1,35 @@
+@import "../../../../variables";
+
+:host {
+  display: flex;
+}
+
+.color-picker-handle {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  border: 1px solid $darkColor;
+  cursor: pointer;
+}
+
+.color-picker-handle::after {
+  position: absolute;
+  font-size: 0;
+  content: ".";
+  opacity: 0.7;
+  border-bottom: 8px solid lightgray;
+  border-left: 8px solid transparent;
+  right: 0;
+  bottom: 0;
+}
+
+.color-picker-handle::before {
+  position: absolute;
+  font-size: 0;
+  content: ".";
+  border-bottom: 9px solid grey;
+  border-left: 9px solid transparent;
+  opacity: 0.7;
+  right: 0;
+  bottom: 0;
+}

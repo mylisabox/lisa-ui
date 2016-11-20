@@ -9,7 +9,7 @@
           <span class="glyphicon glyphicon-chevron-right pull-right"></span>
         </a>
       </li>
-      <li class="rooms" [ngClass]="{'active': _currentTab === tabType.ROOMS}">
+      <li class="rooms" [ngClass]="{'active': _currentTab === tabType.ROOMS, 'roomOpen': _roomsListOpen}">
         <a (click)="toggleRooms()">
           <span class="glyphicon glyphicon-home"></span>Rooms
           <span class="glyphicon glyphicon-chevron-right pull-right"></span>

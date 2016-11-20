@@ -1,4 +1,4 @@
-import {WebsocketEvent} from "../models/websocket-event.type";
+import {WebsocketEvent} from "./websocket-event.type";
 import {Subject} from "rxjs";
 export class WebsocketService {
   init() {

@@ -5,6 +5,7 @@ import {ApiService} from "./api.service";
 import {Device} from "../models/device.type";
 import {Observable} from "rxjs";
 import {Globals} from "../common/globals";
+import {WidgetEvent} from "../interfaces/widget-event.type";
 
 @Injectable()
 export class DeviceService extends ApiService<Device> {
@@ -16,6 +17,16 @@ export class DeviceService extends ApiService<Device> {
 
   getDevicesWithoutRoom(): Observable<Array<Device>> {
     return this._http.get(`${Globals.getUrl(this._path)}?roomId=null`, this._buildOptions())
+      .map((res: Response) => res.json())
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  postDeviceValue(info: WidgetEvent): Observable<Array<Device>> {
+    return this._http.post(`${Globals.getUrl('/plugins')}/${info.device.pluginName}/${info.device.id}/${info.path.replace('.', '/')}`,
+      {
+        key: info.key,
+        value: info.value
+      }, this._buildOptions())
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }

@@ -28,7 +28,7 @@
   text-transform: uppercase;
 }
 
-.left-menu li.rooms.active .pull-right {
+.left-menu li.rooms.active .pull-right, .left-menu li.rooms.roomOpen .pull-right {
   -ms-transform: rotate(90deg);
   -webkit-transform: rotate(90deg);
   -moz-transform: rotate(90deg);
@@ -113,12 +113,12 @@
 }
 
 .rooms-list li a {
-  color: $lightTextColor;
+  color: $darkTextColor;
   padding: 10px 10px 10px 45px;
 }
 
 .rooms-list li a:hover {
-  color: $darkTextColor;
+  font-weight: bold;
 }
 
 .add-room-container {
