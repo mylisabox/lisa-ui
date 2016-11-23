@@ -1,7 +1,6 @@
 import {Component} from "@angular/core";
 import {AuthService} from "../../../services/auth.service";
 import {Router} from "@angular/router";
-import {Globals} from "../../../common/globals";
 import {WebsocketService} from "../../../interfaces/websocket-service";
 
 @Component({
@@ -18,7 +17,7 @@ export class LoginBoxComponent {
     event.preventDefault();
     this.authService.login(identifier, password).subscribe(
       response => {
-        localStorage.setItem(Globals.tokenKey, response.json().token);
+        this.authService.setToken(response.json().token);
         this.websocketService.init();
         this.router.navigate(['/home']);
       },

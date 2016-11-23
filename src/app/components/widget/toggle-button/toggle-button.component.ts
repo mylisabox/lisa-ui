@@ -1,15 +1,21 @@
 import {Component, OnInit, Input, ElementRef, Renderer, ViewChild, EventEmitter, Output} from "@angular/core";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
+import {Device} from "../../../models/device.type";
+import {BaseElement} from "../../../interfaces/base-element";
+import {WidgetHelpers} from "../../../shared/widget-helpers";
 
 @Component({
   selector: 'lisa-toggle-button',
   templateUrl: './toggle-button.component.html',
   styleUrls: ['./toggle-button.component.scss']
 })
-export class ToggleButtonComponent implements OnInit {
+export class ToggleButtonComponent implements BaseElement, OnInit {
   @Input() flex: number = 1;
   @Input() name: string;
   @Input() path: string;
+  device: Device;
+  infos: any;
+
   @ViewChild('input') input: ElementRef;
   value: boolean = false;
   @Output() public onChange: EventEmitter<WidgetEvent> = new EventEmitter<WidgetEvent>();
@@ -33,4 +39,7 @@ export class ToggleButtonComponent implements OnInit {
     })
   }
 
+  populateComponent() {
+    this.value = WidgetHelpers.get(this.device, this.infos.value);
+  }
 }

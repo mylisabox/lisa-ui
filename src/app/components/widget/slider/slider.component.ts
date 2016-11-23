@@ -14,16 +14,25 @@ import {
 import {SliderHelpers} from "./slider.helpers";
 import {ControlValueAccessor} from "@angular/forms";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
+import {Device} from "../../../models/device.type";
+import {BaseElement} from "../../../interfaces/base-element";
+import {WidgetHelpers} from "../../../shared/widget-helpers";
 
 @Component({
   selector: 'lisa-slider',
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
-export class SliderComponent implements OnInit, AfterViewInit, ControlValueAccessor {
+export class SliderComponent implements BaseElement, OnInit, AfterViewInit, ControlValueAccessor {
   @Input() flex: number = 1;
   @Input() name: string;
   @Input() path: string;
+  device: Device;
+  infos: any;
+
+  populateComponent() {
+    this.value = WidgetHelpers.get(this.device, this.infos.value);
+  }
 
   @Input() public animate: boolean = true;
   @Input() public enabled: boolean = true;

@@ -47,7 +47,8 @@
   <!-- Content -->
   <div class="col-md-9">
     <div class="tab-content">
-      <dashboard #dashboard [margin]="dashboardMargin" [widgetsSize]="widgetsSize"></dashboard>
+      <dashboard #dashboard (onOrderChange)="saveWidgetOrder($event)" [margin]="dashboardMargin"
+                 [widgetsSize]="widgetsSize"></dashboard>
     </div>
   </div>
 </div>

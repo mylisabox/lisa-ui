@@ -10,6 +10,9 @@ import {DeviceService} from "../../services/device.service";
 import {WidgetLISAComponent} from "../../components/widget/widget.component";
 import "rxjs/add/operator/catch";
 import {FavoriteService} from "../../services/favorite.service";
+import {DashboardService} from "../../services/dashboard.service";
+import {AuthService} from "../../services/auth.service";
+import {Dashboard} from "../../models/dashboard.type";
 
 const TAB_TYPE = {
   NONE: -1,
@@ -36,6 +39,7 @@ export class HomeComponent implements OnInit {
   @Input() widgetsSize: number[] = [300, 160];
   @Input() dashboardMargin: number = 10;
   private _devices: Device[] = [];
+  private _currentDashboard: Dashboard;
 
   private listener: Subscription;
   private _rooms: Room[] = [];
@@ -48,6 +52,8 @@ export class HomeComponent implements OnInit {
   constructor(private _ngEl: ElementRef,
               private _renderer: Renderer,
               private _roomApi: RoomService,
+              private _authService: AuthService,
+              private _dashboardApi: DashboardService,
               private _deviceApi: DeviceService,
               private _favoriteApi: FavoriteService,
               private _websocketService: WebsocketService) {
@@ -78,6 +84,32 @@ export class HomeComponent implements OnInit {
             }
             this._renderer.setElementStyle(this.roomsList.nativeElement, 'height', ((this._rooms.length + 1) * ROOM_LINE_HEIGHT) + 'px');
             break;
+          case 'device':
+            if (event.command === 'create') {
+              if (this._currentSelectedRoom.id == event.item.roomId) {
+                this._devices.push(event.item);
+                this._showDevice(event.item);
+              }
+            }
+            else if (event.command === 'update') {
+              if (this._currentSelectedRoom == event.item.roomId ||
+                (this._currentSelectedRoom && this._currentSelectedRoom.id == event.item.roomId)) {
+                const device = this._devices.find(item => item.id == event.item.id);
+
+                device.name = event.item.name || device.name;
+                device.data = event.item.data || device.data;
+                device.roomId = event.item.roomId || device.roomId;
+                device.template = event.item.template || device.template;
+                (this.dashboard.getWidgetById(device.id) as WidgetLISAComponent).device = device;
+              }
+              else {
+                this.dashboard.removeItemById(event.item.id);
+              }
+            }
+            else if (event.command === 'destroy') {
+              this.dashboard.removeItemById(event.item.id);
+            }
+            break;
           default:
             break;
         }
@@ -89,11 +121,16 @@ export class HomeComponent implements OnInit {
     if (this._currentTab === TAB_TYPE.ROOMS) {
       this.toggleRooms();
     }
-    this._favoriteApi.getItems().subscribe(
-      devices => {
-        this._showDevices(devices);
+
+    this._dashboardApi.getOrderedDeviceForRoom().subscribe(
+      dashboard => {
+        console.log(dashboard);
+        this._currentDashboard = dashboard;
+        this._showDevices(dashboard.widgets);
       },
-      err => console.log(err));
+      err => console.log(err)
+    );
+    this.dashboard.enableDrag();
     this._currentTab = TAB_TYPE.FAV;
     this._currentSelectedRoom = null;
     this._currentEditedRoom = null;
@@ -109,6 +146,7 @@ export class HomeComponent implements OnInit {
       },
       err => console.log(err)
     );
+    this.dashboard.disableDrag();
     this._currentTab = TAB_TYPE.NEW_DEVICES;
     this._currentSelectedRoom = null;
     this._currentEditedRoom = null;
@@ -165,11 +203,14 @@ export class HomeComponent implements OnInit {
 
   retrieveDevicesForRoom(room: Room) {
     this._currentTab = TAB_TYPE.ROOMS;
+    this.dashboard.enableDrag();
     if (this._currentSelectedRoom != room) {
       this._currentSelectedRoom = room;
-      this._roomApi.getRoomDevices(room.id).subscribe(
-        (devices: Device[]) => {
-          this._showDevices(devices);
+      this._dashboardApi.getOrderedDeviceForRoom(this._currentSelectedRoom.id).subscribe(
+        dashboard => {
+          console.log(dashboard);
+          this._currentDashboard = dashboard;
+          this._showDevices(dashboard.widgets);
         },
         err => console.log(err)
       );
@@ -192,59 +233,74 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  private saveWidgetOrder(order: Array<string>) {
+
+    this._dashboardApi.saveDevicesOrderForRoom(this._currentSelectedRoom.id, order).subscribe(
+      data => {
+        console.log(data)
+      },
+      err => console.log(err)
+    );
+
+  }
+
   private _showDevices(devices: Device[]) {
     this.dashboard.clearItems();
     this._devices = devices;
     this._devices.forEach(device => {
-      const ref: WidgetLISAComponent = this.dashboard.addItem(WidgetLISAComponent) as WidgetLISAComponent;
-      ref.device = device;
-      ref.widgetId = device.id;
-      ref.onFavorite.subscribe(device => {
-        if (device.isFavorite) {
-          this._favoriteApi.destroyItem(device.id).subscribe(
-            () => {
-              if (this._currentTab === TAB_TYPE.FAV) {
-                this.dashboard.removeItemById(device.id);
-              }
-            },
-            err => console.log(err)
-          );
-        }
-        else {
-          this._favoriteApi.putItem(device).subscribe(
-            device => {
+      this._showDevice(device);
+    });
+  }
 
-            },
-            err => console.log(err)
-          );
-        }
-      });
-      ref.onRename.subscribe(updatedDevice => {
-        this._deviceApi.patchItem(<Device>{id: updatedDevice.id, name: updatedDevice.name}).subscribe(
-          data => {
-            this._devices = this._devices.map(device => {
-              if (device.id == updatedDevice.id) {
-                device.name = updatedDevice.name;
-              }
-              return device;
-            })
+  private _showDevice(device: Device) {
+    const ref: WidgetLISAComponent = this.dashboard.addItem(WidgetLISAComponent) as WidgetLISAComponent;
+    ref.device = device;
+    ref.widgetId = device.id;
+    ref.onFavorite.subscribe(device => {
+      if (device.isFavorite) {
+        this._favoriteApi.destroyItem(device.id).subscribe(
+          () => {
+            if (this._currentTab === TAB_TYPE.FAV) {
+              this.dashboard.removeItemById(device.id);
+            }
           },
-          err => {
-            console.log(err);
-          }
+          err => console.log(err)
         );
-      });
-      ref.onRemove.subscribe(device => {
-        this.dashboard.removeItemById(device.id);
-        this._deviceApi.destroyItem(device.id).subscribe(
-          data => {
+      }
+      else {
+        this._favoriteApi.putItem(device).subscribe(
+          device => {
 
           },
-          err => {
-            console.log(err);
-          }
+          err => console.log(err)
         );
-      });
+      }
+    });
+    ref.onRename.subscribe(updatedDevice => {
+      this._deviceApi.patchItem(<Device>{id: updatedDevice.id, name: updatedDevice.name}).subscribe(
+        data => {
+          this._devices = this._devices.map(device => {
+            if (device.id == updatedDevice.id) {
+              device.name = updatedDevice.name;
+            }
+            return device;
+          })
+        },
+        err => {
+          console.log(err);
+        }
+      );
+    });
+    ref.onRemove.subscribe(device => {
+      this.dashboard.removeItemById(device.id);
+      this._deviceApi.destroyItem(device.id).subscribe(
+        data => {
+
+        },
+        err => {
+          console.log(err);
+        }
+      );
     });
   }
 }

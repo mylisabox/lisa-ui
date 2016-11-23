@@ -22,7 +22,6 @@ import {Ng2DashboardModule} from "ng2-dashboard";
 import {ShopComponent} from "./pages/shop/shop.component";
 import {NotificationComponent} from "./pages/notification/notification.component";
 import {WidgetLISAComponent} from "./components/widget/widget.component";
-import {BaseElementComponent} from "./components/widget/base-element/base-element.component";
 import {VboxComponent} from "./components/widget/vbox/vbox.component";
 import {HboxComponent} from "./components/widget/hbox/hbox.component";
 import {CardComponent} from "./components/widget/card/card.component";
@@ -45,6 +44,7 @@ import {WidgetContentComponent} from "./components/widget/widget-content/widget-
 import {DeviceService} from "./services/device.service";
 import {FavoriteService} from "./services/favorite.service";
 import {SpaceComponent} from "./components/widget/space/space.component";
+import {DashboardService} from "./services/dashboard.service";
 
 @NgModule({
   declarations: [
@@ -61,7 +61,6 @@ import {SpaceComponent} from "./components/widget/space/space.component";
     ShopComponent,
     NotificationComponent,
     WidgetLISAComponent,
-    BaseElementComponent,
     VboxComponent,
     HboxComponent,
     CardComponent,
@@ -81,7 +80,18 @@ import {SpaceComponent} from "./components/widget/space/space.component";
     SpaceComponent
   ],
   entryComponents: [
-    WidgetLISAComponent
+    WidgetLISAComponent,
+    VboxComponent,
+    HboxComponent,
+    CardComponent,
+    SliderComponent,
+    ImageButtonComponent,
+    ImageComponent,
+    ButtonComponent,
+    ColorPickerComponent,
+    CameraComponent,
+    SpaceComponent,
+    ToggleButtonComponent
   ],
   imports: [
     AlertModule,
@@ -103,6 +113,7 @@ import {SpaceComponent} from "./components/widget/space/space.component";
     RoomService,
     DeviceService,
     FavoriteService,
+    DashboardService,
     AuthService,
     WebsocketService,
     NotificationService,

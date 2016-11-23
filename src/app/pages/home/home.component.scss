@@ -5,6 +5,10 @@
   padding: 0;
 }
 
+dashboard.disabled /deep/ lisa-widget-header {
+  cursor: auto;
+}
+
 .left-menu li {
   border-bottom: 1px solid #444;
   cursor: pointer;

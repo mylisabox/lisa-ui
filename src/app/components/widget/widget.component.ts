@@ -12,6 +12,7 @@ import {
 import {Device} from "../../models/device.type";
 import {WidgetComponent} from "ng2-dashboard";
 import {WidgetHandleDirective} from "ng2-dashboard/directives/widget-handle.directive";
+import {WidgetContentComponent} from "./widget-content/widget-content.component";
 
 @Component({
   selector: 'lisa-widget',
@@ -20,12 +21,22 @@ import {WidgetHandleDirective} from "ng2-dashboard/directives/widget-handle.dire
   providers: [{provide: WidgetComponent, useExisting: forwardRef(() => WidgetLISAComponent)}]
 })
 export class WidgetLISAComponent extends WidgetComponent implements OnInit {
-  @Input() device: Device;
+  private _device: Device;
   @Input() public widgetId: string;
   @ViewChild(WidgetHandleDirective) protected _handle: WidgetHandleDirective;
+  @ViewChild(WidgetContentComponent) protected _content: WidgetContentComponent;
   @Output() onRemove: EventEmitter<Device> = new EventEmitter<Device>();
   @Output() onRename: EventEmitter<Device> = new EventEmitter<Device>();
   @Output() onFavorite: EventEmitter<Device> = new EventEmitter<Device>();
+
+  get device(): Device {
+    return this._device;
+  }
+
+  @Input() set device(device: Device) {
+    this._device = device;
+    this._content.device = device;
+  }
 
   constructor(protected _ngEl: ElementRef,
               protected _renderer: Renderer) {
