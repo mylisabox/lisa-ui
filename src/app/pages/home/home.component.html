@@ -6,13 +6,13 @@
       <li [ngClass]="{'active': _currentTab === tabType.FAV}">
         <a (click)="loadFavorites()">
           <span class="glyphicon glyphicon-star"></span>Favorites
-          <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+          <span class="glyphicon glyphicon-menu-right pull-right"></span>
         </a>
       </li>
       <li class="rooms" [ngClass]="{'active': _currentTab === tabType.ROOMS, 'roomOpen': _roomsListOpen}">
         <a (click)="toggleRooms()">
           <span class="glyphicon glyphicon-home"></span>Rooms
-          <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+          <span class="glyphicon glyphicon-menu-right pull-right"></span>
         </a>
         <div class="rooms-list" #roomsList>
           <ul class="nav nav-pills nav-stacked">
@@ -38,7 +38,7 @@
       <li [ngClass]="{'active': _currentTab === tabType.NEW_DEVICES}">
         <a (click)="loadNewDevices()">
           <span class="glyphicon glyphicon-dashboard"></span>New devices
-          <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+          <span class="glyphicon glyphicon-menu-right pull-right"></span>
         </a>
       </li>
     </ul>

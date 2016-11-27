@@ -45,6 +45,7 @@ import {DeviceService} from "./services/device.service";
 import {FavoriteService} from "./services/favorite.service";
 import {SpaceComponent} from "./components/widget/space/space.component";
 import {DashboardService} from "./services/dashboard.service";
+import {SpeechService} from "./services/speech.service";
 
 @NgModule({
   declarations: [
@@ -115,6 +116,7 @@ import {DashboardService} from "./services/dashboard.service";
     FavoriteService,
     DashboardService,
     AuthService,
+    SpeechService,
     WebsocketService,
     NotificationService,
     BROWSER_WEBSOCKET_PROVIDERS],

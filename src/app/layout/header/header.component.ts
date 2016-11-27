@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit} from "@angular/core";
 import {AuthService} from "../../services/auth.service";
+import {SpeechService} from "../../services/speech.service";
 
 @Component({
   selector: 'lisa-header',
@@ -10,7 +11,8 @@ export class HeaderComponent implements OnInit {
   public isMenuCollapsed: boolean = true;
   public isNotificationCollapsed: boolean = true;
 
-  constructor(private authService: AuthService) {
+  constructor(private _authService: AuthService,
+              private _speechService: SpeechService) {
   }
 
   ngOnInit() {
@@ -24,8 +26,17 @@ export class HeaderComponent implements OnInit {
     console.log(event);
   }
 
+  public toggleSpeech() {
+    if (this._speechService.isListening) {
+      this._speechService.stop()
+    }
+    else {
+      this._speechService.start()
+    }
+  }
+
   logout() {
-    this.authService.logout();
+    this._authService.logout();
   }
 
 }

@@ -31,9 +31,12 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        <li (click)="toggleSpeech()" [ngClass]="{active: _speechService.isListening}">
+          <a class="pointer"><span class="glyphicon glyphicon-record"></span></a>
+        </li>
         <li routerLink="/profile" routerLinkActive="active" (click)="isMenuCollapsed = true">
           <a class="pointer" i18n="Profile menu label"><span class="glyphicon glyphicon-user"></span>
-          Profile</a></li>
+            Profile</a></li>
         <li><a class="pointer" (click)="logout()" i18n="Logout menu label"><span
           class="glyphicon glyphicon-log-out"></span> Logout</a></li>
         <li>

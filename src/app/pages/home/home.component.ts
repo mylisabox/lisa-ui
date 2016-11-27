@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
   @Input() widgetsSize: number[] = [300, 160];
   @Input() dashboardMargin: number = 10;
   private _devices: Device[] = [];
+  private _favorites: Device[] = [];
   private _currentDashboard: Dashboard;
 
   private listener: Subscription;
@@ -92,8 +93,9 @@ export class HomeComponent implements OnInit {
               }
             }
             else if (event.command === 'update') {
-              if (this._currentSelectedRoom == event.item.roomId ||
-                (this._currentSelectedRoom && this._currentSelectedRoom.id == event.item.roomId)) {
+              if (!this._currentSelectedRoom || //= favorite tab
+                this._currentSelectedRoom == event.item.roomId || //= new devices
+                (this._currentSelectedRoom && this._currentSelectedRoom.id == event.item.roomId)) { // = room devices
                 const device = this._devices.find(item => item.id == event.item.id);
 
                 device.name = event.item.name || device.name;
@@ -126,6 +128,8 @@ export class HomeComponent implements OnInit {
       dashboard => {
         console.log(dashboard);
         this._currentDashboard = dashboard;
+        dashboard.widgets.map(widget => widget.isFavorite = true);
+        this._favorites = dashboard.widgets;
         this._showDevices(dashboard.widgets);
       },
       err => console.log(err)
@@ -234,20 +238,19 @@ export class HomeComponent implements OnInit {
   }
 
   private saveWidgetOrder(order: Array<string>) {
-
     this._dashboardApi.saveDevicesOrderForRoom(this._currentSelectedRoom.id, order).subscribe(
       data => {
         console.log(data)
       },
       err => console.log(err)
     );
-
   }
 
   private _showDevices(devices: Device[]) {
     this.dashboard.clearItems();
     this._devices = devices;
     this._devices.forEach(device => {
+      device.isFavorite = this._favorites.find(fav => device.id == fav.id) != null;
       this._showDevice(device);
     });
   }

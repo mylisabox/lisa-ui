@@ -9,4 +9,6 @@ declare var Primus: any;
 interface Window {
   Notification: any;
   webkitNotifications: any;
+  webkitSpeechRecognition: any;
+  SpeechRecognition: any;
 }

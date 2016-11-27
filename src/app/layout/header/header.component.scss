@@ -74,3 +74,7 @@
   background: $gray-lighter;
   border-radius: 4px;
 }
+
+.navbar li.active .glyphicon-record {
+  color: $themeColor;
+}
