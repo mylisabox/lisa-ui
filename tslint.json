@@ -92,9 +92,14 @@
       "check-separator",
       "check-type"
     ],
-
-    "directive-selector-prefix": [true, "app"],
-    "component-selector-prefix": [true, "app"],
+    "directive-selector-prefix": [
+      true,
+      "lisa"
+    ],
+    "component-selector-prefix": [
+      true,
+      "lisa"
+    ],
     "directive-selector-name": [true, "camelCase"],
     "component-selector-name": [true, "kebab-case"],
     "directive-selector-type": [true, "attribute"],
@@ -107,6 +112,8 @@
     "use-life-cycle-interface": true,
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
-    "directive-class-suffix": true
+    "directive-class-suffix": true,
+    "templates-use-public": true,
+    "invoke-injectable": true
   }
 }

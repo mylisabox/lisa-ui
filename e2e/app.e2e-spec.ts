@@ -1,4 +1,4 @@
-import { LisaUiPage } from './app.po';
+import {LisaUiPage} from "./app.po";
 
 describe('lisa-ui App', function() {
   let page: LisaUiPage;
@@ -9,6 +9,6 @@ describe('lisa-ui App', function() {
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('app works!');
+    expect(page.getParagraphText()).toEqual('lisa works!');
   });
 });

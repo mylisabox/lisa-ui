@@ -1,4 +1,4 @@
-import { browser, element, by } from 'protractor/globals';
+import {browser, element, by} from "protractor";
 
 export class LisaUiPage {
   navigateTo() {
@@ -6,6 +6,6 @@ export class LisaUiPage {
   }
 
   getParagraphText() {
-    return element(by.css('app-root h1')).getText();
+    return element(by.css('lisa-root h1')).getText();
   }
 }
