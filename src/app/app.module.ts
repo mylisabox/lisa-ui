@@ -17,7 +17,7 @@ import {ScenesComponent} from "./pages/scenes/scenes.component";
 import {PluginsComponent} from "./pages/plugins/plugins.component";
 import {HeaderComponent} from "./layout/header/header.component";
 import {FooterComponent} from "./layout/footer/footer.component";
-import {AlertModule, ButtonsModule, DatepickerModule, CollapseModule, ModalModule} from "ng2-bootstrap/ng2-bootstrap";
+import {Ng2BootstrapModule} from "ng2-bootstrap";
 import {Ng2DashboardModule} from "ng2-dashboard";
 import {ShopComponent} from "./pages/shop/shop.component";
 import {NotificationComponent} from "./pages/notification/notification.component";
@@ -95,13 +95,9 @@ import {SpeechService} from "./services/speech.service";
     ToggleButtonComponent
   ],
   imports: [
-    AlertModule,
-    ModalModule,
+    Ng2BootstrapModule,
     ColorPickerModule,
     Ng2DashboardModule,
-    DatepickerModule,
-    CollapseModule,
-    ButtonsModule,
     BrowserModule,
     FormsModule,
     HttpModule,

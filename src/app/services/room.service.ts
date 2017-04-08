@@ -20,4 +20,9 @@ export class RoomService extends ApiService<Room> {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
+
+  public getItems(criteria: any = {}): Observable<Array<T>> {
+    criteria.sort = 'name';
+    return super.getItem(criteria);
+  }
 }

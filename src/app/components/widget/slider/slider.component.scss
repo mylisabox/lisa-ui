@@ -137,6 +137,14 @@
   display: none;
 }
 
+.slider .tooltip {
+  display: none;
+}
+
+.slider .tooltip.in {
+  display: block;
+}
+
 .slider .tooltip.top {
   margin-top: -36px;
   top: 0;

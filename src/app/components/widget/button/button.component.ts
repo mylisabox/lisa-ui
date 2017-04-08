@@ -1,6 +1,8 @@
-import {Component, OnInit, Renderer, ElementRef, Input} from "@angular/core";
+import {Component, OnInit, Renderer, ElementRef, Input, Output, EventEmitter} from "@angular/core";
 import {BaseElement} from "../../../interfaces/base-element";
 import {Device} from "../../../models/device.type";
+import {WidgetEvent} from "../../../interfaces/widget-event.type";
+import {WidgetHelpers} from "../../../shared/widget-helpers";
 
 @Component({
   selector: 'lisa-button',
@@ -10,9 +12,12 @@ import {Device} from "../../../models/device.type";
 export class ButtonComponent implements BaseElement, OnInit {
   device: Device;
   path: string;
-  name: string;
   infos: any;
   @Input() flex: number = 1;
+  @Input() text: string;
+  @Input() value: string;
+  @Input() name: string;
+  @Output() public onChange: EventEmitter<WidgetEvent> = new EventEmitter<WidgetEvent>();
 
   constructor(private _ngEl: ElementRef, private _renderer: Renderer) {
     this._renderer.setElementClass(this._ngEl.nativeElement, 'main-center', true);
@@ -23,7 +28,16 @@ export class ButtonComponent implements BaseElement, OnInit {
     this._renderer.setElementStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
   }
 
-  populateComponent() {
+  onClick() {
+    this.onChange.emit({
+      path: this.path,
+      key: this.name,
+      value: this.value
+    });
+  }
 
+  populateComponent() {
+    this.text = this.infos.text;
+    this.value = WidgetHelpers.get(this.device, this.infos.value, 1);
   }
 }

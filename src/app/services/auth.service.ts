@@ -39,8 +39,8 @@ export class AuthService {
     return false;
   }
 
-  login(identifier, password) {
-    const body = JSON.stringify({identifier, password});
+  login(email, password) {
+    const body = JSON.stringify({email, password});
     return this.http.post(Globals.getUrl('/auth/local'), body, {headers: contentHeaders});
   }
 

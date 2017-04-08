@@ -17,6 +17,7 @@ import {WidgetContentComponent} from "../components/widget/widget-content/widget
 export class WidgetHelpers {
 
   static get(obj: any, path: string, defaultValue: any = undefined) {
+    if (!path) path = "";
     let parts = path.split(".");
     while (parts.length > 1) {
       obj = obj[parts.shift()] || [];

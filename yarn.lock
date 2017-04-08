@@ -13,9 +13,9 @@
   version "1.0.9"
   resolved "https://registry.yarnpkg.com/@angular-cli/base-href-webpack/-/base-href-webpack-1.0.9.tgz#b2e15e6eeb7784f81e42c1c725bc444e184b6092"
 
-"@angular/common@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.3.1.tgz#146c2ed44e02b0f291dd9d4b2e5e2a693057e9bc"
+"@angular/common@^2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@angular/common/-/common-2.4.5.tgz#ada1a22b7ba01d1fdeb300115584478e031e9a4f"
 
 "@angular/common@~2.1.0":
   version "2.1.2"
@@ -29,41 +29,49 @@
     minimist "^1.2.0"
     reflect-metadata "^0.1.2"
 
-"@angular/compiler@^2.1.0", "@angular/compiler@^2.3.1":
+"@angular/compiler@^2.1.0":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.3.1.tgz#0c57f848e41432bac3201c29b645dd4dd099d2f9"
 
-"@angular/core@^2.1.0", "@angular/core@^2.3.1":
+"@angular/compiler@^2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-2.4.5.tgz#521da325e2e002398e8f9de52cfb03d303729e72"
+
+"@angular/core@^2.1.0":
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.3.1.tgz#be6e91fdfdd7498506604263e051797cf67a47be"
+
+"@angular/core@^2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.5.tgz#8b05156398afde9636e65527ffb61fc74236af5a"
 
 "@angular/core@~2.1.0":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.1.2.tgz#ce39521643f3d97bc5923d5a7aa76604e973dac8"
 
-"@angular/forms@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.3.1.tgz#2177e0513c5177fc6e4d140473e7b9f0b9dfd069"
+"@angular/forms@^2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@angular/forms/-/forms-2.4.5.tgz#468bd040518595c3598742ac1a22c506a7f1ab0f"
 
-"@angular/http@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.3.1.tgz#3dda85771dccea49d5e08a47366a7168e3435141"
+"@angular/http@^2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-2.4.5.tgz#de94b2daa4ff24e8b6c8839ffaf8089b62d4430b"
 
-"@angular/platform-browser-dynamic@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.3.1.tgz#d01f3c0c25c628be83c308e83d53128222f558fa"
+"@angular/platform-browser-dynamic@^2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser-dynamic/-/platform-browser-dynamic-2.4.5.tgz#36fa975a8ee2dfe3f60bab561143974e6bdb1eff"
 
-"@angular/platform-browser@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.3.1.tgz#114309150876188e0df8841b20ca2359fd5e7cad"
+"@angular/platform-browser@^2.4.5":
+  version "2.4.5"
+  resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.4.5.tgz#fa1bc891b1309bca83845787b9a08db36a787fee"
 
 "@angular/platform-browser@~2.1.0":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@angular/platform-browser/-/platform-browser-2.1.2.tgz#1f07c3a5668ac2381a7324f9001521deede159bc"
 
-"@angular/router@^3.1.0":
-  version "3.3.1"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.3.1.tgz#7bae01d165232f5bb5b8ec01e22943e44eb4af88"
+"@angular/router@^3.4.5":
+  version "3.4.5"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-3.4.5.tgz#5a471a4e49a7eba6a460761129c0684a4b730a1a"
 
 "@angular/tsc-wrapped@^0.3.0":
   version "0.3.0"
@@ -265,9 +273,9 @@ angular-cli@1.0.0-beta.20-4:
     yam "0.0.18"
     zone.js "^0.6.23"
 
-angular2-color-picker@^1.3.0:
+"angular2-color-picker@git://github.com/zefoy/angular2-color-picker.git":
   version "1.3.0"
-  resolved "https://registry.yarnpkg.com/angular2-color-picker/-/angular2-color-picker-1.3.0.tgz#8e1d8b6fe0f62dd00a9e722fa813cbf390178060"
+  resolved "git://github.com/zefoy/angular2-color-picker.git#0dd5125675e10749ae879895595a52fc3d3ce16a"
   dependencies:
     "@angular/common" "~2.1.0"
     "@angular/core" "~2.1.0"
@@ -3718,9 +3726,9 @@ mktemp@~0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/mktemp/-/mktemp-0.4.0.tgz#6d0515611c8a8c84e484aa2000129b98e981ff0b"
 
-moment@2.15.1:
-  version "2.15.1"
-  resolved "https://registry.yarnpkg.com/moment/-/moment-2.15.1.tgz#e979c2a29e22888e60f396f2220a6118f85cd94c"
+moment@2.17.1:
+  version "2.17.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
 ms@0.7.1:
   version "0.7.1"
@@ -3766,11 +3774,11 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-ng2-bootstrap@^1.1.16:
-  version "1.1.16"
-  resolved "https://registry.yarnpkg.com/ng2-bootstrap/-/ng2-bootstrap-1.1.16.tgz#0c5cd83a1f89f8d215c43a99e7b9dedab577ac5b"
+ng2-bootstrap@^1.3.1:
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/ng2-bootstrap/-/ng2-bootstrap-1.3.1.tgz#001442b850f980c84311421590834340a9071ba0"
   dependencies:
-    moment "2.15.1"
+    moment "2.17.1"
 
 ng2-dashboard@^1.0.3:
   version "1.0.3"
@@ -5038,6 +5046,12 @@ rxjs@5.0.0-beta.12:
   dependencies:
     symbol-observable "^1.0.1"
 
+rxjs@5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.0.3.tgz#fc8bdf464ebf938812748e4196788f392fef9754"
+  dependencies:
+    symbol-observable "^1.0.1"
+
 sass-graph@^2.1.1:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/sass-graph/-/sass-graph-2.1.2.tgz#965104be23e8103cb7e5f710df65935b317da57b"
@@ -6278,4 +6292,8 @@ yeast@0.1.2:
 zone.js@^0.6.23, zone.js@^0.6.25:
   version "0.6.26"
   resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.6.26.tgz#067c13b8b80223a89b62e9dc82680f09762c4636"
+
+zone.js@^0.7.2:
+  version "0.7.6"
+  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.7.6.tgz#fbbc39d3e0261d0986f1ba06306eb3aeb0d22009"
 
