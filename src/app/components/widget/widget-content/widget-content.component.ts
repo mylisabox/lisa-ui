@@ -2,7 +2,7 @@ import {
   Component,
   OnInit,
   Input,
-  Renderer,
+  Renderer2,
   ElementRef,
   AfterViewInit,
   ViewContainerRef,
@@ -38,8 +38,8 @@ export class WidgetContentComponent implements OnInit, OnChanges, AfterViewInit 
   constructor(private _deviveApi: DeviceService,
               private _componentFactory: ComponentFactoryResolver,
               private _ngEl: ElementRef,
-              private _renderer: Renderer) {
-    this._renderer.setElementClass(this._ngEl.nativeElement, 'vbox', true);
+              private _renderer: Renderer2) {
+    this._renderer.addClass(this._ngEl.nativeElement, 'vbox');
   }
 
   ngOnInit() {

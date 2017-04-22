@@ -2,7 +2,7 @@ import {
   Component,
   OnInit,
   Input,
-  Renderer,
+  Renderer2,
   ElementRef,
   ViewChild,
   Output,
@@ -88,9 +88,9 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
   private _step: number = 1;
   private propagateChange: EventEmitter<any> = new EventEmitter();
 
-  public constructor(private _renderer: Renderer, private _sliderElem: ElementRef) {
-    this._renderer.setElementClass(this._sliderElem.nativeElement, 'main-center', true);
-    this._renderer.setElementClass(this._sliderElem.nativeElement, 'cross-center', true);
+  public constructor(private _renderer: Renderer2, private _sliderElem: ElementRef) {
+    this._renderer.addClass(this._sliderElem.nativeElement, 'main-center');
+    this._renderer.addClass(this._sliderElem.nativeElement, 'cross-center');
   }
 
   registerOnTouched(fn: any): void {
@@ -110,7 +110,7 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
    * Initialize basic properties based on orientation
    */
   public ngOnInit(): void {
-    this._renderer.setElementStyle(this._sliderElem.nativeElement, 'flex', this.flex + '');
+    this._renderer.setStyle(this._sliderElem.nativeElement, 'flex', this.flex + '');
 
     if (this.orientation === 'vertical') {
       this.stylePos = 'top';
@@ -133,8 +133,8 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
    * Initialize base css class and set initial value
    */
   public ngAfterViewInit(): void {
-    this._renderer.setElementClass(this.sliderCtn.nativeElement, 'slider', true);
-    this._renderer.setElementClass(this.sliderCtn.nativeElement, `slider-${this.orientation}`, true);
+    this._renderer.addClass(this.sliderCtn.nativeElement, 'slider');
+    this._renderer.addClass(this.sliderCtn.nativeElement, `slider-${this.orientation}`);
 
     this.size = this.sliderCtn.nativeElement[this.sizePos];
 
@@ -201,12 +201,12 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
 
       this._value[0] = Math.max(this.min, Math.min(this.max, this._value[0]));
       this._value[1] = Math.max(this.min, Math.min(this.max, this._value[1]));
-      this._renderer.setElementClass(this.maxHandle.nativeElement, 'hide', false);
+      this._renderer.removeClass(this.maxHandle.nativeElement, 'hide');
     } else {
       val = this.applyPrecision(val);
       this._value = [Math.max(this.min, Math.min(this.max, val))];
 
-      this._renderer.setElementClass(this.maxHandle.nativeElement, 'hide', true);
+      this._renderer.addClass(this.maxHandle.nativeElement, 'hide');
       if (this.selection === 'after') {
         this._value[1] = this.max;
       } else {
@@ -237,14 +237,14 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
   protected showTooltip(): void {
     if (this.tooltipMode !== 'none') {
       if (this.tooltipSplit) {
-        this._renderer.setElementClass(this.tooltipMain.nativeElement, 'in', false);
-        this._renderer.setElementClass(this.tooltipMin.nativeElement, 'in', true);
-        this._renderer.setElementClass(this.tooltipMax.nativeElement, 'in', true);
+        this._renderer.removeClass(this.tooltipMain.nativeElement, 'in');
+        this._renderer.addClass(this.tooltipMin.nativeElement, 'in');
+        this._renderer.addClass(this.tooltipMax.nativeElement, 'in');
 
       } else {
-        this._renderer.setElementClass(this.tooltipMain.nativeElement, 'in', true);
-        this._renderer.setElementClass(this.tooltipMin.nativeElement, 'in', false);
-        this._renderer.setElementClass(this.tooltipMax.nativeElement, 'in', false);
+        this._renderer.addClass(this.tooltipMain.nativeElement, 'in');
+        this._renderer.removeClass(this.tooltipMin.nativeElement, 'in');
+        this._renderer.removeClass(this.tooltipMax.nativeElement, 'in');
       }
     }
     this.over = true;
@@ -252,9 +252,9 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
 
   protected hideTooltip(force: boolean = false): void {
     if ((!this.inDrag && this.tooltipMode !== 'always') || force) {
-      this._renderer.setElementClass(this.tooltipMain.nativeElement, 'in', false);
-      this._renderer.setElementClass(this.tooltipMin.nativeElement, 'in', false);
-      this._renderer.setElementClass(this.tooltipMax.nativeElement, 'in', false);
+      this._renderer.removeClass(this.tooltipMain.nativeElement, 'in');
+      this._renderer.removeClass(this.tooltipMin.nativeElement, 'in');
+      this._renderer.removeClass(this.tooltipMax.nativeElement, 'in');
     }
     this.over = false;
   }
@@ -305,15 +305,15 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
 
     if (this.touchCapable) {
       // Touch: Bind touch events:
-      this.eventRemoveCallback['touchmove'] = this._renderer.listenGlobal('document', 'touchmove', this.mouseMoveReference);
-      this.eventRemoveCallback['touchend'] = this._renderer.listenGlobal('document', 'touchend', this.mouseUpReference);
+      this.eventRemoveCallback['touchmove'] = this._renderer.listen('document', 'touchmove', this.mouseMoveReference);
+      this.eventRemoveCallback['touchend'] = this._renderer.listen('document', 'touchend', this.mouseUpReference);
     }
     // Bind mouse events:
-    this.eventRemoveCallback['mousemove'] = this._renderer.listenGlobal('document', 'mousemove', this.mouseMoveReference);
-    this.eventRemoveCallback['mouseup'] = this._renderer.listenGlobal('document', 'mouseup', this.mouseUpReference);
+    this.eventRemoveCallback['mousemove'] = this._renderer.listen('document', 'mousemove', this.mouseMoveReference);
+    this.eventRemoveCallback['mouseup'] = this._renderer.listen('document', 'mouseup', this.mouseUpReference);
 
-    this._renderer.setElementClass(this.minHandle.nativeElement, 'hover', true);
-    this._renderer.setElementClass(this.maxHandle.nativeElement, 'hover', true);
+    this._renderer.addClass(this.minHandle.nativeElement, 'hover');
+    this._renderer.addClass(this.maxHandle.nativeElement, 'hover');
 
     this.inDrag = true;
     this.value = this.calculateValue(false);
@@ -418,8 +418,8 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
     if (this.over === false) {
       this.hideTooltip();
     }
-    this._renderer.setElementClass(this.minHandle.nativeElement, 'hover', false);
-    this._renderer.setElementClass(this.maxHandle.nativeElement, 'hover', false);
+    this._renderer.removeClass(this.minHandle.nativeElement, 'hover');
+    this._renderer.removeClass(this.maxHandle.nativeElement, 'hover');
 
     this.value = this.calculateValue(true);
     this.onDragStop.emit(event);
@@ -446,8 +446,8 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
       positionPercentages = [this.percentage[0], this.percentage[1]];
     }
 
-    this._renderer.setElementStyle(this.minHandle.nativeElement, this.stylePos, positionPercentages[0] + '%');
-    this._renderer.setElementStyle(this.maxHandle.nativeElement, this.stylePos, positionPercentages[1] + '%');
+    this._renderer.setStyle(this.minHandle.nativeElement, this.stylePos, positionPercentages[0] + '%');
+    this._renderer.setStyle(this.maxHandle.nativeElement, this.stylePos, positionPercentages[1] + '%');
 
     this.setTooltipPosition();
 
@@ -461,7 +461,7 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
         let extraMargin = 0;
         if (this.ticksPositions.length === 0 && this.sliderLabelsContainer) {
           if (this.orientation !== 'vertical') {
-            this._renderer.setElementStyle(this.sliderLabelsContainer.nativeElement, styleMargin, -labelSize / 2 + 'px');
+            this._renderer.setStyle(this.sliderLabelsContainer.nativeElement, styleMargin, -labelSize / 2 + 'px');
           }
 
           extraMargin = this.sliderLabelsContainer.nativeElement.offsetHeight;
@@ -474,7 +474,7 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
           });
         }
         if (this.orientation === 'horizontal') {
-          this._renderer.setElementStyle(this.sliderCtn.nativeElement, 'marginBottom', extraMargin + 'px');
+          this._renderer.setStyle(this.sliderCtn.nativeElement, 'marginBottom', extraMargin + 'px');
         }
       }
 
@@ -489,30 +489,30 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
           percentage = 100 - percentage;
         }
 
-        this._renderer.setElementStyle(tick, this.stylePos, percentage + '%');
+        this._renderer.setStyle(tick, this.stylePos, percentage + '%');
 
         // Set class labels to denote whether ticks are in the selection
-        this._renderer.setElementClass(tick, 'in-selection', false);
+        this._renderer.removeClass(tick, 'in-selection');
         if (this.type !== 'range') {
           if (this.selection === 'after' && percentage >= positionPercentages[0]) {
-            this._renderer.setElementClass(tick, 'in-selection', true);
+            this._renderer.addClass(tick, 'in-selection');
           } else if (this.selection === 'before' && percentage <= positionPercentages[0]) {
-            this._renderer.setElementClass(tick, 'in-selection', true);
+            this._renderer.addClass(tick, 'in-selection');
           }
         } else if (percentage >= positionPercentages[0] && percentage <= positionPercentages[1]) {
-          this._renderer.setElementClass(tick, 'in-selection', true);
+          this._renderer.addClass(tick, 'in-selection');
         }
 
         if (label) {
-          this._renderer.setElementStyle(label, styleSize, labelSize + 'px');
+          this._renderer.setStyle(label, styleSize, labelSize + 'px');
 
           if (this.orientation !== 'vertical' && this.ticksPositions[i] !== undefined) {
-            this._renderer.setElementStyle(label, 'position', 'absolute');
-            this._renderer.setElementStyle(label, this.stylePos, percentage + '%');
-            this._renderer.setElementStyle(label, styleMargin, -labelSize / 2 + 'px');
+            this._renderer.setStyle(label, 'position', 'absolute');
+            this._renderer.setStyle(label, this.stylePos, percentage + '%');
+            this._renderer.setStyle(label, styleMargin, -labelSize / 2 + 'px');
           } else if (this.orientation === 'vertical') {
-            this._renderer.setElementStyle(label, 'marginLeft', this.sliderCtn.nativeElement.offsetLeft + 'px');
-            this._renderer.setElementStyle(this.sliderTicksContainer.nativeElement, 'marginTop', this.sliderCtn.nativeElement.offsetWidth / 2 * -1 + 'px');
+            this._renderer.setStyle(label, 'marginLeft', this.sliderCtn.nativeElement.offsetLeft + 'px');
+            this._renderer.setStyle(this.sliderTicksContainer.nativeElement, 'marginTop', this.sliderCtn.nativeElement.offsetWidth / 2 * -1 + 'px');
           }
         }
       }
@@ -521,18 +521,18 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
     let formattedTooltipVal: string = SliderHelpers.formatter(this.value);
     this.setText(this.tooltipMainInner.nativeElement, formattedTooltipVal);
     if (this.type === 'range') {
-      this._renderer.setElementStyle(this.tooltipMain.nativeElement, this.stylePos, (positionPercentages[1] + positionPercentages[0]) / 2 + '%');
+      this._renderer.setStyle(this.tooltipMain.nativeElement, this.stylePos, (positionPercentages[1] + positionPercentages[0]) / 2 + '%');
 
       if (this.orientation === 'vertical') {
-        this._renderer.setElementStyle(this.tooltipMain.nativeElement, 'margin-top', -this.tooltipMain.nativeElement.offsetHeight / 2 + 'px');
+        this._renderer.setStyle(this.tooltipMain.nativeElement, 'margin-top', -this.tooltipMain.nativeElement.offsetHeight / 2 + 'px');
       } else {
-        this._renderer.setElementStyle(this.tooltipMain.nativeElement, 'margin-left', -this.tooltipMain.nativeElement.offsetWidth / 2 + 'px');
+        this._renderer.setStyle(this.tooltipMain.nativeElement, 'margin-left', -this.tooltipMain.nativeElement.offsetWidth / 2 + 'px');
       }
 
       if (this.orientation === 'vertical') {
-        this._renderer.setElementStyle(this.tooltipMain.nativeElement, 'margin-top', -this.tooltipMain.nativeElement.offsetHeight / 2 + 'px');
+        this._renderer.setStyle(this.tooltipMain.nativeElement, 'margin-top', -this.tooltipMain.nativeElement.offsetHeight / 2 + 'px');
       } else {
-        this._renderer.setElementStyle(this.tooltipMain.nativeElement, 'margin-left', -this.tooltipMain.nativeElement.offsetWidth / 2 + 'px');
+        this._renderer.setStyle(this.tooltipMain.nativeElement, 'margin-left', -this.tooltipMain.nativeElement.offsetWidth / 2 + 'px');
       }
 
       let innerTooltipMinText = SliderHelpers.formatter(this.value[0]);
@@ -541,76 +541,76 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
       let innerTooltipMaxText = SliderHelpers.formatter(this.value[1]);
       this.setText(this.tooltipMaxInner.nativeElement, innerTooltipMaxText);
 
-      this._renderer.setElementStyle(this.tooltipMin.nativeElement, this.stylePos, positionPercentages[0] + '%');
+      this._renderer.setStyle(this.tooltipMin.nativeElement, this.stylePos, positionPercentages[0] + '%');
 
       if (this.orientation === 'vertical') {
-        this._renderer.setElementStyle(this.tooltipMin.nativeElement, 'margin-top', -this.tooltipMin.nativeElement.offsetHeight / 2 + 'px');
+        this._renderer.setStyle(this.tooltipMin.nativeElement, 'margin-top', -this.tooltipMin.nativeElement.offsetHeight / 2 + 'px');
       } else {
-        this._renderer.setElementStyle(this.tooltipMin.nativeElement, 'margin-left', -this.tooltipMin.nativeElement.offsetWidth / 2 + 'px');
+        this._renderer.setStyle(this.tooltipMin.nativeElement, 'margin-left', -this.tooltipMin.nativeElement.offsetWidth / 2 + 'px');
       }
 
-      this._renderer.setElementStyle(this.tooltipMax.nativeElement, this.stylePos, positionPercentages[1] + '%');
+      this._renderer.setStyle(this.tooltipMax.nativeElement, this.stylePos, positionPercentages[1] + '%');
 
       if (this.orientation === 'vertical') {
-        this._renderer.setElementStyle(this.tooltipMax.nativeElement, 'margin-top', -this.tooltipMax.nativeElement.offsetHeight / 2 + 'px');
+        this._renderer.setStyle(this.tooltipMax.nativeElement, 'margin-top', -this.tooltipMax.nativeElement.offsetHeight / 2 + 'px');
       } else {
-        this._renderer.setElementStyle(this.tooltipMax.nativeElement, 'margin-left', -this.tooltipMax.nativeElement.offsetWidth / 2 + 'px');
+        this._renderer.setStyle(this.tooltipMax.nativeElement, 'margin-left', -this.tooltipMax.nativeElement.offsetWidth / 2 + 'px');
       }
 
     } else {
 
-      this._renderer.setElementStyle(this.tooltipMain.nativeElement, this.stylePos, positionPercentages[0] + '%');
+      this._renderer.setStyle(this.tooltipMain.nativeElement, this.stylePos, positionPercentages[0] + '%');
 
       if (this.orientation === 'vertical') {
-        this._renderer.setElementStyle(this.tooltipMain.nativeElement, 'margin-top', -this.tooltipMain.nativeElement.offsetHeight / 2 + 'px');
+        this._renderer.setStyle(this.tooltipMain.nativeElement, 'margin-top', -this.tooltipMain.nativeElement.offsetHeight / 2 + 'px');
       } else {
-        this._renderer.setElementStyle(this.tooltipMain.nativeElement, 'margin-left', -this.tooltipMain.nativeElement.offsetWidth / 2 + 'px');
+        this._renderer.setStyle(this.tooltipMain.nativeElement, 'margin-left', -this.tooltipMain.nativeElement.offsetWidth / 2 + 'px');
       }
     }
 
     if (this.orientation === 'vertical') {
-      this._renderer.setElementStyle(this.trackLow.nativeElement, 'top', '0');
-      this._renderer.setElementStyle(this.trackLow.nativeElement, 'height', Math.min(positionPercentages[0], positionPercentages[1]) + '%');
+      this._renderer.setStyle(this.trackLow.nativeElement, 'top', '0');
+      this._renderer.setStyle(this.trackLow.nativeElement, 'height', Math.min(positionPercentages[0], positionPercentages[1]) + '%');
 
-      this._renderer.setElementStyle(this.trackSelection.nativeElement, 'top', Math.min(positionPercentages[0], positionPercentages[1]) + '%');
-      this._renderer.setElementStyle(this.trackSelection.nativeElement, 'height', Math.abs(positionPercentages[0] - positionPercentages[1]) + '%');
+      this._renderer.setStyle(this.trackSelection.nativeElement, 'top', Math.min(positionPercentages[0], positionPercentages[1]) + '%');
+      this._renderer.setStyle(this.trackSelection.nativeElement, 'height', Math.abs(positionPercentages[0] - positionPercentages[1]) + '%');
 
-      this._renderer.setElementStyle(this.trackHigh.nativeElement, 'bottom', '0');
-      this._renderer.setElementStyle(this.trackHigh.nativeElement, 'height', (100 - Math.min(positionPercentages[0], positionPercentages[1]) - Math.abs(positionPercentages[0] - positionPercentages[1])) + '%');
+      this._renderer.setStyle(this.trackHigh.nativeElement, 'bottom', '0');
+      this._renderer.setStyle(this.trackHigh.nativeElement, 'height', (100 - Math.min(positionPercentages[0], positionPercentages[1]) - Math.abs(positionPercentages[0] - positionPercentages[1])) + '%');
     } else {
-      this._renderer.setElementStyle(this.trackLow.nativeElement, 'left', '0');
-      this._renderer.setElementStyle(this.trackLow.nativeElement, 'width', Math.min(positionPercentages[0], positionPercentages[1]) + '%');
+      this._renderer.setStyle(this.trackLow.nativeElement, 'left', '0');
+      this._renderer.setStyle(this.trackLow.nativeElement, 'width', Math.min(positionPercentages[0], positionPercentages[1]) + '%');
 
-      this._renderer.setElementStyle(this.trackSelection.nativeElement, 'left', Math.min(positionPercentages[0], positionPercentages[1]) + '%');
-      this._renderer.setElementStyle(this.trackSelection.nativeElement, 'width', Math.abs(positionPercentages[0] - positionPercentages[1]) + '%');
+      this._renderer.setStyle(this.trackSelection.nativeElement, 'left', Math.min(positionPercentages[0], positionPercentages[1]) + '%');
+      this._renderer.setStyle(this.trackSelection.nativeElement, 'width', Math.abs(positionPercentages[0] - positionPercentages[1]) + '%');
 
-      this._renderer.setElementStyle(this.trackHigh.nativeElement, 'right', '0');
-      this._renderer.setElementStyle(this.trackHigh.nativeElement, 'width', (100 - Math.min(positionPercentages[0], positionPercentages[1]) - Math.abs(positionPercentages[0] - positionPercentages[1])) + '%');
+      this._renderer.setStyle(this.trackHigh.nativeElement, 'right', '0');
+      this._renderer.setStyle(this.trackHigh.nativeElement, 'width', (100 - Math.min(positionPercentages[0], positionPercentages[1]) - Math.abs(positionPercentages[0] - positionPercentages[1])) + '%');
 
       let offset_min = this.tooltipMin.nativeElement.getBoundingClientRect();
       let offset_max = this.tooltipMax.nativeElement.getBoundingClientRect();
 
       if (this.tooltipPosition === 'bottom') {
         if (offset_min.right > offset_max.left) {
-          this._renderer.setElementClass(this.tooltipMax.nativeElement, 'bottom', false);
-          this._renderer.setElementClass(this.tooltipMax.nativeElement, 'top', true);
-          this._renderer.setElementStyle(this.tooltipMax.nativeElement, 'top', '');
-          this._renderer.setElementStyle(this.tooltipMax.nativeElement, 'bottom', 22 + 'px');
+          this._renderer.removeClass(this.tooltipMax.nativeElement, 'bottom');
+          this._renderer.addClass(this.tooltipMax.nativeElement, 'top');
+          this._renderer.setStyle(this.tooltipMax.nativeElement, 'top', '');
+          this._renderer.setStyle(this.tooltipMax.nativeElement, 'bottom', 22 + 'px');
         } else {
-          this._renderer.setElementClass(this.tooltipMax.nativeElement, 'top', false);
-          this._renderer.setElementClass(this.tooltipMax.nativeElement, 'bottom', true);
-          this._renderer.setElementStyle(this.tooltipMax.nativeElement, 'top', this.tooltipMin.nativeElement.style.top);
-          this._renderer.setElementStyle(this.tooltipMax.nativeElement, 'bottom', '');
+          this._renderer.removeClass(this.tooltipMax.nativeElement, 'top');
+          this._renderer.addClass(this.tooltipMax.nativeElement, 'bottom');
+          this._renderer.setStyle(this.tooltipMax.nativeElement, 'top', this.tooltipMin.nativeElement.style.top);
+          this._renderer.setStyle(this.tooltipMax.nativeElement, 'bottom', '');
         }
       } else {
         if (offset_min.right > offset_max.left) {
-          this._renderer.setElementClass(this.tooltipMax.nativeElement, 'top', false);
-          this._renderer.setElementClass(this.tooltipMax.nativeElement, 'bottom', true);
-          this._renderer.setElementStyle(this.tooltipMax.nativeElement, 'top', 18 + 'px');
+          this._renderer.removeClass(this.tooltipMax.nativeElement, 'top');
+          this._renderer.addClass(this.tooltipMax.nativeElement, 'bottom');
+          this._renderer.setStyle(this.tooltipMax.nativeElement, 'top', 18 + 'px');
         } else {
-          this._renderer.setElementClass(this.tooltipMax.nativeElement, 'bottom', false);
-          this._renderer.setElementClass(this.tooltipMax.nativeElement, 'top', true);
-          this._renderer.setElementStyle(this.tooltipMax.nativeElement, 'top', this.tooltipMin.nativeElement.style.top);
+          this._renderer.removeClass(this.tooltipMax.nativeElement, 'bottom');
+          this._renderer.addClass(this.tooltipMax.nativeElement, 'top');
+          this._renderer.setStyle(this.tooltipMax.nativeElement, 'top', this.tooltipMin.nativeElement.style.top);
         }
       }
     }
@@ -823,18 +823,18 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
       const tooltipPos = this.tooltipPosition || 'right';
       const oppositeSide = (tooltipPos === 'left') ? 'right' : 'left';
       tooltips.forEach((tooltip: ElementRef) => {
-        this._renderer.setElementClass(tooltip.nativeElement, tooltipPos, true);
-        this._renderer.setElementStyle(tooltip.nativeElement, oppositeSide, '100%');
+        this._renderer.addClass(tooltip.nativeElement, tooltipPos);
+        this._renderer.setStyle(tooltip.nativeElement, oppositeSide, '100%');
       });
     } else if (this.tooltipPosition === 'bottom') {
       tooltips.forEach((tooltip: ElementRef) => {
-        this._renderer.setElementClass(tooltip.nativeElement, 'bottom', true);
-        this._renderer.setElementStyle(tooltip.nativeElement, 'top', 22 + 'px');
+        this._renderer.addClass(tooltip.nativeElement, 'bottom');
+        this._renderer.setStyle(tooltip.nativeElement, 'top', 22 + 'px');
       });
     } else {
       tooltips.forEach((tooltip: ElementRef) => {
-        this._renderer.setElementClass(tooltip.nativeElement, 'top', true);
-        this._renderer.setElementStyle(tooltip.nativeElement, 'top', -tooltip.nativeElement.style.outerHeight - 14 + 'px');
+        this._renderer.addClass(tooltip.nativeElement, 'top');
+        this._renderer.setStyle(tooltip.nativeElement, 'top', -tooltip.nativeElement.style.outerHeight - 14 + 'px');
       });
     }
   }

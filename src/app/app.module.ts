@@ -1,6 +1,6 @@
 import {PageNotFoundComponent} from "./pages/page-not-found/page-not-found.component";
 import {ProfileComponent} from "./pages/profile/profile.component";
-import {ColorPickerModule} from "angular2-color-picker";
+import {ColorPickerModule} from "ngx-color-picker";
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
@@ -17,7 +17,7 @@ import {ScenesComponent} from "./pages/scenes/scenes.component";
 import {PluginsComponent} from "./pages/plugins/plugins.component";
 import {HeaderComponent} from "./layout/header/header.component";
 import {FooterComponent} from "./layout/footer/footer.component";
-import {Ng2BootstrapModule} from "ng2-bootstrap";
+import {Ng2BootstrapModule} from "ngx-bootstrap";
 import {Ng2DashboardModule} from "ng2-dashboard";
 import {ShopComponent} from "./pages/shop/shop.component";
 import {NotificationComponent} from "./pages/notification/notification.component";

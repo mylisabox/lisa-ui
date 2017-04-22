@@ -1,4 +1,4 @@
-import {Component, OnInit, Renderer, ElementRef, Input} from "@angular/core";
+import {Component, OnInit, Renderer2, ElementRef, Input} from "@angular/core";
 import {BaseElement} from "../../../interfaces/base-element";
 import {Device} from "../../../models/device.type";
 import {WidgetHelpers} from "../../../shared/widget-helpers";
@@ -16,13 +16,13 @@ export class ImageComponent implements BaseElement, OnInit {
   @Input() img: string;
   @Input() name: string;
 
-  constructor(private _ngEl: ElementRef, private _renderer: Renderer) {
-    this._renderer.setElementClass(this._ngEl.nativeElement, 'main-center', true);
-    this._renderer.setElementClass(this._ngEl.nativeElement, 'cross-center', true);
+  constructor(private _ngEl: ElementRef, private _renderer: Renderer2) {
+    this._renderer.addClass(this._ngEl.nativeElement, 'main-center');
+    this._renderer.addClass(this._ngEl.nativeElement, 'cross-center');
   }
 
   ngOnInit() {
-    this._renderer.setElementStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
+    this._renderer.setStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
   }
 
   populateComponent() {

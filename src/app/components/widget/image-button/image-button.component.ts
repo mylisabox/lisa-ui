@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Renderer, ElementRef, EventEmitter, Output, ViewContainerRef} from "@angular/core";
+import {Component, OnInit, Input, Renderer2, ElementRef, EventEmitter, Output, ViewContainerRef} from "@angular/core";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
 import {BaseElement} from "../../../interfaces/base-element";
 import {Device} from "../../../models/device.type";
@@ -21,13 +21,13 @@ export class ImageButtonComponent implements BaseElement, OnInit {
   @Input() path: string;
   @Output() public onChange: EventEmitter<WidgetEvent> = new EventEmitter<WidgetEvent>();
 
-  constructor(private _ngEl: ElementRef, private _renderer: Renderer) {
-    this._renderer.setElementClass(this._ngEl.nativeElement, 'main-center', true);
-    this._renderer.setElementClass(this._ngEl.nativeElement, 'cross-center', true);
+  constructor(private _ngEl: ElementRef, private _renderer: Renderer2) {
+    this._renderer.addClass(this._ngEl.nativeElement, 'main-center');
+    this._renderer.addClass(this._ngEl.nativeElement, 'cross-center');
   }
 
   ngOnInit() {
-    this._renderer.setElementStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
+    this._renderer.setStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
   }
 
   onClick() {

@@ -1,4 +1,4 @@
-import {Component, OnInit, ElementRef, Renderer, Input, ViewContainerRef, ViewChild} from "@angular/core";
+import {Component, OnInit, ElementRef, Renderer2, Input, ViewContainerRef, ViewChild} from "@angular/core";
 import {BaseElement} from "../../../interfaces/base-element";
 import {Device} from "../../../models/device.type";
 
@@ -15,12 +15,12 @@ export class VboxComponent implements BaseElement, OnInit {
   path: string;
   name: string;
 
-  constructor(protected _ngEl: ElementRef, protected _renderer: Renderer) {
-    this._renderer.setElementClass(this._ngEl.nativeElement, 'vbox', true);
+  constructor(protected _ngEl: ElementRef, protected _renderer: Renderer2) {
+    this._renderer.addClass(this._ngEl.nativeElement, 'vbox');
   }
 
   ngOnInit() {
-    this._renderer.setElementStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
+    this._renderer.setStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
   }
 
   populateComponent() {

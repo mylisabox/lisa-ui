@@ -3,22 +3,24 @@ import {
   OnInit,
   Input,
   forwardRef,
-  Renderer,
   ElementRef,
   ViewChild,
   EventEmitter,
-  Output
+  Output,
+  Renderer2
 } from "@angular/core";
 import {Device} from "../../models/device.type";
 import {WidgetComponent} from "ng2-dashboard";
 import {WidgetHandleDirective} from "ng2-dashboard/directives/widget-handle.directive";
 import {WidgetContentComponent} from "./widget-content/widget-content.component";
 
+const forwardReference = forwardRef(() => WidgetLISAComponent);
+
 @Component({
   selector: 'lisa-widget',
   templateUrl: './widget.component.html',
   styleUrls: ['./widget.component.scss'],
-  providers: [{provide: WidgetComponent, useExisting: forwardRef(() => WidgetLISAComponent)}]
+  providers: [{provide: WidgetComponent, useExisting: forwardReference}]
 })
 export class WidgetLISAComponent extends WidgetComponent implements OnInit {
   private _device: Device;
@@ -39,10 +41,10 @@ export class WidgetLISAComponent extends WidgetComponent implements OnInit {
   }
 
   constructor(protected _ngEl: ElementRef,
-              protected _renderer: Renderer) {
+              protected _renderer: Renderer2) {
     super(_ngEl, _renderer);
-    this._renderer.setElementClass(this._ngEl.nativeElement, 'shadow-box', true);
-    this._renderer.setElementClass(this._ngEl.nativeElement, 'vbox', true);
+    this._renderer.addClass(this._ngEl.nativeElement, 'shadow-box');
+    this._renderer.addClass(this._ngEl.nativeElement, 'vbox');
   }
 
   ngOnInit() {

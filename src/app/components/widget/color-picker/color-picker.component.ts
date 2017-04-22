@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Renderer, ElementRef, Output, EventEmitter, AfterViewInit} from "@angular/core";
+import {Component, OnInit, Input, Renderer2, ElementRef, Output, EventEmitter, AfterViewInit} from "@angular/core";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
 import {BaseElement} from "../../../interfaces/base-element";
 import {Device} from "../../../models/device.type";
@@ -20,9 +20,9 @@ export class ColorPickerComponent implements BaseElement, OnInit, AfterViewInit 
   @Output() public onChange: EventEmitter<WidgetEvent> = new EventEmitter<WidgetEvent>();
   private isInitialized: boolean = false;
 
-  constructor(private _ngEl: ElementRef, private _renderer: Renderer) {
-    this._renderer.setElementClass(this._ngEl.nativeElement, 'main-center', true);
-    this._renderer.setElementClass(this._ngEl.nativeElement, 'cross-center', true);
+  constructor(private _ngEl: ElementRef, private _renderer: Renderer2) {
+    this._renderer.addClass(this._ngEl.nativeElement, 'main-center');
+    this._renderer.addClass(this._ngEl.nativeElement, 'cross-center');
   }
 
   ngAfterViewInit(): void {
@@ -30,7 +30,7 @@ export class ColorPickerComponent implements BaseElement, OnInit, AfterViewInit 
   }
 
   ngOnInit() {
-    this._renderer.setElementStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
+    this._renderer.setStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
   }
 
   onColorChange(color: string) {

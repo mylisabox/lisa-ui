@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Renderer, ElementRef} from "@angular/core";
+import {Component, OnInit, Input, Renderer2, ElementRef} from "@angular/core";
 import {BaseElement} from "../../../interfaces/base-element";
 import {Device} from "../../../models/device.type";
 
@@ -14,12 +14,12 @@ export class SpaceComponent implements BaseElement, OnInit {
   name: string;
   infos: any;
 
-  constructor(private _ngEl: ElementRef, private _renderer: Renderer) {
+  constructor(private _ngEl: ElementRef, private _renderer: Renderer2) {
 
   }
 
   ngOnInit() {
-    this._renderer.setElementStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
+    this._renderer.setStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
   }
 
   populateComponent() {

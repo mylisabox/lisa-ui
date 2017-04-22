@@ -98,11 +98,13 @@ export class HomeComponent implements OnInit {
                 (this._currentSelectedRoom && this._currentSelectedRoom.id == event.item.roomId)) { // = room devices
                 const device = this._devices.find(item => item.id == event.item.id);
 
-                device.name = event.item.name || device.name;
-                device.data = event.item.data || device.data;
-                device.roomId = event.item.roomId || device.roomId;
-                device.template = event.item.template || device.template;
-                (this.dashboard.getWidgetById(device.id) as WidgetLISAComponent).device = device;
+                if (device) {
+                  device.name = event.item.name || device.name;
+                  device.data = event.item.data || device.data;
+                  device.roomId = event.item.roomId || device.roomId;
+                  device.template = event.item.template || device.template;
+                  (this.dashboard.getWidgetById(device.id) as WidgetLISAComponent).device = device;
+                }
               }
               else {
                 this.dashboard.removeItemById(event.item.id);
@@ -238,7 +240,7 @@ export class HomeComponent implements OnInit {
   }
 
   private saveWidgetOrder(order: Array<string>) {
-    this._dashboardApi.saveDevicesOrderForRoom(this._currentSelectedRoom.id, order).subscribe(
+    this._dashboardApi.saveDevicesOrderForRoom(this._currentSelectedRoom ? this._currentSelectedRoom.id : '', order).subscribe(
       data => {
         console.log(data)
       },

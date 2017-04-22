@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, ElementRef, Renderer, ViewChild, EventEmitter, Output} from "@angular/core";
+import {Component, OnInit, Input, ElementRef, Renderer2, ViewChild, EventEmitter, Output} from "@angular/core";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
 import {Device} from "../../../models/device.type";
 import {BaseElement} from "../../../interfaces/base-element";
@@ -20,18 +20,18 @@ export class ToggleButtonComponent implements BaseElement, OnInit {
   value: boolean = false;
   @Output() public onChange: EventEmitter<WidgetEvent> = new EventEmitter<WidgetEvent>();
 
-  constructor(private _ngEl: ElementRef, private _renderer: Renderer) {
-    this._renderer.setElementClass(this._ngEl.nativeElement, 'main-center', true);
-    this._renderer.setElementClass(this._ngEl.nativeElement, 'cross-center', true);
+  constructor(private _ngEl: ElementRef, private _renderer: Renderer2) {
+    this._renderer.addClass(this._ngEl.nativeElement, 'main-center');
+    this._renderer.addClass(this._ngEl.nativeElement, 'cross-center');
   }
 
   ngOnInit() {
-    this._renderer.setElementStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
+    this._renderer.setStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
   }
 
   onToggle(value: boolean): void {
     this.value = !value;
-    this._renderer.setElementAttribute(this.input.nativeElement, 'checked', this.value ? 'checked' : null);
+    this._renderer.setAttribute(this.input.nativeElement, 'checked', this.value ? 'checked' : null);
     this.onChange.emit({
       path: this.path,
       key: this.name,

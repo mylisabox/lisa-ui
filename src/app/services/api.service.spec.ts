@@ -1,7 +1,6 @@
 /* tslint:disable:no-unused-variable */
-
-import {TestBed, async, inject} from '@angular/core/testing';
-import {ApiService} from './api.service';
+import {TestBed} from "@angular/core/testing";
+import {ApiService} from "./api.service";
 
 describe('Service: Api', () => {
   beforeEach(() => {
@@ -10,7 +9,4 @@ describe('Service: Api', () => {
     });
   });
 
-  it('should ...', inject([ApiService], (service: ApiService) => {
-    expect(service).toBeTruthy();
-  }));
 });

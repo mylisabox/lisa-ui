@@ -1,7 +1,7 @@
-import {Component, OnInit, OnDestroy, ElementRef, Renderer} from '@angular/core';
+import {Component, OnInit, OnDestroy} from "@angular/core";
 import {NotificationService} from "../../services/notification.service";
 import {Subscription} from "rxjs";
-import {DomSanitizer, SafeHtml} from '@angular/platform-browser';
+import {DomSanitizer, SafeHtml} from "@angular/platform-browser";
 import {Notification} from "../../models/notification.type";
 import {defaultIcons} from "../../common/icons";
 
@@ -15,7 +15,7 @@ export class NotificationManagerComponent implements OnInit, OnDestroy {
   public notifications: Array<Notification> = [];
   public safeHTML: SafeHtml;
 
-  constructor(private renderer: Renderer, private sliderElem: ElementRef, private domSanitizer: DomSanitizer, private service: NotificationService) {
+  constructor(private domSanitizer: DomSanitizer, private service: NotificationService) {
   }
 
   ngOnInit() {
