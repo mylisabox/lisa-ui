@@ -4,8 +4,8 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve --host 0.0.0.0",
-    "build": "ng build --prod",
+    "start": "ng serve --prod --aot --host 0.0.0.0",
+    "build": "ng build --prod --aot",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "pree2e": "webdriver-manager update",

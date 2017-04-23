@@ -1,5 +1,5 @@
 export const Globals = {
-  baseUrl: 'localhost:3000/api/v1',
+  baseUrl: window.location.hostname + ':3000/api/v1',
   tokenKey: 'token',
   getUrl: function (path) {
     return 'http://' + Globals.baseUrl + path;
