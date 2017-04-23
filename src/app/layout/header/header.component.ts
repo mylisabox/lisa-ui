@@ -12,7 +12,7 @@ export class HeaderComponent implements OnInit {
   public isNotificationCollapsed: boolean = true;
 
   constructor(private _authService: AuthService,
-              private _speechService: SpeechService) {
+              public _speechService: SpeechService) {
   }
 
   ngOnInit() {

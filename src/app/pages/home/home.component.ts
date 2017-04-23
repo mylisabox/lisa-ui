@@ -38,16 +38,17 @@ export class HomeComponent implements OnInit {
   @ViewChild('modalDeleteRoom') modalDeleteRoom: ConfirmModalComponent;
   @Input() widgetsSize: number[] = [300, 160];
   @Input() dashboardMargin: number = 10;
+  _currentTab: number = TAB_TYPE.FAV;
+  _roomsListOpen = false;
+  _rooms: Room[] = [];
+  _currentEditedRoom: Room;
+
   private _devices: Device[] = [];
   private _favorites: Device[] = [];
   private _currentDashboard: Dashboard;
 
   private listener: Subscription;
-  private _rooms: Room[] = [];
-  private _roomsListOpen = false;
-  private _currentEditedRoom: Room;
   private _currentSelectedRoom: Room;
-  private _currentTab: number = TAB_TYPE.FAV;
   public tabType = TAB_TYPE;
 
   constructor(private _ngEl: ElementRef,
@@ -239,7 +240,7 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  private saveWidgetOrder(order: Array<string>) {
+  saveWidgetOrder(order: Array<string>) {
     this._dashboardApi.saveDevicesOrderForRoom(this._currentSelectedRoom ? this._currentSelectedRoom.id : '', order).subscribe(
       data => {
         console.log(data)

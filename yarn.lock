@@ -80,10 +80,6 @@
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/@angular/compiler/-/compiler-4.0.3.tgz#8b3cad338ac539328e10a6a4bfaa057094f7bc89"
 
-"@angular/core@^2.1.0":
-  version "2.4.10"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-2.4.10.tgz#0b8320a65065965d998645b1f5cd3cf769b441ea"
-
 "@angular/core@^4.0.3":
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/@angular/core/-/core-4.0.3.tgz#61be21db6aa5778e33159ffd38cbbebaf16120d9"
@@ -214,9 +210,9 @@ amdefine@>=0.0.4:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/amdefine/-/amdefine-1.0.1.tgz#4a5282ac164729e93619bcfd3ad151f817ce91f5"
 
-angular2-jwt@^0.1.25:
-  version "0.1.28"
-  resolved "https://registry.yarnpkg.com/angular2-jwt/-/angular2-jwt-0.1.28.tgz#4896dbb88ec561382cf485ff9eaa6f96a683f4d1"
+angular2-jwt@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/angular2-jwt/-/angular2-jwt-0.2.2.tgz#c7ba295daffb837c698fbe83ecfe0ecfa29b3f4f"
 
 ansi-align@^1.1.0:
   version "1.1.0"
@@ -1608,7 +1604,7 @@ exports-loader@^0.6.3:
     loader-utils "^1.0.2"
     source-map "0.5.x"
 
-express@^4.13.3:
+express, express@^4.13.3:
   version "4.15.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.15.2.tgz#af107fc148504457f2dca9a6f2571d7129b97b35"
   dependencies:
@@ -3026,14 +3022,6 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
-ng2-dashboard@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/ng2-dashboard/-/ng2-dashboard-1.0.3.tgz#f045887b340a76ad279d1264cff0fdfea6e87f5e"
-  dependencies:
-    "@angular/core" "^2.1.0"
-    rxjs "^5.0.0-beta.12"
-    zone.js "^0.6.25"
-
 ngx-bootstrap@^1.6.6:
   version "1.6.6"
   resolved "https://registry.yarnpkg.com/ngx-bootstrap/-/ngx-bootstrap-1.6.6.tgz#0057141cfbdd7e8a50e81bda735fad8e95acb0dd"
@@ -3043,6 +3031,10 @@ ngx-bootstrap@^1.6.6:
 ngx-color-picker@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/ngx-color-picker/-/ngx-color-picker-4.0.0.tgz#0b70358f10f4db57aad08bceb6a76932751e4575"
+
+ngx-dashboard@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/ngx-dashboard/-/ngx-dashboard-1.0.4.tgz#ad4a8e0c6bcb0b3f791b3b6fa3d78c44dfdfcd06"
 
 no-case@^2.2.0:
   version "2.3.1"
@@ -4098,7 +4090,7 @@ rx@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/rx/-/rx-4.1.0.tgz#a5f13ff79ef3b740fe30aa803fb09f98805d4782"
 
-rxjs@^5.0.0-beta.12, rxjs@^5.0.1, rxjs@^5.3.0:
+rxjs@^5.0.1, rxjs@^5.3.0:
   version "5.3.0"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.3.0.tgz#d88ccbdd46af290cbdb97d5d8055e52453fabe2d"
   dependencies:
@@ -5268,10 +5260,6 @@ yeast@0.1.2:
 yn@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/yn/-/yn-1.2.0.tgz#d237a4c533f279b2b89d3acac2db4b8c795e4a63"
-
-zone.js@^0.6.25:
-  version "0.6.26"
-  resolved "https://registry.yarnpkg.com/zone.js/-/zone.js-0.6.26.tgz#067c13b8b80223a89b62e9dc82680f09762c4636"
 
 zone.js@^0.7.2:
   version "0.7.8"

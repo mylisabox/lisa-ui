@@ -29,6 +29,7 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
   @Input() path: string;
   device: Device;
   infos: any;
+  inDrag: boolean;
 
   populateComponent() {
     this.value = WidgetHelpers.get(this.device, this.infos.value);
@@ -77,7 +78,6 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
   private stylePos: string;
   private mousePos: string;
   private sizePos: string;
-  private inDrag: boolean;
   private over: boolean;
   private mouseUpReference: any;
   private mouseMoveReference: any;
@@ -234,7 +234,7 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
     this.layout();
   }
 
-  protected showTooltip(): void {
+  public showTooltip(): void {
     if (this.tooltipMode !== 'none') {
       if (this.tooltipSplit) {
         this._renderer.removeClass(this.tooltipMain.nativeElement, 'in');
@@ -250,7 +250,7 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
     this.over = true;
   }
 
-  protected hideTooltip(force: boolean = false): void {
+  public hideTooltip(force: boolean = false): void {
     if ((!this.inDrag && this.tooltipMode !== 'always') || force) {
       this._renderer.removeClass(this.tooltipMain.nativeElement, 'in');
       this._renderer.removeClass(this.tooltipMin.nativeElement, 'in');
@@ -264,7 +264,7 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
    * @param event
    * @returns {boolean}
    */
-  protected onMouseDown(event: Event): boolean {
+  public onMouseDown(event: Event): boolean {
     if (!this.enabled) {
       return false;
     }
@@ -327,7 +327,7 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
    * @param ev
    * @returns {boolean}
    */
-  protected keydown(handleIdx: number, ev: Event): boolean {
+  public keydown(handleIdx: number, ev: Event): boolean {
     if (!this.enabled) {
       return false;
     }

@@ -31,7 +31,7 @@
             </li>
           </ul>
           <div class="add-room-container" (click)="addRoom($event)">
-            <input #roomInput (keyup.enter)="addRoom()" type="text" placeholder="Add room"/>
+            <input #roomInput (keyup.enter)="addRoom($event)" type="text" placeholder="Add room"/>
           </div>
         </div>
       </li>

@@ -7,9 +7,9 @@ import {Device} from "../../../models/device.type";
   styleUrls: ['./widget-header.component.scss']
 })
 export class WidgetHeaderComponent implements OnInit {
-  @Input() device: Device
-  private _isEditMode: boolean = false;
-  private _isToolbarOpen: boolean = false;
+  _isToolbarOpen: boolean = false;
+  _isEditMode: boolean = false;
+  @Input() device: Device;
   @Output() onRemove: EventEmitter<Device> = new EventEmitter<Device>();
   @Output() onRename: EventEmitter<Device> = new EventEmitter<Device>();
   @Output() onFavorite: EventEmitter<Device> = new EventEmitter<Device>();
