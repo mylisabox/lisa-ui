@@ -10,8 +10,7 @@ import {
   Renderer2
 } from "@angular/core";
 import {Device} from "../../models/device.type";
-import {WidgetComponent} from "ng2-dashboard";
-import {WidgetHandleDirective} from "ng2-dashboard/directives/widget-handle.directive";
+import {WidgetHandleDirective, WidgetComponent} from "ngx-dashboard";
 import {WidgetContentComponent} from "./widget-content/widget-content.component";
 
 const forwardReference = forwardRef(() => WidgetLISAComponent);

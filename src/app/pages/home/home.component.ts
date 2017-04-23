@@ -5,7 +5,7 @@ import {WebsocketService} from "../../interfaces/websocket-service";
 import {Subscription} from "rxjs";
 import {ConfirmModalComponent} from "../../components/modals/confirm-modal/confirm-modal.component";
 import {Device} from "../../models/device.type";
-import {DashboardComponent} from "ng2-dashboard";
+import {DashboardComponent} from "ngx-dashboard";
 import {DeviceService} from "../../services/device.service";
 import {WidgetLISAComponent} from "../../components/widget/widget.component";
 import "rxjs/add/operator/catch";
