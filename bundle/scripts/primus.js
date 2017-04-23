@@ -54,29 +54,29 @@
 
           if ('string' === typeof keys) keys = keys.split(split);
 
-          /**
-           * Run addition cleanup hooks.
-           *
-           * @param {String} key Name of the clean up hook to run.
-           * @param {Mixed} selfie Reference to the instance we're cleaning up.
-           * @api private
-           */
-          function run(key, selfie) {
-            if (!options[key]) return;
-            if ('string' === typeof options[key]) options[key] = options[key].split(split);
-            if ('function' === typeof options[key]) return options[key].call(selfie);
+        /**
+         * Run addition cleanup hooks.
+         *
+         * @param {String} key Name of the clean up hook to run.
+         * @param {Mixed} selfie Reference to the instance we're cleaning up.
+         * @api private
+         */
+        function run(key, selfie) {
+          if (!options[key]) return;
+          if ('string' === typeof options[key]) options[key] = options[key].split(split);
+          if ('function' === typeof options[key]) return options[key].call(selfie);
 
-            for (var i = 0, type, what; i < options[key].length; i++) {
-              what = options[key][i];
-              type = typeof what;
+          for (var i = 0, type, what; i < options[key].length; i++) {
+            what = options[key][i];
+            type = typeof what;
 
-              if ('function' === type) {
-                what.call(selfie);
-              } else if ('string' === type && 'function' === typeof selfie[what]) {
-                selfie[what]();
-              }
+            if ('function' === type) {
+              what.call(selfie);
+            } else if ('string' === type && 'function' === typeof selfie[what]) {
+              selfie[what]();
             }
           }
+        }
 
           /**
            * Destroy the instance completely and clean up all the existing references.
@@ -98,8 +98,8 @@
               if (selfie[prop]) {
                 if ('function' === typeof selfie[prop].destroy) selfie[prop].destroy();
                 selfie[prop] = null;
-              }
             }
+          }
 
             if (selfie.emit) selfie.emit('destroy');
             run('after', selfie);
@@ -136,42 +136,42 @@
             }
 
             return self.emit.apply(self, args.concat(arg));
-          };
+        };
 
           parser = args.pop();
 
-          /**
-           * The actual function that emits the given event. It returns a boolean
-           * indicating if the event was emitted.
-           *
-           * @returns {Boolean}
-           * @api public
-           */
+        /**
+         * The actual function that emits the given event. It returns a boolean
+         * indicating if the event was emitted.
+         *
+         * @returns {Boolean}
+         * @api public
+         */
           return function emitter() {
             for (var i = 0, l = arguments.length, arg = new Array(l + 1); i < l; i++) {
               arg[i + 1] = arguments[i];
-            }
+          }
 
-            /**
-             * Async completion method for the parser.
-             *
-             * @param {Error} err Optional error when parsing failed.
-             * @param {Mixed} returned Emit instructions.
-             * @api private
-             */
-            arg[0] = function next(err, returned) {
-              if (err) return self.emit('error', err);
+          /**
+           * Async completion method for the parser.
+           *
+           * @param {Error} err Optional error when parsing failed.
+           * @param {Mixed} returned Emit instructions.
+           * @api private
+           */
+          arg[0] = function next(err, returned) {
+            if (err) return self.emit('error', err);
 
-              arg = returned === undefined
-                ? arg.slice(1) : returned === null
-                  ? [] : returned;
+            arg = returned === undefined
+              ? arg.slice(1) : returned === null
+              ? [] : returned;
 
-              self.emit.apply(self, args.concat(arg));
-            };
+            self.emit.apply(self, args.concat(arg));
+          };
 
             parser.apply(self, arg);
             return true;
-          };
+        };
         };
 
       }, {}],
@@ -333,8 +333,8 @@
                   }
 
                   listeners[i].fn.apply(listeners[i].context, args);
-              }
             }
+          }
           }
 
           return true;
@@ -416,15 +416,15 @@
               }
             } else {
               for (var i = 0, length = listeners.length; i < length; i++) {
-                if (
-                  listeners[i].fn !== fn
-                  || (once && !listeners[i].once)
-                  || (context && listeners[i].context !== context)
-                ) {
-                  events.push(listeners[i]);
-                }
+              if (
+                listeners[i].fn !== fn
+                || (once && !listeners[i].once)
+                || (context && listeners[i].context !== context)
+              ) {
+                events.push(listeners[i]);
               }
             }
+          }
           }
 
           //
@@ -599,20 +599,20 @@
           var called = 0
             , value;
 
-          /**
-           * The function that prevents double execution.
-           *
-           * @api private
-           */
-          function onetime() {
-            if (called) return value;
+        /**
+         * The function that prevents double execution.
+         *
+         * @api private
+         */
+        function onetime() {
+          if (called) return value;
 
-            called = 1;
-            value = fn.apply(this, arguments);
-            fn = null;
+          called = 1;
+          value = fn.apply(this, arguments);
+          fn = null;
 
-            return value;
-          }
+          return value;
+        }
 
           //
           // To make debugging more easy we want to use the name of the supplied
@@ -676,8 +676,8 @@
           for (var key in obj) {
             if (has.call(obj, key)) {
               pairs.push(encodeURIComponent(key) + '=' + encodeURIComponent(obj[key]));
-            }
           }
+        }
 
           return pairs.length ? prefix + pairs.join('&') : '';
         }
@@ -821,8 +821,8 @@
           //
           opts.scheduled = opts.attempt !== 1
             ? Math.min(Math.round(
-              (Math.random() + 1) * opts.min * Math.pow(opts.factor, opts.attempt - 1)
-            ), opts.max)
+            (Math.random() + 1) * opts.min * Math.pow(opts.factor, opts.attempt - 1)
+          ), opts.max)
             : opts.min;
 
           recovery.timers.setTimeout('reconnect', function delay() {
@@ -830,11 +830,11 @@
             opts.backoff = false;
             recovery.timers.clear('reconnect, timeout');
 
-            //
+          //
             // Create a `one` function which can only be called once. So we can use the
             // same function for different types of invocations to create a much better
             // and usable API.
-            //
+          //
             var connect = recovery._fn = one(function connect(err) {
               recovery.reset();
 
@@ -1043,8 +1043,8 @@
                   }
 
                   listeners[i].fn.apply(listeners[i].context, args);
-              }
             }
+          }
           }
 
           return true;
@@ -1126,15 +1126,15 @@
               }
             } else {
               for (var i = 0, length = listeners.length; i < length; i++) {
-                if (
-                  listeners[i].fn !== fn
-                  || (once && !listeners[i].once)
-                  || (context && listeners[i].context !== context)
-                ) {
-                  events.push(listeners[i]);
-                }
+              if (
+                listeners[i].fn !== fn
+                || (once && !listeners[i].once)
+                || (context && listeners[i].context !== context)
+              ) {
+                events.push(listeners[i]);
               }
             }
+          }
           }
 
           //
@@ -1225,7 +1225,7 @@
 
             case 'file':
               return false;
-          }
+        }
 
           return port !== 0;
         };
@@ -1335,7 +1335,7 @@
 
             for (; i < l; i++) {
               fns[i].call(tock.context);
-            }
+          }
           };
         };
 
@@ -1354,7 +1354,7 @@
 
           if (tick.timers[name]) {
             tick.timers[name].fns.push(fn);
-            return tick;
+          return tick;
           }
 
           tock = ms(time);
@@ -1383,7 +1383,7 @@
 
           if (tick.timers[name]) {
             tick.timers[name].fns.push(fn);
-            return tick;
+          return tick;
           }
 
           tock = ms(time);
@@ -1412,7 +1412,7 @@
 
           if (tick.timers[name]) {
             tick.timers[name].fns.push(fn);
-            return tick;
+          return tick;
           }
 
           tick.timers[name] = new Timer(
@@ -1456,7 +1456,7 @@
           if (!args.length) {
             for (timer in tick.timers) {
               if (has.call(tick.timers, timer)) args.push(timer);
-            }
+          }
           }
 
           for (i = 0, l = args.length; i < l; i++) {
@@ -1586,7 +1586,7 @@
         function URL(address, location, parser) {
           if (!(this instanceof URL)) {
             return new URL(address, location, parser);
-          }
+        }
 
           var relative = relativere.test(address)
             , parse, instruction, index, key
@@ -1637,22 +1637,22 @@
                 } else {
                   url[key] = address.slice(index);
                   address = address.slice(0, index);
-                }
               }
+            }
             } else if (index = parse.exec(address)) {
               url[key] = index[1];
               address = address.slice(0, address.length - index[0].length);
-            }
+          }
 
             url[key] = url[key] || (instruction[3] || ('port' === key && relative) ? location[key] || '' : '');
 
-            //
+          //
             // Hostname, host and protocol should be lowercased so they can be used to
             // create a proper `origin`.
-            //
+          //
             if (instruction[4]) {
               url[key] = url[key].toLowerCase();
-            }
+          }
           }
 
           //
@@ -1670,7 +1670,7 @@
           if (!required(url.port, url.protocol)) {
             url.host = url.hostname;
             url.port = '';
-          }
+        }
 
           //
           // Parse down the `auth` for the username and password.
@@ -1718,7 +1718,7 @@
               url[part] = '';
             } else if (value) {
               url.host = url.hostname + ':' + value;
-            }
+          }
           } else if ('hostname' === part) {
             url[part] = value;
 
@@ -1839,7 +1839,7 @@
 
               if (finaldestination.slashes === undefined) {
                 finaldestination.slashes = slashes.test(loc.href);
-              }
+            }
             }
 
             return finaldestination;
@@ -1887,7 +1887,7 @@
 
           for (i = 0; i < str.length; i++) {
             decoded = decoded * length + map[str.charAt(i)];
-          }
+        }
 
           return decoded;
         }
@@ -1946,7 +1946,7 @@
 
           if ('function' !== typeof self.listeners || !self.listeners('error').length) {
             throw failure;
-          }
+        }
 
           self.emit('error', failure);
         }
@@ -1963,7 +1963,7 @@
             defaultUrl = location.origin;
           } else {
             defaultUrl = location.protocol + '//' + location.host;
-          }
+        }
         } catch (e) {
           defaultUrl = 'http://127.0.0.1';
         }
@@ -2066,18 +2066,18 @@
           }
 
           if (false === options.strategy) {
-            //
+          //
             // Strategies are disabled, but we still need an empty array to join it in
             // to nothing.
-            //
+          //
             options.strategy = [];
           } else if (!options.strategy.length) {
             options.strategy.push('disconnect', 'online');
 
-            //
+          //
             // Timeout based reconnection should only be enabled conditionally. When
             // authorization is enabled it could trigger.
-            //
+          //
             if (!this.authorization) options.strategy.push('timeout');
           }
 
@@ -2189,8 +2189,8 @@
           ) {
             if (!navigator.onLine) {
               Primus.prototype.online = false;
-            }
           }
+        }
         } catch (e) {
         }
 
@@ -2344,7 +2344,7 @@
 
               for (; i < length; i++) {
                 primus._write(data[i]);
-              }
+            }
             }
 
             primus.emit('open');
@@ -2368,16 +2368,16 @@
             if ('string' === typeof e) {
               err = new Error(e);
             } else if (!(e instanceof Error) && 'object' === typeof e) {
-              //
+            //
               // BrowserChannel and SockJS returns an object which contains some
               // details of the error. In order to have a proper error we "copy" the
               // details in an Error instance.
-              //
+            //
               err = new Error(e.message || e.reason);
               for (var key in e) {
                 if (Object.prototype.hasOwnProperty.call(e, key))
                   err[key] = e[key];
-              }
+            }
             }
             //
             // We're still doing a reconnect attempt, it could be that we failed to
@@ -2397,57 +2397,57 @@
                 primus.recovery.reconnect();
               } else {
                 primus.end();
-              }
+            }
             }
           });
 
           primus.on('incoming::data', function message(raw) {
             primus.decoder(raw, function decoding(err, data) {
-              //
+            //
               // Do a "safe" emit('error') when we fail to parse a message. We don't
               // want to throw here as listening to errors should be optional.
-              //
+            //
               if (err) return primus.listeners('error').length && primus.emit('error', err);
 
-              //
+            //
               // Handle all "primus::" prefixed protocol messages.
-              //
+            //
               if (primus.protocol(data)) return;
               primus.transforms(primus, primus, 'incoming', data, raw);
-            });
+          });
           });
 
           primus.on('incoming::end', function end() {
             var readyState = primus.readyState;
 
-            //
+          //
             // This `end` started with the receiving of a primus::server::close packet
             // which indicated that the user/developer on the server closed the
             // connection and it was not a result of a network disruption. So we should
             // kill the connection without doing a reconnect.
-            //
+          //
             if (primus.disconnect) {
               primus.disconnect = false;
 
               return primus.end();
-            }
+          }
 
-            //
+          //
             // Always set the readyState to closed, and if we're still connecting, close
             // the connection so we're sure that everything after this if statement block
             // is only executed because our readyState is set to `open`.
-            //
+          //
             primus.readyState = Primus.CLOSED;
             if (readyState !== primus.readyState) {
               primus.emit('readyStateChange', 'end');
-            }
+          }
 
             if (primus.timers.active('connect')) primus.end();
             if (readyState !== Primus.OPEN) {
               return primus.recovery.reconnecting()
                 ? primus.recovery.reconnect()
                 : false;
-            }
+          }
 
             this.writable = false;
             this.readable = false;
@@ -2457,16 +2457,16 @@
             //
             this.timers.clear();
 
-            //
+          //
             // Fire the `close` event as an indication of connection disruption.
             // This is also fired by `primus#end` so it is emitted in all cases.
-            //
+          //
             primus.emit('close');
 
-            //
+          //
             // The disconnect was unintentional, probably because the server has
             // shutdown, so if the reconnection is enabled start a reconnect procedure.
-            //
+          //
             if (~primus.options.strategy.indexOf('disconnect')) {
               return primus.recovery.reconnect();
             }
@@ -2493,41 +2493,41 @@
           //
           if (!primus.NETWORK_EVENTS) return primus;
 
-          /**
-           * Handler for offline notifications.
-           *
-           * @api private
-           */
-          primus.offlineHandler = function offline() {
-            if (!primus.online) return; // Already or still offline, bailout.
+        /**
+         * Handler for offline notifications.
+         *
+         * @api private
+         */
+        primus.offlineHandler = function offline() {
+          if (!primus.online) return; // Already or still offline, bailout.
 
-            primus.online = false;
-            primus.emit('offline');
-            primus.end();
+          primus.online = false;
+          primus.emit('offline');
+          primus.end();
 
-            //
-            // It is certainly possible that we're in a reconnection loop and that the
-            // user goes offline. In this case we want to kill the existing attempt so
-            // when the user goes online, it will attempt to reconnect freshly again.
-            //
-            primus.recovery.reset();
-          };
+          //
+          // It is certainly possible that we're in a reconnection loop and that the
+          // user goes offline. In this case we want to kill the existing attempt so
+          // when the user goes online, it will attempt to reconnect freshly again.
+          //
+          primus.recovery.reset();
+        };
 
-          /**
-           * Handler for online notifications.
-           *
-           * @api private
-           */
-          primus.onlineHandler = function online() {
-            if (primus.online) return; // Already or still online, bailout.
+        /**
+         * Handler for online notifications.
+         *
+         * @api private
+         */
+        primus.onlineHandler = function online() {
+          if (primus.online) return; // Already or still online, bailout.
 
-            primus.online = true;
-            primus.emit('online');
+          primus.online = true;
+          primus.emit('online');
 
-            if (~primus.options.strategy.indexOf('online')) {
-              primus.recovery.reconnect();
-            }
-          };
+          if (~primus.options.strategy.indexOf('online')) {
+            primus.recovery.reconnect();
+          }
+        };
 
           if (window.addEventListener) {
             window.addEventListener('offline', primus.offlineHandler, false);
@@ -2564,13 +2564,13 @@
               break;
 
             case 'server':
-              //
+            //
               // The server is closing the connection, forcefully disconnect so we don't
               // reconnect again.
-              //
+            //
               if ('close' === value) {
                 this.disconnect = true;
-              }
+            }
               break;
 
             case 'id':
@@ -2628,7 +2628,7 @@
               }
 
               return transform(index, done);
-            }
+          }
 
             transformer.call(connection, packet, function finished(err, arg) {
               if (err) return connection.emit('error', err);
@@ -2720,9 +2720,9 @@
           // socket.
           //
           if (Primus.OPEN !== primus.readyState) {
-            //
+          //
             // If the buffer is at capacity, remove the first item.
-            //
+          //
             if (this.buffer.length === this.options.queueSize) {
               this.buffer.splice(0, 1);
             }
@@ -2732,19 +2732,19 @@
           }
 
           primus.encoder(data, function encoded(err, packet) {
-            //
+          //
             // Do a "safe" emit('error') when we fail to parse a message. We don't
             // want to throw here as listening to errors should be optional.
-            //
+          //
             if (err) return primus.listeners('error').length && primus.emit('error', err);
 
-            //
+          //
             // Hack 1: \u2028 and \u2029 are allowed inside a JSON string, but JavaScript
             // defines them as newline separators. Unescaped control characters are not
             // allowed inside JSON strings, so this causes an error at parse time. We
             // work around this issue by escaping these characters. This can cause
             // errors with JSONP requests or if the string is just evaluated.
-            //
+          //
             if ('string' === typeof packet) {
               if (~packet.indexOf('\u2028')) packet = packet.replace(u2028, '\\u2028');
               if (~packet.indexOf('\u2029')) packet = packet.replace(u2029, '\\u2029');
@@ -2769,37 +2769,37 @@
 
           if (!primus.options.ping) return primus;
 
-          /**
-           * Exterminate the connection as we've timed out.
-           *
-           * @api private
-           */
-          function pong() {
-            primus.timers.clear('pong');
+        /**
+         * Exterminate the connection as we've timed out.
+         *
+         * @api private
+         */
+        function pong() {
+          primus.timers.clear('pong');
 
-            //
-            // The network events already captured the offline event.
-            //
-            if (!primus.online) return;
+          //
+          // The network events already captured the offline event.
+          //
+          if (!primus.online) return;
 
-            primus.online = false;
-            primus.emit('offline');
-            primus.emit('incoming::end');
-          }
+          primus.online = false;
+          primus.emit('offline');
+          primus.emit('incoming::end');
+        }
 
-          /**
-           * We should send a ping message to the server.
-           *
-           * @api private
-           */
-          function ping() {
-            var value = +new Date();
+        /**
+         * We should send a ping message to the server.
+         *
+         * @api private
+         */
+        function ping() {
+          var value = +new Date();
 
-            primus.timers.clear('ping');
-            primus._write('primus::ping::' + value);
-            primus.emit('outgoing::ping', value);
-            primus.timers.setTimeout('pong', pong, primus.options.pong);
-          }
+          primus.timers.clear('ping');
+          primus._write('primus::ping::' + value);
+          primus.emit('outgoing::ping', value);
+          primus.timers.setTimeout('pong', pong, primus.options.pong);
+        }
 
           primus.timers.setTimeout('ping', ping, primus.options.ping);
           return this;
@@ -2814,18 +2814,18 @@
         Primus.prototype.timeout = function timeout() {
           var primus = this;
 
-          /**
-           * Remove all references to the timeout listener as we've received an event
-           * that can be used to determine state.
-           *
-           * @api private
-           */
-          function remove() {
-            primus.removeListener('error', remove)
-              .removeListener('open', remove)
-              .removeListener('end', remove)
-              .timers.clear('connect');
-          }
+        /**
+         * Remove all references to the timeout listener as we've received an event
+         * that can be used to determine state.
+         *
+         * @api private
+         */
+        function remove() {
+          primus.removeListener('error', remove)
+            .removeListener('open', remove)
+            .removeListener('end', remove)
+            .timers.clear('connect');
+        }
 
           primus.timers.setTimeout('connect', function expired() {
             remove(); // Clean up old references.
@@ -2836,14 +2836,14 @@
 
             primus.emit('timeout');
 
-            //
+          //
             // We failed to connect to the server.
-            //
+          //
             if (~primus.options.strategy.indexOf('timeout')) {
               primus.recovery.reconnect();
             } else {
               primus.end();
-            }
+          }
           }, primus.options.timeout);
 
           return primus.on('error', remove)
@@ -2861,21 +2861,21 @@
         Primus.prototype.end = function end(data) {
           context(this, 'end');
 
-          if (
-            this.readyState === Primus.CLOSED
-            && !this.timers.active('connect')
-            && !this.timers.active('open')
-          ) {
-            //
-            // If we are reconnecting stop the reconnection procedure.
-            //
-            if (this.recovery.reconnecting()) {
-              this.recovery.reset();
-              this.emit('end');
-            }
-
-            return this;
+        if (
+          this.readyState === Primus.CLOSED
+          && !this.timers.active('connect')
+          && !this.timers.active('open')
+        ) {
+          //
+          // If we are reconnecting stop the reconnection procedure.
+          //
+          if (this.recovery.reconnecting()) {
+            this.recovery.reset();
+            this.emit('end');
           }
+
+          return this;
+        }
 
           if (data !== undefined) this.write(data);
 
@@ -3168,7 +3168,7 @@
                 }));
 
                 socket.binaryType = 'arraybuffer';
-              }
+            }
             } catch (e) {
               return primus.emit('error', e);
             }
@@ -3358,7 +3358,6 @@
             return this;
           }
         }
-
         function emitter() {
           'use strict';
 
@@ -3530,7 +3529,6 @@
 
           return Emitter;
         }
-
         if (undefined === Primus) return;
         Primus.$ = Primus.$ || {};
         Primus.$.emitter = {};
