@@ -45,6 +45,6 @@ export class ColorPickerComponent implements BaseElement, OnInit, AfterViewInit 
   }
 
   populateComponent() {
-    this.value = WidgetHelpers.get(this.device, this.infos.value);
+    this.value = WidgetHelpers.get(this.device.data, this.infos.value);
   }
 }

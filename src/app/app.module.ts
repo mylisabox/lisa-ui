@@ -18,7 +18,7 @@ import {PluginsComponent} from "./pages/plugins/plugins.component";
 import {HeaderComponent} from "./layout/header/header.component";
 import {FooterComponent} from "./layout/footer/footer.component";
 import {Ng2BootstrapModule} from "ngx-bootstrap";
-import {Ng2DashboardModule} from "ngx-dashboard";
+import {NgDashboardModule} from "ngx-dashboard";
 import {ShopComponent} from "./pages/shop/shop.component";
 import {NotificationComponent} from "./pages/notification/notification.component";
 import {WidgetLISAComponent} from "./components/widget/widget.component";
@@ -97,7 +97,7 @@ import {SpeechService} from "./services/speech.service";
   imports: [
     Ng2BootstrapModule,
     ColorPickerModule,
-    Ng2DashboardModule,
+    NgDashboardModule,
     BrowserModule,
     FormsModule,
     HttpModule,

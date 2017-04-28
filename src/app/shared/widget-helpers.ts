@@ -61,7 +61,6 @@ export class WidgetHelpers {
     const ngComponent: BaseElement = ref.instance as BaseElement;
     ngComponent.name = component.name;
     ngComponent.flex = component.flex || 1;
-    ngComponent.path = component.path;
     ngComponent.device = device;
     if (!ngComponent.isViewGroup) {
       ngComponent.infos = component;

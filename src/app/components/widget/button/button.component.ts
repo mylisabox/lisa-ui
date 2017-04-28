@@ -38,6 +38,6 @@ export class ButtonComponent implements BaseElement, OnInit {
 
   populateComponent() {
     this.text = this.infos.text;
-    this.value = WidgetHelpers.get(this.device, this.infos.value, 1);
+    this.value = WidgetHelpers.get(this.device.data, this.infos.value, 1);
   }
 }

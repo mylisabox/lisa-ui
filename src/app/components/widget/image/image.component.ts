@@ -26,6 +26,6 @@ export class ImageComponent implements BaseElement, OnInit {
   }
 
   populateComponent() {
-    this.img = WidgetHelpers.get(this.device, this.infos.value);
+    this.img = WidgetHelpers.get(this.device.data, this.infos.value);
   }
 }

@@ -6,7 +6,6 @@ export interface BaseElement {
   isViewGroup?: boolean;
   infos?: any;
   viewCtnRef?: ViewContainerRef;
-  path: string;
   name: string;
   flex: number;
   onChange?: EventEmitter<WidgetEvent>;

@@ -40,6 +40,6 @@ export class ToggleButtonComponent implements BaseElement, OnInit {
   }
 
   populateComponent() {
-    this.value = WidgetHelpers.get(this.device, this.infos.value);
+    this.value = WidgetHelpers.get(this.device.data, this.infos.value);
   }
 }

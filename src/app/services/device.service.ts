@@ -22,7 +22,7 @@ export class DeviceService extends ApiService<Device> {
   }
 
   postDeviceValue(info: WidgetEvent): Observable<Array<Device>> {
-    return this._http.post(`${Globals.getUrl('/plugins')}/${info.device.pluginName}/${info.device.id}/${info.path.replace('.', '/')}`,
+    return this._http.post(`${Globals.getUrl('/plugins')}/${info.device.pluginName}/${info.device.id}`,
       {
         key: info.key,
         value: info.value

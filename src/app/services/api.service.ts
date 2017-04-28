@@ -10,11 +10,11 @@ export abstract class ApiService<T extends Model> {
 
   constructor(protected _http: Http,
               protected _authService: AuthService,
-              protected _path: string) {
+              protected _path: String) {
 
   }
 
-  private _serialize(obj) {
+  private _serialize(obj: any) {
     let str = [];
     for (let p in obj)
       if (obj.hasOwnProperty(p)) {
@@ -66,7 +66,7 @@ export abstract class ApiService<T extends Model> {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')) as Observable<T>;
   }
 
-  public destroyItem(itemId: string): Observable<T> {
+  public destroyItem(itemId: String): Observable<T> {
     return this._http.delete(`${Globals.getUrl(this._path)}/${itemId}`, this._buildOptions())
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')) as Observable<T>;

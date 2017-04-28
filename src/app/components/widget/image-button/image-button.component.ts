@@ -59,7 +59,7 @@ export class ImageButtonComponent implements BaseElement, OnInit {
   }
 
   populateComponent() {
-    this.values = WidgetHelpers.get(this.device, this.infos.values, []);
-    this.value = WidgetHelpers.get(this.device, this.infos.value);
+    this.values = WidgetHelpers.get(this.device.data, this.infos.values, []);
+    this.value = WidgetHelpers.get(this.device.data, this.infos.value);
   }
 }
