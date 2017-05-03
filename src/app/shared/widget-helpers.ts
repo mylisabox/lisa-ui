@@ -13,6 +13,8 @@ import {Device} from "../models/device.type";
 import {BaseElement} from "../interfaces/base-element";
 import {ButtonComponent} from "../components/widget/button/button.component";
 import {WidgetContentComponent} from "../components/widget/widget-content/widget-content.component";
+import {WidgetEvent} from "../interfaces/widget-event.type";
+import {Observable} from "rxjs";
 
 export class WidgetHelpers {
 
@@ -55,7 +57,7 @@ export class WidgetHelpers {
   static addComponents(parent: WidgetContentComponent, viewCntRef: ViewContainerRef, componentFactoryResolver: ComponentFactoryResolver,
                        component: any, device: Device): any {
     if (!component || !device) return;
-
+    let childOnChangesObservable: Observable<WidgetEvent>[] = [];
     let factory = componentFactoryResolver.resolveComponentFactory(WidgetHelpers.getComponentType(component));
     const ref = viewCntRef.createComponent(factory);
     const ngComponent: BaseElement = ref.instance as BaseElement;
@@ -66,14 +68,15 @@ export class WidgetHelpers {
       ngComponent.infos = component;
       ngComponent.populateComponent();
       if (ngComponent.onChange) {
-        ngComponent.onChange.subscribe(parent.onValueChange.bind(parent));
+        childOnChangesObservable.push(ngComponent.onChange);//
+        ngComponent.onChange.subscribe((widgetEvent: WidgetEvent) => parent.onValueChange(widgetEvent));
       }
     }
     if (component.children) {
       component.children.forEach(child => {
-        WidgetHelpers.addComponents(parent, ngComponent.viewCtnRef, componentFactoryResolver, child, device);
+        childOnChangesObservable = childOnChangesObservable.concat(WidgetHelpers.addComponents(parent, ngComponent.viewCtnRef, componentFactoryResolver, child, device));
       });
     }
-    return ref.instance;
+    return childOnChangesObservable;
   }
 }

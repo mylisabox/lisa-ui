@@ -13,6 +13,7 @@ import {FavoriteService} from "../../services/favorite.service";
 import {DashboardService} from "../../services/dashboard.service";
 import {AuthService} from "../../services/auth.service";
 import {Dashboard} from "../../models/dashboard.type";
+import {WidgetEvent} from "../../interfaces/widget-event.type";
 
 const TAB_TYPE = {
   NONE: -1,
@@ -51,7 +52,8 @@ export class HomeComponent implements OnInit {
   private _currentSelectedRoom: Room;
   public tabType = TAB_TYPE;
 
-  constructor(private _ngEl: ElementRef,
+  constructor(private _deviveApi: DeviceService,
+              private _ngEl: ElementRef,
               private _renderer: Renderer,
               private _roomApi: RoomService,
               private _authService: AuthService,
@@ -180,6 +182,26 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  onDeviceValueChanged(widgetEvent: WidgetEvent) {
+    if (widgetEvent.device.type.indexOf('group_') == -1) {
+      this._deviveApi.postDeviceValue(widgetEvent).subscribe(
+        data => {
+
+        },
+        err => {
+          console.log(err);
+        })
+    } else {
+      this._deviveApi.postGroupValue(this._currentSelectedRoom.id, widgetEvent).subscribe(
+        data => {
+
+        },
+        err => {
+          console.log(err);
+        })
+    }
+  }
+
   editRoom(room) {
     this._currentEditedRoom = room;
   }
@@ -262,6 +284,8 @@ export class HomeComponent implements OnInit {
     const ref: WidgetLISAComponent = this.dashboard.addItem(WidgetLISAComponent) as WidgetLISAComponent;
     ref.device = device;
     ref.widgetId = device.id;
+    ref.onChange.subscribe(widgetEvent => this.onDeviceValueChanged(widgetEvent));
+
     ref.onFavorite.subscribe(device => {
       if (device.isFavorite) {
         this._favoriteApi.destroyItem(device.id).subscribe(

@@ -7,11 +7,13 @@ import {
   ViewChild,
   EventEmitter,
   Output,
-  Renderer2
+  Renderer2,
+  AfterViewInit
 } from "@angular/core";
 import {Device} from "../../models/device.type";
 import {WidgetHandleDirective, WidgetComponent} from "ngx-dashboard";
 import {WidgetContentComponent} from "./widget-content/widget-content.component";
+import {WidgetEvent} from "../../interfaces/widget-event.type";
 
 const forwardReference = forwardRef(() => WidgetLISAComponent);
 
@@ -21,7 +23,7 @@ const forwardReference = forwardRef(() => WidgetLISAComponent);
   styleUrls: ['./widget.component.scss'],
   providers: [{provide: WidgetComponent, useExisting: forwardReference}]
 })
-export class WidgetLISAComponent extends WidgetComponent implements OnInit {
+export class WidgetLISAComponent extends WidgetComponent implements AfterViewInit, OnInit {
   private _device: Device;
   @Input() public widgetId: string;
   @ViewChild(WidgetHandleDirective) protected _handle: WidgetHandleDirective;
@@ -29,6 +31,7 @@ export class WidgetLISAComponent extends WidgetComponent implements OnInit {
   @Output() onRemove: EventEmitter<Device> = new EventEmitter<Device>();
   @Output() onRename: EventEmitter<Device> = new EventEmitter<Device>();
   @Output() onFavorite: EventEmitter<Device> = new EventEmitter<Device>();
+  @Output() onChange: EventEmitter<WidgetEvent> = new EventEmitter();
 
   get device(): Device {
     return this._device;
@@ -48,6 +51,12 @@ export class WidgetLISAComponent extends WidgetComponent implements OnInit {
 
   ngOnInit() {
     super.ngOnInit();
+  }
+
+  ngAfterViewInit() {
+    this._content.onChange.subscribe(widgetEvent => {
+      this.onChange.next(widgetEvent);
+    });
   }
 
   onRenameDevice(device: Device): void {

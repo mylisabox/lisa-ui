@@ -36,8 +36,8 @@ export class ColorPickerComponent implements BaseElement, OnInit, AfterViewInit 
   onColorChange(color: string) {
     this.value = color;
     if (this.isInitialized) {
-      this.onChange.emit({
-        path: this.path,
+      this.onChange.next({
+        device: this.device,
         key: this.name,
         value: color
       });

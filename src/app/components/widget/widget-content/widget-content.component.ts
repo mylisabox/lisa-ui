@@ -4,12 +4,13 @@ import {
   Input,
   Renderer2,
   ElementRef,
-  AfterViewInit,
   ViewContainerRef,
   ComponentFactoryResolver,
   ViewChild,
   OnChanges,
-  SimpleChanges
+  SimpleChanges,
+  EventEmitter,
+  Output
 } from "@angular/core";
 import {Device} from "../../../models/device.type";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
@@ -21,10 +22,11 @@ import {WidgetHelpers} from "../../../shared/widget-helpers";
   templateUrl: './widget-content.component.html',
   styleUrls: ['./widget-content.component.scss']
 })
-export class WidgetContentComponent implements OnInit, OnChanges, AfterViewInit {
+export class WidgetContentComponent implements OnInit, OnChanges {
   private _device: Device;
   @ViewChild('target', {read: ViewContainerRef}) target;
   private _isInitialized: boolean;
+  @Output() onChange: EventEmitter<WidgetEvent> = new EventEmitter();
 
   get device(): Device {
     return this._device;
@@ -46,9 +48,6 @@ export class WidgetContentComponent implements OnInit, OnChanges, AfterViewInit 
 
   }
 
-  ngAfterViewInit() {
-  }
-
   ngOnChanges(changes: SimpleChanges): void {
     this._buildContent();
   }
@@ -57,20 +56,12 @@ export class WidgetContentComponent implements OnInit, OnChanges, AfterViewInit 
     this.target.clear();
     this._isInitialized = false;
     WidgetHelpers.addComponents(this, this.target, this._componentFactory, this.device.template, this.device);
-    setTimeout(_=> this._isInitialized = true, 30); //FIXME try to find a way to get end on sub children initialisation
+    setTimeout(_ => this._isInitialized = true, 30); //FIXME try to find a way to get end on sub children initialisation
   }
 
   onValueChange(info: WidgetEvent) {
     if (this._isInitialized) {
-      info.device = this.device;
-      this._deviveApi.postDeviceValue(info).subscribe(
-        data => {
-
-        },
-        err => {
-          console.log(err);
-        }
-      )
+      this.onChange.emit(info);
     }
   }
 }

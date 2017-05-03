@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Renderer2, ElementRef, EventEmitter, Output, ViewContainerRef} from "@angular/core";
+import {Component, OnInit, Input, Renderer2, ElementRef, EventEmitter, Output} from "@angular/core";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
 import {BaseElement} from "../../../interfaces/base-element";
 import {Device} from "../../../models/device.type";
@@ -10,8 +10,6 @@ import {WidgetHelpers} from "../../../shared/widget-helpers";
   styleUrls: ['./image-button.component.scss']
 })
 export class ImageButtonComponent implements BaseElement, OnInit {
-  isViewGroup: boolean;
-  viewCtnRef: ViewContainerRef;
   device: Device;
   infos: any;
   @Input() flex: number = 1;
@@ -51,8 +49,8 @@ export class ImageButtonComponent implements BaseElement, OnInit {
       }
     }
 
-    this.onChange.emit({
-      path: this.path,
+    this.onChange.next({
+      device: this.device,
       key: this.name,
       value: this.value
     });

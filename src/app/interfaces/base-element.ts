@@ -1,6 +1,7 @@
 import {Device} from "../models/device.type";
-import {ViewContainerRef, EventEmitter} from "@angular/core";
+import {ViewContainerRef} from "@angular/core";
 import {WidgetEvent} from "./widget-event.type";
+import {Subject} from "rxjs";
 export interface BaseElement {
   device: Device;
   isViewGroup?: boolean;
@@ -8,7 +9,7 @@ export interface BaseElement {
   viewCtnRef?: ViewContainerRef;
   name: string;
   flex: number;
-  onChange?: EventEmitter<WidgetEvent>;
+  onChange?: Subject<WidgetEvent>;
 
   populateComponent();
 }

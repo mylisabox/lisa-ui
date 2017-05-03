@@ -32,8 +32,8 @@ export class ToggleButtonComponent implements BaseElement, OnInit {
   onToggle(value: boolean): void {
     this.value = !value;
     this._renderer.setAttribute(this.input.nativeElement, 'checked', this.value ? 'checked' : null);
-    this.onChange.emit({
-      path: this.path,
+    this.onChange.next({
+      device: this.device,
       key: this.name,
       value: this.value
     })

@@ -225,8 +225,8 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
     }
     this.propagateChange.next(this.value);
     if (!this.inDrag) {
-      this.onChange.emit({
-        path: this.path,
+      this.onChange.next({
+        device: this.device,
         key: this.name,
         value: this.value
       });
