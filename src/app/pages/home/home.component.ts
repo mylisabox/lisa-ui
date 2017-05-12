@@ -14,6 +14,7 @@ import {DashboardService} from "../../services/dashboard.service";
 import {AuthService} from "../../services/auth.service";
 import {Dashboard} from "../../models/dashboard.type";
 import {WidgetEvent} from "../../interfaces/widget-event.type";
+import {AddDeviceModalComponent} from "../../components/modals/add-device-modal/add-device-modal.component";
 
 const TAB_TYPE = {
   NONE: -1,
@@ -37,6 +38,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('roomInput') roomInput: ElementRef;
   @ViewChild('dashboard') dashboard: DashboardComponent;
   @ViewChild('modalDeleteRoom') modalDeleteRoom: ConfirmModalComponent;
+  @ViewChild('modalAddDevice') modalAddDevice: AddDeviceModalComponent;
   @Input() widgetsSize: number[] = [300, 160];
   @Input() dashboardMargin: number = 10;
   _currentTab: number = TAB_TYPE.FAV;

@@ -46,6 +46,7 @@ import {FavoriteService} from "./services/favorite.service";
 import {SpaceComponent} from "./components/widget/space/space.component";
 import {DashboardService} from "./services/dashboard.service";
 import {SpeechService} from "./services/speech.service";
+import {AddDeviceModalComponent} from "./components/modals/add-device-modal/add-device-modal.component";
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import {SpeechService} from "./services/speech.service";
     ConfirmModalComponent,
     WidgetHeaderComponent,
     WidgetContentComponent,
-    SpaceComponent
+    SpaceComponent,
+    AddDeviceModalComponent
   ],
   entryComponents: [
     WidgetLISAComponent,

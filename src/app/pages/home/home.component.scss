@@ -2,6 +2,7 @@
 
 .left-menu {
   background: white;
+  margin-top: 10px;
   padding: 0;
 }
 
@@ -150,3 +151,21 @@ dashboard.disabled /deep/ lisa-widget-header {
   color: $lightTextColor;
 }
 
+.floating-button {
+  background-color: $themeColor;
+  position: absolute;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  right: 20px;
+  bottom: 20px;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.floating-button:hover {
+  background-color: $themeColorDarker;
+
+}

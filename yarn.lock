@@ -3032,9 +3032,9 @@ ngx-color-picker@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/ngx-color-picker/-/ngx-color-picker-4.0.0.tgz#0b70358f10f4db57aad08bceb6a76932751e4575"
 
-ngx-dashboard@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/ngx-dashboard/-/ngx-dashboard-1.1.0.tgz#caf883d4a07e7cb4aa5541b24612977778e4d498"
+ngx-dashboard:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/ngx-dashboard/-/ngx-dashboard-1.1.2.tgz#af9cb3b82cc911f729dd460e920ebe330795cb03"
 
 no-case@^2.2.0:
   version "2.3.1"

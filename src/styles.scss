@@ -23,6 +23,32 @@ ul {
   padding: 0;
 }
 
+h3 {
+  color: $themeColor;
+  margin: 0;
+}
+
+input {
+  border: 1px solid grey;
+}
+
+input[type="search"] {
+  transition: all 0.7s ease-out;
+  padding: 5px 8px;
+}
+
+input[type="search"]:focus, input[type="text"]:focus {
+  border: 1px solid $themeColor;
+}
+
+*:focus {
+  outline: none
+}
+
+.hidden {
+  display: none;
+}
+
 .glyphicon {
   top: 2px;
 }
