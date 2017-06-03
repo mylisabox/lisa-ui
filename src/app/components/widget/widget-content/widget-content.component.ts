@@ -1,16 +1,16 @@
 import {
   Component,
-  OnInit,
-  Input,
-  Renderer2,
-  ElementRef,
-  ViewContainerRef,
   ComponentFactoryResolver,
-  ViewChild,
-  OnChanges,
-  SimpleChanges,
+  ElementRef,
   EventEmitter,
-  Output
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  Renderer2,
+  SimpleChanges,
+  ViewChild,
+  ViewContainerRef
 } from "@angular/core";
 import {Device} from "../../../models/device.type";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
@@ -54,14 +54,23 @@ export class WidgetContentComponent implements OnInit, OnChanges {
 
   private _buildContent() {
     this.target.clear();
-    this._isInitialized = false;
+    this.disableEvent();
     WidgetHelpers.addComponents(this, this.target, this._componentFactory, this.device.template, this.device);
-    setTimeout(_ => this._isInitialized = true, 30); //FIXME try to find a way to get end on sub children initialisation
+    this.enableEvent();
   }
 
   onValueChange(info: WidgetEvent) {
     if (this._isInitialized) {
       this.onChange.emit(info);
+      debugger;
     }
+  }
+
+  enableEvent() {
+    setTimeout(_ => this._isInitialized = true, 100); //FIXME ugly ! try to find a way to get end on sub children update/initialisation
+  }
+
+  disableEvent() {
+    this._isInitialized = false;
   }
 }

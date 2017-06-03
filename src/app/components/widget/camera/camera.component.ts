@@ -1,7 +1,8 @@
-import {Component, OnInit, Renderer2, ElementRef, Input} from "@angular/core";
+import {Component, ElementRef, Input, OnInit, Renderer2} from "@angular/core";
 import {BaseElement} from "../../../interfaces/base-element";
 import {Device} from "../../../models/device.type";
 import {WidgetHelpers} from "../../../shared/widget-helpers";
+import {Globals} from "../../../common/globals";
 
 @Component({
   selector: 'lisa-camera',
@@ -12,6 +13,7 @@ export class CameraComponent implements BaseElement, OnInit {
   device: Device;
   path: string;
   infos: any;
+  playState = 'play';
   img: string;
   video: string;
   @Input() name: string;
@@ -28,17 +30,38 @@ export class CameraComponent implements BaseElement, OnInit {
   }
 
   populateComponent() {
-    this.img = WidgetHelpers.get(this.device, this.infos.image);
-    this.video = WidgetHelpers.get(this.device, this.infos.video);
-    this.src = this.img;
-  }
-
-  onClick() {
-    if (this.src == this.img) {
-      this.src = this.video;
+    this.img = WidgetHelpers.get(this.device.data, this.infos.image);
+    this.video = WidgetHelpers.get(this.device.data, this.infos.video);
+    if (!this.img || this.img == '') {
+      this.img = Globals.getUrl('/camera/snapshot?url=' + this.video)
     }
     else {
-      this.src = this.img;
+      this.img = Globals.getUrl('/camera/snapshot?url=' + this.img)
     }
+    this.video = Globals.getUrl('/camera/stream?url=' + this.video)
+    this.src = this.video;
+    this.togglePlay();
+  }
+
+  togglePlay() {
+    if (this.src == this.video) {
+      this.playState = 'play';
+      this.src = this.img + '?v=' + new Date().getTime();
+    }
+    else {
+      this.playState = 'pause';
+      this.src = this.video;
+    }
+  }
+
+  refreshScreenshot() {
+    this.src = this.img + '?v=' + new Date().getTime();
+  }
+
+  toggleFullScreen() {
+    if (this.src == this.video) {
+      this.togglePlay();
+    }
+    //todo open/close a full screen popup with image inside
   }
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild, ElementRef, Renderer, Input} from "@angular/core";
+import {Component, ElementRef, Input, OnInit, Renderer, ViewChild} from "@angular/core";
 import {Room} from "../../models/room.type";
 import {RoomService} from "../../services/room.service";
 import {WebsocketService} from "../../interfaces/websocket-service";
@@ -23,6 +23,8 @@ const TAB_TYPE = {
   NEW_DEVICES: 2
 };
 
+const WIDGET_HEIGHT = 200;
+
 const ROOM_LINE_HEIGHT = 42.5;
 
 @Component({
@@ -39,7 +41,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('dashboard') dashboard: DashboardComponent;
   @ViewChild('modalDeleteRoom') modalDeleteRoom: ConfirmModalComponent;
   @ViewChild('modalAddDevice') modalAddDevice: AddDeviceModalComponent;
-  @Input() widgetsSize: number[] = [300, 160];
+  @Input() widgetsSize: number[] = [300, WIDGET_HEIGHT];
   @Input() dashboardMargin: number = 10;
   _currentTab: number = TAB_TYPE.FAV;
   _roomsListOpen = false;
@@ -108,7 +110,11 @@ export class HomeComponent implements OnInit {
                   device.data = event.item.data || device.data;
                   device.roomId = event.item.roomId || device.roomId;
                   device.template = event.item.template || device.template;
-                  (this.dashboard.getWidgetById(device.id) as WidgetLISAComponent).device = device;
+
+                  let widget = this.dashboard.getWidgetById(device.id) as WidgetLISAComponent
+                  widget.disableEvent();
+                  widget.device = device;
+                  widget.enableEvent();
                 }
               }
               else {
@@ -251,16 +257,16 @@ export class HomeComponent implements OnInit {
   private _onResize() {
     if (window.innerWidth < 500) {
       this.dashboardMargin = 10;
-      this.widgetsSize = [this.dashboard.width - this.dashboardMargin, 160];
+      this.widgetsSize = [this.dashboard.width - this.dashboardMargin, WIDGET_HEIGHT];
     }
     else if (window.innerWidth < 750) {
       this.dashboardMargin = 10;
-      this.widgetsSize = [this.dashboard.width / 2 - this.dashboardMargin, 160];
+      this.widgetsSize = [this.dashboard.width / 2 - this.dashboardMargin, WIDGET_HEIGHT];
     }
     else {
       this.dashboardMargin = 20;
       const nbColumn = Math.floor(this.dashboard.width / (300 + this.dashboardMargin));
-      this.widgetsSize = [this.dashboard.width / nbColumn - this.dashboardMargin, 160];
+      this.widgetsSize = [this.dashboard.width / nbColumn - this.dashboardMargin, WIDGET_HEIGHT];
     }
   }
 

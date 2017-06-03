@@ -1,17 +1,17 @@
 import {
+  AfterViewInit,
   Component,
-  OnInit,
-  Input,
-  forwardRef,
   ElementRef,
-  ViewChild,
   EventEmitter,
+  forwardRef,
+  Input,
+  OnInit,
   Output,
   Renderer2,
-  AfterViewInit
+  ViewChild
 } from "@angular/core";
 import {Device} from "../../models/device.type";
-import {WidgetHandleDirective, WidgetComponent} from "ngx-dashboard";
+import {WidgetComponent, WidgetHandleDirective} from "ngx-dashboard";
 import {WidgetContentComponent} from "./widget-content/widget-content.component";
 import {WidgetEvent} from "../../interfaces/widget-event.type";
 
@@ -71,4 +71,11 @@ export class WidgetLISAComponent extends WidgetComponent implements AfterViewIni
     this.onFavorite.emit(device);
   }
 
+  enableEvent() {
+    this._content.enableEvent();
+  }
+
+  disableEvent() {
+    this._content.disableEvent();
+  }
 }

@@ -1,1 +1,7 @@
-<img (click)="onClick()" src="{{src}}"/>
+<div class="camera-container">
+  <img src="{{src}}"/>
+  <div (click)="togglePlay()" class="glyphicon glyphicon-{{playState}}"></div>
+  <div (click)="refreshScreenshot()" [ngClass]="{'hidden': playState !== 'play'}"
+       class="glyphicon glyphicon-refresh"></div>
+  <div (click)="toggleFullScreen()" class="glyphicon glyphicon-resize-full"></div>
+</div>

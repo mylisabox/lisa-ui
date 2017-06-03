@@ -1,4 +1,55 @@
-:host img {
+@import "../../../../variables";
+
+:host {
   width: 100%;
   height: 100%;
+}
+
+.camera-container {
+  position: relative;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.tools-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  height: 100%;
+}
+
+.glyphicon-play, .glyphicon-pause {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  padding: 5px;
+  color: $themeColor;
+  cursor: pointer;
+  text-align: center;
+}
+
+.glyphicon-refresh {
+  position: absolute;
+  top: 35px;
+  left: 5px;
+  padding: 5px;
+  color: $themeColor;
+  cursor: pointer;
+  text-align: center;
+}
+
+.glyphicon-resize-full, .glyphicon-resize-small {
+  position: absolute;
+  top: 5px;
+  padding: 5px;
+  right: 5px;
+  color: $themeColor;
+  cursor: pointer;
+  text-align: center;
 }

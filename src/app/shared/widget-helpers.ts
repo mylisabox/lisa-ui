@@ -56,7 +56,10 @@ export class WidgetHelpers {
 
   static addComponents(parent: WidgetContentComponent, viewCntRef: ViewContainerRef, componentFactoryResolver: ComponentFactoryResolver,
                        component: any, device: Device): any {
-    if (!component || !device) return;
+    if (!component || !device) {
+      debugger;
+      return;
+    }
     let childOnChangesObservable: Observable<WidgetEvent>[] = [];
     let factory = componentFactoryResolver.resolveComponentFactory(WidgetHelpers.getComponentType(component));
     const ref = viewCntRef.createComponent(factory);
