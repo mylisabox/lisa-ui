@@ -62,7 +62,6 @@ export class WidgetContentComponent implements OnInit, OnChanges {
   onValueChange(info: WidgetEvent) {
     if (this._isInitialized) {
       this.onChange.emit(info);
-      debugger;
     }
   }
 
