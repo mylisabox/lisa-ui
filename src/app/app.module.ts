@@ -3,8 +3,8 @@ import {ProfileComponent} from "./pages/profile/profile.component";
 import {ColorPickerModule} from "ngx-color-picker";
 import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
-import {FormsModule} from "@angular/forms";
-import {routing, appRoutingProviders} from "./app.routing";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {appRoutingProviders, routing} from "./app.routing";
 import {HttpModule} from "@angular/http";
 import {AuthGuard, provideAuthGuard} from "./common/auth.guard";
 import {AuthService} from "./services/auth.service";
@@ -47,6 +47,8 @@ import {SpaceComponent} from "./components/widget/space/space.component";
 import {DashboardService} from "./services/dashboard.service";
 import {SpeechService} from "./services/speech.service";
 import {AddDeviceModalComponent} from "./components/modals/add-device-modal/add-device-modal.component";
+import {PluginService} from "./services/plugin.service";
+import {FieldComponent} from "./components/forms/field.component";
 
 @NgModule({
   declarations: [
@@ -66,6 +68,7 @@ import {AddDeviceModalComponent} from "./components/modals/add-device-modal/add-
     VboxComponent,
     HboxComponent,
     CardComponent,
+    FieldComponent,
     ToggleButtonComponent,
     ButtonComponent,
     ImageComponent,
@@ -97,11 +100,12 @@ import {AddDeviceModalComponent} from "./components/modals/add-device-modal/add-
     ToggleButtonComponent
   ],
   imports: [
-    Ng2BootstrapModule,
+    Ng2BootstrapModule.forRoot(),
     ColorPickerModule,
     NgDashboardModule,
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     routing
   ],
@@ -114,6 +118,7 @@ import {AddDeviceModalComponent} from "./components/modals/add-device-modal/add-
     FavoriteService,
     DashboardService,
     AuthService,
+    PluginService,
     SpeechService,
     WebsocketService,
     NotificationService,

@@ -3,7 +3,7 @@ import {CameraComponent} from "./camera.component";
 
 describe('Component: Camera', () => {
   it('should create an instance', () => {
-    let component = new CameraComponent(null, null);
+    let component = new CameraComponent(null, null, null);
     expect(component).toBeTruthy();
   });
 });

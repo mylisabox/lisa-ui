@@ -1,4 +1,4 @@
-@import "../../../../variables";
+@import "../../../../variables.scss";
 
 div {
   position: relative;
@@ -10,14 +10,22 @@ div {
   width: 100%;
   height: 100%;
   position: fixed;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
 }
 
 .search {
   margin: 10px 0;
   width: 100%;
   padding-left: 25px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  z-index: 1;
+  opacity: 1;
 }
 
 .search-icon {
@@ -28,17 +36,39 @@ div {
   color: $themeColor;
 }
 
+.panel-group {
+  max-height: 460px;
+  overflow: auto;
+  display: block;
+}
+
+.plugin-device {
+  border: 1px solid $themeColor;
+  padding: 10px;
+  margin: 5px;
+  float: left;
+  text-align: center;
+  max-width: 135px;
+  cursor: pointer;
+}
+
+.plugin-device img {
+  width: 90px;
+  height: 90px;
+  margin-bottom: 10px;
+}
+
 .add-device-content {
   z-index: 1031;
-  width: 100%;
-  max-width: 600px;
-  min-height: 500px;
+  width: 95%;
+  max-width: 800px;
+  min-height: 600px;
   background: white;
   top: 50%;
   left: 50%;
-  position: relative;
+  position: fixed;
   padding: 20px;
-  transform: translate(-50%, -25%);
+  transform: translate(-50%, -55%);
 }
 
 .search-icon {
@@ -48,6 +78,6 @@ div {
   transform: translate(0%, -50%);
 }
 
-.close {
-  opacity: 1;
+.form-buttons {
+  text-align: right;
 }

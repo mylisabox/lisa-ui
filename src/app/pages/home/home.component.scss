@@ -1,4 +1,4 @@
-@import "../../../variables";
+@import "../../../variables.scss";
 
 .left-menu {
   background: white;
@@ -153,12 +153,12 @@ dashboard.disabled /deep/ lisa-widget-header {
 
 .floating-button {
   background-color: $themeColor;
-  position: absolute;
+  position: fixed;
   border-radius: 20px;
   width: 40px;
   height: 40px;
-  right: 20px;
-  bottom: 20px;
+  right: 10px;
+  bottom: 10px;
   color: white;
   text-align: center;
   font-size: 30px;

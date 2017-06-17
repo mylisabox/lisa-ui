@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template" target-language="en">
+    <body>
+      <trans-unit id="addDeviceTitle" datatype="html">
+        <source>Add a device...</source>
+        <target state="final">Add a device...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Title of add device popup</note>
+        <note priority="1" from="meaning">Title add device</note>
+      </trans-unit>
+      <trans-unit id="searchPlaceholder" datatype="html">
+        <source>Search...</source>
+        <target state="final">Search...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">Placeholder for search input</note>
+        <note priority="1" from="meaning">Placeholder search</note>
+      </trans-unit>
+      <trans-unit id="cancelButton" datatype="html">
+        <source>Cancel</source>
+        <target state="final">Cancel</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <note priority="1" from="description">Cancel button</note>
+        <note priority="1" from="meaning">Button cancel</note>
+      </trans-unit>
+      <trans-unit id="saveButton" datatype="html">
+        <source>Save</source>
+        <target state="final">Save</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <note priority="1" from="description">Save button</note>
+        <note priority="1" from="meaning">Button save</note>
+      </trans-unit>
+      <trans-unit id="favoritesSubmenu" datatype="html">
+        <source>Favorites</source>
+        <target state="final">Favorites</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+        <note priority="1" from="description">Favorites sub menu label</note>
+        <note priority="1" from="meaning">SubMenu favorites</note>
+      </trans-unit>
+      <trans-unit id="roomsSubmenu" datatype="html">
+        <source>Rooms</source>
+        <target state="final">Rooms</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Rooms sub menu label</note>
+        <note priority="1" from="meaning">SubMenu rooms</note>
+      </trans-unit>
+      <trans-unit id="addRoomPlaceholder" datatype="html">
+        <source>Add room</source>
+        <target state="final">Add room</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">37</context>
+        </context-group>
+        <note priority="1" from="description">Placeholder add room input</note>
+        <note priority="1" from="meaning">Placeholder add room</note>
+      </trans-unit>
+      <trans-unit id="newDevicesSubmenu" datatype="html">
+        <source>New devices</source>
+        <target state="final">New devices</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/home/home.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <note priority="1" from="description">New devices sub menu label</note>
+        <note priority="1" from="meaning">SubMenu new devices</note>
+      </trans-unit>
+      <trans-unit id="toggleNavButton" datatype="html">
+        <source>Toggle navigation</source>
+        <target state="final">Toggle navigation</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layout/header/header.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layout/header/header.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">Toggle navigation button</note>
+        <note priority="1" from="meaning">Toggle navigation</note>
+      </trans-unit>
+      <trans-unit id="homeMenu" datatype="html">
+        <source>Home</source>
+        <target state="final">Home</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layout/header/header.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">Home menu label</note>
+        <note priority="1" from="meaning">Menu home</note>
+      </trans-unit>
+      <trans-unit id="scenesMenu" datatype="html">
+        <source>Scenes</source>
+        <target state="final">Scenes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layout/header/header.component.ts</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description">Scenes menu label</note>
+        <note priority="1" from="meaning">Menu scenes</note>
+      </trans-unit>
+      <trans-unit id="pluginsMenu" datatype="html">
+        <source>Plugins</source>
+        <target state="final">Plugins</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layout/header/header.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">Plugins menu label</note>
+        <note priority="1" from="meaning">Menu plugins</note>
+      </trans-unit>
+      <trans-unit id="shopMenu" datatype="html">
+        <source>Shop</source>
+        <target state="final">Shop</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layout/header/header.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+        <note priority="1" from="description">Shop menu label</note>
+        <note priority="1" from="meaning">Menu shop</note>
+      </trans-unit>
+      <trans-unit id="profileMenu" datatype="html">
+        <source>Profile</source>
+        <target state="final">Profile</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layout/header/header.component.ts</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <note priority="1" from="description">Profile menu label</note>
+        <note priority="1" from="meaning">Menu profile</note>
+      </trans-unit>
+      <trans-unit id="logoutMenu" datatype="html">
+        <source>Logout</source>
+        <target state="final">Logout</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layout/header/header.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+        <note priority="1" from="description">Logout menu label</note>
+        <note priority="1" from="meaning">Menu logout</note>
+      </trans-unit>
+      <trans-unit id="notificationTitle" datatype="html">
+        <source>Notifications</source>
+        <target state="final">Notifications</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layout/header/header.component.ts</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+        <note priority="1" from="description">Title notification label</note>
+        <note priority="1" from="meaning">Title notification</note>
+      </trans-unit>
+      <trans-unit id="viewAllLink" datatype="html">
+        <source>View all</source>
+        <target state="final">View all</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layout/header/header.component.ts</context>
+          <context context-type="linenumber">63</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/layout/header/header.component.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+        <note priority="1" from="description">Link view all label</note>
+        <note priority="1" from="meaning">Link view all</note>
+      </trans-unit>
+      <trans-unit id="emailLabel" datatype="html">
+        <source>Email</source>
+        <target state="final">Email</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Label email</note>
+        <note priority="1" from="meaning">Label email</note>
+      </trans-unit>
+      <trans-unit id="passwordLabel" datatype="html">
+        <source>Password</source>
+        <target state="final">Password</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">Label password</note>
+        <note priority="1" from="meaning">Label password</note>
+      </trans-unit>
+      <trans-unit id="loginButton" datatype="html">
+        <source>Login
+    </source>
+        <target state="final">Login
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+        <note priority="1" from="description">Button login</note>
+        <note priority="1" from="meaning">Button login</note>
+      </trans-unit>
+    <trans-unit id="baseError" datatype="html">
+        <source>An error occurred, please check your informations and try again</source>
+        <target state="final">An error occurred, please check your informations and try again</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">44</context>
+        </context-group>
+        <note priority="1" from="description">Generic error message</note>
+        <note priority="1" from="meaning">Generic error</note>
+      </trans-unit></body>
+  </file>
+</xliff>

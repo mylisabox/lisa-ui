@@ -1,14 +1,19 @@
 <div class="login-box center-block shadow-box">
   <form role="form" (submit)="login($event, identifier.value, password.value)">
     <div class="form-group">
-      <label for="email">Email</label>
-      <input type="text" #identifier class="form-control" id="email" placeholder="Email"
+      <label for="email"><span i18n="Label email|Label email@@emailLabel">Email</span> *</label>
+      <input type="text" #identifier class="form-control" id="email"
+             i18n-placeholder="Label email|Label email@@emailLabel" placeholder="Email"
              value="jimmy.aumard@gmail.com">
     </div>
     <div class="form-group">
-      <label for="password">Password</label>
-      <input type="password" #password class="form-control" id="password" placeholder="Password" value="adminadmin">
+      <label for="password"><span i18n="Label password|Label password@@passwordLabel">Password</span> *</label>
+      <input type="password" #password class="form-control" id="password"
+             i18n-placeholder="Label password|Label password@@passwordLabel"
+             placeholder="Password" value="adminadmin">
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <div class="text-center">
+      <button type="submit" class="btn btn-default" i18n="Button login|Button login@@loginButton">Login</button>
+    </div>
   </form>
 </div>

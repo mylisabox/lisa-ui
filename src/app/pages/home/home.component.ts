@@ -132,6 +132,10 @@ export class HomeComponent implements OnInit {
     this.loadFavorites();
   }
 
+  showAddDevice() {
+    this.modalAddDevice.show();
+  }
+
   loadFavorites() {
     if (this._currentTab === TAB_TYPE.ROOMS) {
       this.toggleRooms();

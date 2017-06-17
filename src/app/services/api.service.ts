@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {Http, Response, Headers, RequestOptions} from "@angular/http";
+import {Headers, Http, RequestOptions, Response} from "@angular/http";
 import {Observable} from "rxjs";
 import {AuthService} from "./auth.service";
 import {Globals} from "../common/globals";
@@ -10,11 +10,11 @@ export abstract class ApiService<T extends Model> {
 
   constructor(protected _http: Http,
               protected _authService: AuthService,
-              protected _path: String) {
+              protected _path: string) {
 
   }
 
-  private _serialize(obj: any) {
+  protected _serialize(obj: any) {
     let str = [];
     for (let p in obj)
       if (obj.hasOwnProperty(p)) {
@@ -24,11 +24,10 @@ export abstract class ApiService<T extends Model> {
   }
 
   protected _buildHeaders() {
-    let headers = new Headers({
+    return new Headers({
       'Content-Type': 'application/json',
       'Authorization': 'JWT ' + this._authService.getToken()
     });
-    return headers;
   }
 
   protected _buildOptions() {

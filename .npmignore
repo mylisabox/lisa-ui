@@ -1,0 +1,8 @@
+/e2e/
+/src/
+/karma.conf.js
+/protractor.conf.js
+/xliffmerge.json
+/tslint.json
+/tsconfig.json
+/.idea/

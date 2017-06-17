@@ -5,13 +5,14 @@
     <ul class="nav nav-pills nav-stacked">
       <li [ngClass]="{'active': _currentTab === tabType.FAV}">
         <a (click)="loadFavorites()">
-          <span class="glyphicon glyphicon-star"></span>Favorites
+          <span class="glyphicon glyphicon-star"></span><span
+          i18n="SubMenu favorites|Favorites sub menu label@@favoritesSubmenu">Favorites</span>
           <span class="glyphicon glyphicon-menu-right pull-right"></span>
         </a>
       </li>
       <li class="rooms" [ngClass]="{'active': _currentTab === tabType.ROOMS, 'roomOpen': _roomsListOpen}">
         <a (click)="toggleRooms()">
-          <span class="glyphicon glyphicon-home"></span>Rooms
+          <span class="glyphicon glyphicon-home"></span><span i18n="SubMenu rooms|Rooms sub menu label@@roomsSubmenu">Rooms</span>
           <span class="glyphicon glyphicon-menu-right pull-right"></span>
         </a>
         <div class="rooms-list" #roomsList>
@@ -31,13 +32,16 @@
             </li>
           </ul>
           <div class="add-room-container" (click)="addRoom($event)">
-            <input #roomInput (keyup.enter)="addRoom($event)" type="text" placeholder="Add room"/>
+            <input #roomInput (keyup.enter)="addRoom($event)" type="text"
+                   i18n-placeholder="Placeholder add room|Placeholder add room input@@addRoomPlaceholder"
+                   placeholder="Add room"/>
           </div>
         </div>
       </li>
       <li [ngClass]="{'active': _currentTab === tabType.NEW_DEVICES}">
         <a (click)="loadNewDevices()">
-          <span class="glyphicon glyphicon-dashboard"></span>New devices
+          <span class="glyphicon glyphicon-dashboard"></span><span
+          i18n="SubMenu new devices|New devices sub menu label@@newDevicesSubmenu">New devices</span>
           <span class="glyphicon glyphicon-menu-right pull-right"></span>
         </a>
       </li>
@@ -59,6 +63,6 @@
 <lisa-add-device-modal #modalAddDevice>
 
 </lisa-add-device-modal>
-<div class="floating-button">
+<div class="floating-button" (click)="showAddDevice()">
   +
 </div>

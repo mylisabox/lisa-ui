@@ -1,0 +1,16 @@
+<div [formGroup]="form" [ngClass]="{hidden: question.type == 'hidden'}">
+  <label [attr.for]="question.name">{{question.label}} {{question.required ? '*' : ''}}</label>
+
+  <div [ngSwitch]="question.controlType">
+
+    <input #input class="form-control" *ngSwitchCase="'textbox'" [formControlName]="question.name"
+           [id]="question.name" [type]="question.type" [value]="question.defaultValue || ''">
+
+    <select class="form-control" [id]="question.name" *ngSwitchCase="'dropdown'" [formControlName]="question.name">
+      <option *ngFor="let opt of question.options" [value]="opt.name">{{opt.value}}</option>
+    </select>
+
+  </div>
+
+  <div class="error" *ngIf="form.controls[question.name].touched && !form.controls[question.name].valid">{{error}}</div>
+</div>

@@ -7,8 +7,4 @@ describe('lisa-ui App', function() {
     page = new LisaUiPage();
   });
 
-  it('should display message saying app works', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('lisa works!');
-  });
 });

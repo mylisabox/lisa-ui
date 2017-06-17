@@ -3,6 +3,7 @@ import {BaseElement} from "../../../interfaces/base-element";
 import {Device} from "../../../models/device.type";
 import {WidgetHelpers} from "../../../shared/widget-helpers";
 import {Globals} from "../../../common/globals";
+import {AuthService} from "../../../services/auth.service";
 
 @Component({
   selector: 'lisa-camera',
@@ -20,7 +21,7 @@ export class CameraComponent implements BaseElement, OnInit {
   @Input() src: string;
   @Input() flex: number = 1;
 
-  constructor(private _ngEl: ElementRef, private _renderer: Renderer2) {
+  constructor(private _authService: AuthService, private _ngEl: ElementRef, private _renderer: Renderer2) {
     this._renderer.addClass(this._ngEl.nativeElement, 'main-center');
     this._renderer.addClass(this._ngEl.nativeElement, 'cross-center');
   }
@@ -33,12 +34,12 @@ export class CameraComponent implements BaseElement, OnInit {
     this.img = WidgetHelpers.get(this.device.data, this.infos.image);
     this.video = WidgetHelpers.get(this.device.data, this.infos.video);
     if (!this.img || this.img == '') {
-      this.img = Globals.getUrl('/camera/snapshot?url=' + this.video)
+      this.img = Globals.getUrl('/camera/snapshot?token=' + this._authService.getToken() + '&url=' + this.video)
     }
     else {
-      this.img = Globals.getUrl('/camera/snapshot?url=' + this.img)
+      this.img = Globals.getUrl('/camera/snapshot?token=' + this._authService.getToken() + '&url=' + this.img)
     }
-    this.video = Globals.getUrl('/camera/stream?url=' + this.video)
+    this.video = Globals.getUrl('/camera/stream?token=' + this._authService.getToken() + '&url=' + this.video)
     this.src = this.video;
     this.togglePlay();
   }

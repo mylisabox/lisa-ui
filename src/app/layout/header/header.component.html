@@ -3,8 +3,9 @@
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" (click)="isMenuCollapsed = !isMenuCollapsed"
               data-toggle="collapse" data-target=".navbar-collapse"><span
-        class="sr-only">Toggle navigation</span>
-        <span class="sr-only">Toggle navigation</span>
+        class="sr-only" i18n="Toggle navigation|Toggle navigation button@@toggleNavButton">Toggle navigation</span>
+        <span class="sr-only"
+              i18n="Toggle navigation|Toggle navigation button@@toggleNavButton">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -18,16 +19,16 @@
          [collapse]="isMenuCollapsed">
       <ul class="nav navbar-nav">
         <li routerLink="/home" routerLinkActive="active" class="active" (click)="isMenuCollapsed = true"><a
-          class="pointer" i18n="Home menu label">Home</a>
+          class="pointer" i18n="Menu home|Home menu label@@homeMenu">Home</a>
         </li>
-        <li routerLink="/scenes" routerLinkActive="active" (click)="isMenuCollapsed = true"><a class="pointer"
-                                                                                               i18n="Scenes menu label">Scenes</a>
+        <li routerLink="/scenes" routerLinkActive="active" (click)="isMenuCollapsed = true">
+          <a class="pointer" i18n="Menu scenes|Scenes menu label@@scenesMenu">Scenes</a>
         </li>
-        <li routerLink="/plugins" routerLinkActive="active" (click)="isMenuCollapsed = true"><a class="pointer"
-                                                                                                i18n="Plugins menu label">Plugins</a>
+        <li routerLink="/plugins" routerLinkActive="active" (click)="isMenuCollapsed = true">
+          <a class="pointer" i18n="Menu plugins|Plugins menu label@@pluginsMenu">Plugins</a>
         </li>
-        <li routerLink="/shop" routerLinkActive="active" (click)="isMenuCollapsed = true"><a class="pointer"
-                                                                                             i18n="Shop menu label">Shop</a>
+        <li routerLink="/shop" routerLinkActive="active" (click)="isMenuCollapsed = true">
+          <a class="pointer" i18n="Menu shop|Shop menu label@@shopMenu">Shop</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -35,10 +36,11 @@
           <a class="pointer"><span class="glyphicon glyphicon-record"></span></a>
         </li>
         <li routerLink="/profile" routerLinkActive="active" (click)="isMenuCollapsed = true">
-          <a class="pointer" i18n="Profile menu label"><span class="glyphicon glyphicon-user"></span>
-            Profile</a></li>
-        <li><a class="pointer" (click)="logout()" i18n="Logout menu label"><span
-          class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+          <a class="pointer"><span class="glyphicon glyphicon-user"></span>
+            <span i18n="Menu profile|Profile menu label@@profileMenu">Profile</span></a></li>
+        <li><a class="pointer" (click)="logout()"><span
+          class="glyphicon glyphicon-log-out"></span> <span
+          i18n="Menu logout|Logout menu label@@logoutMenu">Logout</span></a></li>
         <li>
           <a id="dLabel" role="button"
              (click)="isNotificationCollapsed = !isNotificationCollapsed; isMenuCollapsed = true"
@@ -55,9 +57,12 @@
     [collapse]="isNotificationCollapsed">
 
   <div class="notification-heading">
-    <h4 class="menu-title">Notifications</h4>
+    <h4 class="menu-title" i18n="Title notification|Title notification label@@notificationTitle">Notifications</h4>
     <h4 class="menu-title pull-right" routerLink="/notifications" routerLinkActive="active">
-      <a href="#">View all<i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+      <a href="#">
+        <span i18n="Link view all|Link view all label@@viewAllLink">View all</span>
+        <i class="glyphicon glyphicon-circle-arrow-right"></i>
+      </a>
     </h4>
   </div>
   <li class="divider"></li>
@@ -105,7 +110,8 @@
   <li class="divider"></li>
   <div class="notification-footer">
     <h4 class="menu-title" routerLink="/notifications" routerLinkActive="active">
-      <a href="#">View all<i class="glyphicon glyphicon-circle-arrow-right"></i></a>
+      <a href="#"><span i18n="Link view all|Link view all label@@viewAllLink">View all</span><i
+        class="glyphicon glyphicon-circle-arrow-right"></i></a>
     </h4>
   </div>
 </ul>

@@ -1,18 +1,63 @@
 <div (click)="hide()" class="add-device-mask"></div>
 <div class="add-device-content">
   <div (click)="hide()" class="close">x</div>
-  <h3>
-    Add a device...
-  </h3>
 
-  <div>
-    <input type="search" class="search" placeholder="Search...">
-    <span class="search-icon glyphicon glyphicon-search"></span>
+  <!-- STEP 1 -->
+  <div *ngIf="currentDevice == null">
+    <h3 i18n="Title add device|Title of add device popup@@addDeviceTitle">Add a device...</h3>
+
+    <div>
+      <input type="search" class="search"
+             i18n-placeholder="Placeholder search|Placeholder for search input@@searchPlaceholder"
+             placeholder="Search...">
+      <span class="search-icon glyphicon glyphicon-search"></span>
+    </div>
+
+    <accordion>
+      <accordion-group *ngFor="let plugin of _plugins; let first = first" heading="{{plugin.name}}" [isOpen]="first">
+        <div *ngFor="let device of plugin.devicesSettings" class="plugin-device"
+             (click)="deviceClicked(plugin, device)">
+          <img src="{{device.image}}">
+          <div>{{device.name}}</div>
+        </div>
+
+      </accordion-group>
+    </accordion>
   </div>
 
+  <!-- STEP 2 SETTINGS-->
+  <div *ngIf="currentDevice && currentDevice.pairing == 'settings'">
+    <h3>
+      {{currentDevice.name}}
+    </h3>
+    <div>
+      <br/>
+      <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
-  <accordion>
-    <accordion-group heading="Test"></accordion-group>
-  </accordion>
+        <div *ngFor="let question of currentDevice.settings, let i = index" class="form-row">
+          <lisa-field [needFocus]="i==0" [question]="question" [form]="form"></lisa-field>
+        </div>
+        <br/>
+        <div class="form-buttons">
+          <button (click)="backToSearch()" i18n="Button cancel|Cancel button@@cancelButton">Cancel</button>
+          <button (click)="saveDevice()" type="submit" [disabled]="!form.valid"
+                  i18n="Button save|Save button@@saveButton">Save
+          </button>
+        </div>
+        <div *ngIf="error" i18n="Generic error|Generic error message@@baseError" class="error">An error occurred, please
+          check your informations and try again
+        </div>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- STEP 2 LIST-->
+  <div *ngIf="currentDevice && currentDevice.pairing == 'list'">
+    <h3>
+      {{currentDevice.name}}
+    </h3>
+    LIST
+  </div>
 
 </div>

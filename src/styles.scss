@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /* You can add global styles to this file, and also import other style files */
-@import "variables";
-@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "variables.scss";
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap.scss";
 
 @media (min-width: 1200px) {
   .container {
@@ -43,6 +43,11 @@ input[type="search"]:focus, input[type="text"]:focus {
 
 *:focus {
   outline: none
+}
+
+.error {
+  float: right;
+  color: red;
 }
 
 .hidden {
