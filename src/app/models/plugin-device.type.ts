@@ -3,6 +3,9 @@ export interface PluginDevice {
   id: string
   name: string
   description: string
+  driver: string
+  template: string
+  type: string
   image: string
   pairing: string
   settings?: Array<Field>

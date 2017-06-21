@@ -69,14 +69,15 @@ export class AddDeviceModalComponent implements OnInit {
   saveDevice() {
     const formData = this.form.value;
 
-    const directField = ['id', 'name', 'pluginName', 'type', 'template'];
+    const directField = ['id', 'name', 'pluginName', 'type', 'driver', 'template'];
 
     const device: Device = {
       id: formData.id,
       name: formData.name,
       pluginName: formData.pluginName,
-      template: formData.template,
-      type: formData.type,
+      driver: this.currentDevice.driver || formData.driver,
+      template: this.currentDevice.template || formData.template,
+      type: this.currentDevice.type || formData.type,
       data: {},
       privateData: {}
     };

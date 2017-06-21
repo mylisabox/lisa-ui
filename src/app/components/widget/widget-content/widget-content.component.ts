@@ -14,7 +14,6 @@ import {
 } from "@angular/core";
 import {Device} from "../../../models/device.type";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
-import {DeviceService} from "../../../services/device.service";
 import {WidgetHelpers} from "../../../shared/widget-helpers";
 
 @Component({
@@ -37,8 +36,7 @@ export class WidgetContentComponent implements OnInit, OnChanges {
     this._buildContent();
   }
 
-  constructor(private _deviveApi: DeviceService,
-              private _componentFactory: ComponentFactoryResolver,
+  constructor(private _componentFactory: ComponentFactoryResolver,
               private _ngEl: ElementRef,
               private _renderer: Renderer2) {
     this._renderer.addClass(this._ngEl.nativeElement, 'vbox');

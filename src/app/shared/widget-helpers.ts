@@ -57,7 +57,6 @@ export class WidgetHelpers {
   static addComponents(parent: WidgetContentComponent, viewCntRef: ViewContainerRef, componentFactoryResolver: ComponentFactoryResolver,
                        component: any, device: Device): any {
     if (!component || !device) {
-      debugger;
       return;
     }
     let childOnChangesObservable: Observable<WidgetEvent>[] = [];
@@ -71,7 +70,7 @@ export class WidgetHelpers {
       ngComponent.infos = component;
       ngComponent.populateComponent();
       if (ngComponent.onChange) {
-        childOnChangesObservable.push(ngComponent.onChange);//
+        childOnChangesObservable.push(ngComponent.onChange.asObservable());//
         ngComponent.onChange.subscribe((widgetEvent: WidgetEvent) => parent.onValueChange(widgetEvent));
       }
     }

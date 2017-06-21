@@ -28,6 +28,7 @@ export class FieldService {
       if (question.type == 'email') {
         validator.push(Validators.email);
       }
+
       if (question.type == 'url' && !question.regexp) {
         const patterns = {
           protocol: '^(http(s)?(:\/\/))(www\.)?',
@@ -36,8 +37,13 @@ export class FieldService {
           params: '([-a-zA-Z0-9:%_\+.,~#?&//=]*)$'
         };
 
-        const regex = new RegExp(patterns.protocol + patterns.domain + patterns.tld + patterns.params, 'gi');
-        validator.push(Validators.pattern(regex));
+        const urlRegex = new RegExp(patterns.protocol + patterns.domain + patterns.tld + patterns.params, 'gi');
+        validator.push(Validators.pattern(urlRegex));
+      }
+
+      if (question.type == 'ip' && !question.regexp) {
+        const ipRegex = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/g;
+        validator.push(Validators.pattern(ipRegex));
       }
       group[question.name] = new FormControl(question.value || question.defaultValue || '', validator);
     });
