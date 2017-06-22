@@ -1,3 +1,10 @@
 <div class="container page">
-  <lisa-login-box class="vcenter"></lisa-login-box>
+  <lisa-login-box *ngIf="mode == 'login' && !pending" class="vcenter"></lisa-login-box>
+
+  <lisa-register-box *ngIf="mode == 'register' && !pending" class="vcenter"></lisa-register-box>
+
+  <div *ngIf="pending" class="boot-loading">
+    <img src="/images/logo-loading.png" title="logo L.I.S.A."><br>
+    <span i18n="Loading|Loading@@loading">Loading...</span>
+  </div>
 </div>

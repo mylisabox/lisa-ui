@@ -33,6 +33,7 @@ import {ImageButtonComponent} from "./components/widget/image-button/image-butto
 import {CameraComponent} from "./components/widget/camera/camera.component";
 import {SliderComponent} from "./components/widget/slider/slider.component";
 import {LoginBoxComponent} from "./pages/login/login-box/login-box.component";
+import {RegisterBoxComponent} from "./pages/login/register-box/register-box.component";
 import {NotificationService} from "./services/notification.service";
 import {WebsocketService} from "./interfaces/websocket-service";
 import {BROWSER_WEBSOCKET_PROVIDERS} from "./services/websocket-front.service";
@@ -77,6 +78,7 @@ import {FieldComponent} from "./components/forms/field.component";
     CameraComponent,
     SliderComponent,
     LoginBoxComponent,
+    RegisterBoxComponent,
     NotificationManagerComponent,
     FocusDirective,
     ConfirmModalComponent,

@@ -1,11 +1,6 @@
 @import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
 
-.login-box {
+.register-box {
   width: 320px;
   background-color: lighten($gray-light, 28%);
-}
-
-.error {
-  float: none;
-  text-align: center;
 }

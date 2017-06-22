@@ -17,7 +17,7 @@
         <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">11</context>
+          <context context-type="linenumber">12</context>
         </context-group>
         <note priority="1" from="description">Placeholder for search input</note>
         <note priority="1" from="meaning">Placeholder search</note>
@@ -27,27 +27,30 @@
         <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">42</context>
         </context-group>
         <note priority="1" from="description">Cancel button</note>
         <note priority="1" from="meaning">Button cancel</note>
       </trans-unit>
       <trans-unit id="saveButton" datatype="html">
-        <source>Save</source>
+        <source>Save
+          </source>
         <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">42</context>
+          <context context-type="linenumber">44</context>
         </context-group>
         <note priority="1" from="description">Save button</note>
         <note priority="1" from="meaning">Button save</note>
       </trans-unit>
       <trans-unit id="baseError" datatype="html">
-        <source>An error occurred, please check your informations and try again</source>
+        <source>An error occurred, please
+          check your informations and try again
+        </source>
         <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">44</context>
+          <context context-type="linenumber">47</context>
         </context-group>
         <note priority="1" from="description">Generic error message</note>
         <note priority="1" from="meaning">Generic error</note>
@@ -91,6 +94,16 @@
         </context-group>
         <note priority="1" from="description">New devices sub menu label</note>
         <note priority="1" from="meaning">SubMenu new devices</note>
+      </trans-unit>
+      <trans-unit id="loading" datatype="html">
+        <source>Loading...</source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">Loading</note>
+        <note priority="1" from="meaning">Loading</note>
       </trans-unit>
       <trans-unit id="toggleNavButton" datatype="html">
         <source>Toggle navigation</source>
@@ -201,6 +214,14 @@
           <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
           <context context-type="linenumber">6</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/register-box/register-box.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/register-box/register-box.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
         <note priority="1" from="description">Label email</note>
         <note priority="1" from="meaning">Label email</note>
       </trans-unit>
@@ -215,6 +236,14 @@
           <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
           <context context-type="linenumber">13</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/register-box/register-box.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/register-box/register-box.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
         <note priority="1" from="description">Label password</note>
         <note priority="1" from="meaning">Label password</note>
       </trans-unit>
@@ -227,6 +256,17 @@
         </context-group>
         <note priority="1" from="description">Button login</note>
         <note priority="1" from="meaning">Button login</note>
+      </trans-unit>
+      <trans-unit id="registerButton" datatype="html">
+        <source>Register
+      </source>
+        <target/>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/register-box/register-box.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Button register</note>
+        <note priority="1" from="meaning">Button register</note>
       </trans-unit>
     </body>
   </file>

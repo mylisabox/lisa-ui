@@ -2,7 +2,7 @@ import {Injectable} from "@angular/core";
 import {Router} from "@angular/router";
 import {contentHeaders} from "../common/headers";
 import {Http} from "@angular/http";
-import {AuthHttp, tokenNotExpired, JwtHelper} from "angular2-jwt";
+import {AuthHttp, JwtHelper, tokenNotExpired} from "angular2-jwt";
 import {Globals} from "../common/globals";
 
 @Injectable()
@@ -27,6 +27,10 @@ export class AuthService {
     this.userId = data.user.id;
   }
 
+  isInitialized() {
+    return this.http.get(Globals.getUrl('/initialized'), {headers: contentHeaders});
+  }
+
   isConnected() {
     if (this.getToken() && tokenNotExpired(Globals.tokenKey)) {
       if (!this.userId) {
@@ -42,6 +46,11 @@ export class AuthService {
   login(email, password) {
     const body = JSON.stringify({email, password});
     return this.http.post(Globals.getUrl('/auth/local'), body, {headers: contentHeaders});
+  }
+
+  register(email, password) {
+    const body = JSON.stringify({email, password});
+    return this.http.post(Globals.getUrl('/auth/local/register'), body, {headers: contentHeaders});
   }
 
   logout() {

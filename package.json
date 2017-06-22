@@ -1,13 +1,13 @@
 {
   "name": "lisa-ui",
-  "version": "0.0.0",
-  "license": "MIT",
+  "version": "0.0.1",
+  "license": "GPL-3.0",
   "angular-cli": {},
   "scripts": {
     "start": "ng serve --host 0.0.0.0",
     "build": "npm run buildEN && npm run buildFR",
-    "buildEN": "ng build --output-path=bundle-en --prod --aot --i18nFile=./src/locale/messages.en.xlf --locale=en --i18nFormat=xlf",
-    "buildFR": "ng build --output-path=bundle-fr --prod --aot --i18nFile=./src/locale/messages.fr.xlf --locale=fr --i18nFormat=xlf",
+    "buildEN": "ng build --output-path=bundle/bundle-en --prod --aot --i18nFile=./src/locale/messages.en.xlf --locale=en --i18nFormat=xlf",
+    "buildFR": "ng build --output-path=bundle/bundle-fr --prod --aot --i18nFile=./src/locale/messages.fr.xlf --locale=fr --i18nFormat=xlf",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
     "i18n": "ng xi18n --output-path=src/locale --locale=en && xliffmerge --profile xliffmerge.json en fr",

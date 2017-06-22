@@ -15,33 +15,24 @@
       <trans-unit id="searchPlaceholder" datatype="html">
         <source>Search...</source>
         <target state="final">Search...</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">11</context>
-        </context-group>
+        
         <note priority="1" from="description">Placeholder for search input</note>
         <note priority="1" from="meaning">Placeholder search</note>
-      </trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">12</context></context-group></trans-unit>
       <trans-unit id="cancelButton" datatype="html">
         <source>Cancel</source>
         <target state="final">Cancel</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">41</context>
-        </context-group>
+        
         <note priority="1" from="description">Cancel button</note>
         <note priority="1" from="meaning">Button cancel</note>
-      </trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">42</context></context-group></trans-unit>
       <trans-unit id="saveButton" datatype="html">
         <source>Save</source>
         <target state="final">Save</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
+        
         <note priority="1" from="description">Save button</note>
         <note priority="1" from="meaning">Button save</note>
-      </trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">44</context></context-group></trans-unit>
       <trans-unit id="favoritesSubmenu" datatype="html">
         <source>Favorites</source>
         <target state="final">Favorites</target>
@@ -183,52 +174,54 @@
       <trans-unit id="emailLabel" datatype="html">
         <source>Email</source>
         <target state="final">Email</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
-          <context context-type="linenumber">4</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
-          <context context-type="linenumber">6</context>
-        </context-group>
+        
+        
         <note priority="1" from="description">Label email</note>
         <note priority="1" from="meaning">Label email</note>
-      </trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context><context context-type="linenumber">4</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context><context context-type="linenumber">6</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/login/register-box/register-box.component.ts</context><context context-type="linenumber">4</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/login/register-box/register-box.component.ts</context><context context-type="linenumber">6</context></context-group></trans-unit>
       <trans-unit id="passwordLabel" datatype="html">
         <source>Password</source>
         <target state="final">Password</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
-          <context context-type="linenumber">10</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
+        
+        
         <note priority="1" from="description">Label password</note>
         <note priority="1" from="meaning">Label password</note>
-      </trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context><context context-type="linenumber">10</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context><context context-type="linenumber">13</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/login/register-box/register-box.component.ts</context><context context-type="linenumber">10</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/login/register-box/register-box.component.ts</context><context context-type="linenumber">13</context></context-group></trans-unit>
       <trans-unit id="loginButton" datatype="html">
         <source>Login
     </source>
         <target state="final">Login
     </target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
-          <context context-type="linenumber">15</context>
-        </context-group>
+        
         <note priority="1" from="description">Button login</note>
         <note priority="1" from="meaning">Button login</note>
-      </trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context><context context-type="linenumber">16</context></context-group></trans-unit>
     <trans-unit id="baseError" datatype="html">
         <source>An error occurred, please check your informations and try again</source>
         <target state="final">An error occurred, please check your informations and try again</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
+        
         <note priority="1" from="description">Generic error message</note>
         <note priority="1" from="meaning">Generic error</note>
+      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">47</context></context-group></trans-unit><trans-unit id="registerButton" datatype="html">
+        <source>Register
+      </source>
+        <target state="final">Register
+      </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/register-box/register-box.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <note priority="1" from="description">Button register</note>
+        <note priority="1" from="meaning">Button register</note>
+      </trans-unit><trans-unit id="loading" datatype="html">
+        <source>Loading...</source>
+        <target state="final">Loading...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/login/login.component.ts</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">Loading</note>
+        <note priority="1" from="meaning">Loading</note>
       </trans-unit></body>
   </file>
 </xliff>

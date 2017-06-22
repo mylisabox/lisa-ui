@@ -5,7 +5,7 @@ const server = express();
 const supportedLanguage = ['en', 'fr'];
 
 for (let language of supportedLanguage) {
-  server.use('/', express.static(__dirname + `/bundle-${language}`));
+  server.use('/', express.static(__dirname + `/bundle/bundle-${language}`));
 }
 
 server.get('*', function (req, res) {
@@ -21,7 +21,7 @@ server.get('*', function (req, res) {
     lang = req.query.lang;
   }
 
-  res.sendfile(`bundle-${lang}/index.html`);
+  res.sendfile(`bundle/bundle-${lang}/index.html`);
 });
 
 server.listen(4200);
