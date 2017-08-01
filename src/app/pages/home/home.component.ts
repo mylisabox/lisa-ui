@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, Renderer, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, Input, OnInit, Renderer, Renderer2, ViewChild} from "@angular/core";
 import {Room} from "../../models/room.type";
 import {RoomService} from "../../services/room.service";
 import {WebsocketService} from "../../interfaces/websocket-service";
@@ -35,7 +35,7 @@ const ROOM_LINE_HEIGHT = 42.5;
     '(window:resize)': '_onResize()'
   }
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, AfterViewInit {
   @ViewChild('roomsList') roomsList: ElementRef;
   @ViewChild('roomInput') roomInput: ElementRef;
   @ViewChild('dashboard') dashboard: DashboardComponent;
@@ -58,7 +58,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private _deviveApi: DeviceService,
               private _ngEl: ElementRef,
-              private _renderer: Renderer,
+              private _renderer: Renderer2,
               private _roomApi: RoomService,
               private _authService: AuthService,
               private _dashboardApi: DashboardService,
@@ -90,7 +90,7 @@ export class HomeComponent implements OnInit {
             else if (event.command === 'destroy') {
               this._rooms = this._rooms.filter(room => room.id != event.item);
             }
-            this._renderer.setElementStyle(this.roomsList.nativeElement, 'height', ((this._rooms.length + 1) * ROOM_LINE_HEIGHT) + 'px');
+            this._renderer.setStyle(this.roomsList.nativeElement, 'height', ((this._rooms.length + 1) * ROOM_LINE_HEIGHT) + 'px');
             break;
           case 'device':
             if (event.command === 'create') {
@@ -132,8 +132,14 @@ export class HomeComponent implements OnInit {
     this.loadFavorites();
   }
 
+  ngAfterViewInit(): void {
+    this.dashboard.onDrag.subscribe(event => {
+      //TODO check if above a room line to move it into that room
+    });
+  }
+
   showAddDevice() {
-    this.modalAddDevice.show();
+    this.modalAddDevice.show(this._currentSelectedRoom ? this._currentSelectedRoom.id : null);
   }
 
   loadFavorites() {
@@ -176,11 +182,11 @@ export class HomeComponent implements OnInit {
   toggleRooms() {
     if (this.roomsList.nativeElement.offsetHeight === 0) {
       this._roomsListOpen = true;
-      this._renderer.setElementStyle(this.roomsList.nativeElement, 'height', ((this._rooms.length + 1) * ROOM_LINE_HEIGHT) + 'px');
+      this._renderer.setStyle(this.roomsList.nativeElement, 'height', ((this._rooms.length + 1) * ROOM_LINE_HEIGHT) + 'px');
     }
     else {
       this._roomsListOpen = false;
-      this._renderer.setElementStyle(this.roomsList.nativeElement, 'height', '0px');
+      this._renderer.setStyle(this.roomsList.nativeElement, 'height', '0px');
     }
   }
 

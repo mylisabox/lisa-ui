@@ -58,11 +58,21 @@ div {
   margin-bottom: 10px;
 }
 
+.search-container, .list-container, .settings-container, .image-container {
+  width: 100%;
+}
+
+.scrollable {
+  height: 100%;
+  overflow: scroll;
+}
+
 .add-device-content {
   z-index: 1031;
   width: 95%;
   max-width: 800px;
-  min-height: 600px;
+  height: 600px;
+  display: flex;
   background: white;
   top: 50%;
   left: 50%;
@@ -80,4 +90,23 @@ div {
 
 .form-buttons {
   text-align: right;
+}
+
+label {
+  user-select: none;
+  cursor: pointer;
+}
+
+.flex_column {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
+
+.flex_1 {
+  flex: 1;
+}
+
+.flex_button {
+  align-self: flex-end;
 }
