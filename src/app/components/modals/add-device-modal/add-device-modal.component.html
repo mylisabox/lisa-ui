@@ -60,8 +60,7 @@
     </h3>
     <br/>
     <div class="flex_1 flex_column">
-      <div *ngIf="!currentCustomStep.singleChoice && availableDevices.length > 0" class="form-row"
-           i18n="Select all available devices|Select all available devices@@addDevicesSelectAll">
+      <div *ngIf="!currentCustomStep.singleChoice && availableDevices.length > 0" class="form-row">
         <input type="checkbox" [checked]="selectAll" (change)="toggleSelectAll()" id="add_all_devices">&nbsp;&nbsp;
         <label for="add_all_devices" i18n="Select all|Select all label@@labelSelectAll">Select all</label>
       </div>

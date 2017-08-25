@@ -57,6 +57,10 @@ export class WidgetLISAComponent extends WidgetComponent implements AfterViewIni
     this._content.onChange.subscribe(widgetEvent => {
       this.onChange.next(widgetEvent);
     });
+    this._content.onSizeChange.subscribe(size => {
+      this.setSize(size);
+    });
+    this.setSize(this._content.getWidgetSize());
   }
 
   onRenameDevice(device: Device): void {
