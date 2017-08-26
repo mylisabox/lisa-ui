@@ -4,7 +4,6 @@
     <body>
       <trans-unit id="addDeviceTitle" datatype="html">
         <source>Add a device...</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
           <context context-type="linenumber">7</context>
@@ -14,7 +13,6 @@
       </trans-unit>
       <trans-unit id="searchPlaceholder" datatype="html">
         <source>Search...</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
           <context context-type="linenumber">12</context>
@@ -22,42 +20,67 @@
         <note priority="1" from="description">Placeholder for search input</note>
         <note priority="1" from="meaning">Placeholder search</note>
       </trans-unit>
-      <trans-unit id="cancelButton" datatype="html">
-        <source>Cancel</source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">42</context>
-        </context-group>
-        <note priority="1" from="description">Cancel button</note>
-        <note priority="1" from="meaning">Button cancel</note>
-      </trans-unit>
-      <trans-unit id="saveButton" datatype="html">
-        <source>Save
-          </source>
-        <target/>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">44</context>
-        </context-group>
-        <note priority="1" from="description">Save button</note>
-        <note priority="1" from="meaning">Button save</note>
-      </trans-unit>
       <trans-unit id="baseError" datatype="html">
         <source>An error occurred, please
           check your informations and try again
         </source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">47</context>
+          <context context-type="linenumber">41</context>
         </context-group>
         <note priority="1" from="description">Generic error message</note>
         <note priority="1" from="meaning">Generic error</note>
       </trans-unit>
+      <trans-unit id="cancelButton" datatype="html">
+        <source>Cancel</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">89</context>
+        </context-group>
+        <note priority="1" from="description">Cancel button</note>
+        <note priority="1" from="meaning">Button cancel</note>
+      </trans-unit>
+      <trans-unit id="continueButton" datatype="html">
+        <source>
+        Continue
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+        <note priority="1" from="description">Continue button</note>
+        <note priority="1" from="meaning">Button continue</note>
+      </trans-unit>
+      <trans-unit id="labelSelectAll" datatype="html">
+        <source>Select all</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+        <note priority="1" from="description">Select all label</note>
+        <note priority="1" from="meaning">Select all</note>
+      </trans-unit>
+      <trans-unit id="messageNoDevice" datatype="html">
+        <source>No device
+          available
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+        <note priority="1" from="description">No Device message</note>
+        <note priority="1" from="meaning">No Device</note>
+      </trans-unit>
       <trans-unit id="favoritesSubmenu" datatype="html">
         <source>Favorites</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
           <context context-type="linenumber">9</context>
@@ -67,7 +90,6 @@
       </trans-unit>
       <trans-unit id="roomsSubmenu" datatype="html">
         <source>Rooms</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
           <context context-type="linenumber">15</context>
@@ -77,7 +99,6 @@
       </trans-unit>
       <trans-unit id="addRoomPlaceholder" datatype="html">
         <source>Add room</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
           <context context-type="linenumber">37</context>
@@ -87,7 +108,6 @@
       </trans-unit>
       <trans-unit id="newDevicesSubmenu" datatype="html">
         <source>New devices</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/home/home.component.ts</context>
           <context context-type="linenumber">44</context>
@@ -97,7 +117,6 @@
       </trans-unit>
       <trans-unit id="loading" datatype="html">
         <source>Loading...</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/login/login.component.ts</context>
           <context context-type="linenumber">8</context>
@@ -107,7 +126,6 @@
       </trans-unit>
       <trans-unit id="toggleNavButton" datatype="html">
         <source>Toggle navigation</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/layout/header/header.component.ts</context>
           <context context-type="linenumber">6</context>
@@ -121,7 +139,6 @@
       </trans-unit>
       <trans-unit id="homeMenu" datatype="html">
         <source>Home</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/layout/header/header.component.ts</context>
           <context context-type="linenumber">22</context>
@@ -131,7 +148,6 @@
       </trans-unit>
       <trans-unit id="scenesMenu" datatype="html">
         <source>Scenes</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/layout/header/header.component.ts</context>
           <context context-type="linenumber">25</context>
@@ -141,7 +157,6 @@
       </trans-unit>
       <trans-unit id="pluginsMenu" datatype="html">
         <source>Plugins</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/layout/header/header.component.ts</context>
           <context context-type="linenumber">28</context>
@@ -151,7 +166,6 @@
       </trans-unit>
       <trans-unit id="shopMenu" datatype="html">
         <source>Shop</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/layout/header/header.component.ts</context>
           <context context-type="linenumber">31</context>
@@ -161,7 +175,6 @@
       </trans-unit>
       <trans-unit id="profileMenu" datatype="html">
         <source>Profile</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/layout/header/header.component.ts</context>
           <context context-type="linenumber">40</context>
@@ -171,7 +184,6 @@
       </trans-unit>
       <trans-unit id="logoutMenu" datatype="html">
         <source>Logout</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/layout/header/header.component.ts</context>
           <context context-type="linenumber">43</context>
@@ -181,7 +193,6 @@
       </trans-unit>
       <trans-unit id="notificationTitle" datatype="html">
         <source>Notifications</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/layout/header/header.component.ts</context>
           <context context-type="linenumber">60</context>
@@ -191,7 +202,6 @@
       </trans-unit>
       <trans-unit id="viewAllLink" datatype="html">
         <source>View all</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/layout/header/header.component.ts</context>
           <context context-type="linenumber">63</context>
@@ -205,7 +215,6 @@
       </trans-unit>
       <trans-unit id="emailLabel" datatype="html">
         <source>Email</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
           <context context-type="linenumber">4</context>
@@ -227,7 +236,6 @@
       </trans-unit>
       <trans-unit id="passwordLabel" datatype="html">
         <source>Password</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
           <context context-type="linenumber">10</context>
@@ -249,7 +257,6 @@
       </trans-unit>
       <trans-unit id="loginButton" datatype="html">
         <source>Login</source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/login/login-box/login-box.component.ts</context>
           <context context-type="linenumber">16</context>
@@ -260,7 +267,6 @@
       <trans-unit id="registerButton" datatype="html">
         <source>Register
       </source>
-        <target/>
         <context-group purpose="location">
           <context context-type="sourcefile">app/pages/login/register-box/register-box.component.ts</context>
           <context context-type="linenumber">16</context>

@@ -14,7 +14,7 @@ export class FieldComponent implements AfterViewInit {
   @ViewChild('input') input: ElementRef;
 
   get error() {
-    const errors = this.form.controls[this.question.name].errors;
+    const errors: any = this.form.controls[this.question.name].errors;
     let error;
     if (errors.required) {
       error = `${this.question.label} is required`;

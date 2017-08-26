@@ -14,6 +14,16 @@ export class PluginService extends ApiService<Plugin> {
     super(_http, _authService, '/plugin')
   }
 
+  pairing(plugin, driver, data) {
+    return this._http.post(`${Globals.getUrl(this._path)}/${plugin}/drivers/${driver}/pairing`, data,
+      this._buildOptions()).map((res: Response) => {
+      const pairingData = res.json();
+
+      return pairingData;
+    })
+      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
   search(query: string): Observable<Array<Plugin>> {
     return this._http.get(`${Globals.getUrl(this._path)}/search?${this._serialize({query: query, activated: true})}`,
       this._buildOptions())

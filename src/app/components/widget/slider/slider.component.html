@@ -27,9 +27,9 @@
     <div class="tooltip-arrow"></div>
     <div #tooltipMaxInner class="tooltip-inner"></div>
   </div>
-  <div #minHandle tabindex="0" (keydown)="keydown(0, $event)" (focus)="showTooltip()" (blur)="hideTooltip()"
+  <div #minHandle (keydown)="keydown(0, $event)" (focus)="showTooltip()" (blur)="hideTooltip()"
        class='slider-handle min-slider-handle {{ handleType }}' role='slider'></div>
-  <div #maxHandle tabindex="0" (keydown)="keydown(1, $event)" (focus)="showTooltip()" (blur)="hideTooltip()"
+  <div #maxHandle (keydown)="keydown(1, $event)" (focus)="showTooltip()" (blur)="hideTooltip()"
        class='slider-handle max-slider-handle {{ handleType }}' [ngClass]="{hide: type === 'slider'}"
        role='slider'></div>
 </div>

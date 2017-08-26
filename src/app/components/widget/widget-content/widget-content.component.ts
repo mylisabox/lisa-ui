@@ -26,6 +26,7 @@ export class WidgetContentComponent implements OnInit, OnChanges {
   @ViewChild('target', {read: ViewContainerRef}) target;
   private _isInitialized: boolean;
   @Output() onChange: EventEmitter<WidgetEvent> = new EventEmitter();
+  @Output() onSizeChange: EventEmitter<number[]> = new EventEmitter();
 
   get device(): Device {
     return this._device;
@@ -43,7 +44,6 @@ export class WidgetContentComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -53,6 +53,7 @@ export class WidgetContentComponent implements OnInit, OnChanges {
   private _buildContent() {
     this.target.clear();
     this.disableEvent();
+    this.onSizeChange.next([this.device.template.widgetWidth || 1, this.device.template.widgetHeight || 1])
     WidgetHelpers.addComponents(this, this.target, this._componentFactory, this.device.template, this.device);
     this.enableEvent();
   }
@@ -69,5 +70,9 @@ export class WidgetContentComponent implements OnInit, OnChanges {
 
   disableEvent() {
     this._isInitialized = false;
+  }
+
+  getWidgetSize() {
+    return [this.device.template.widgetWidth || 1, this.device.template.widgetHeight || 1]
   }
 }

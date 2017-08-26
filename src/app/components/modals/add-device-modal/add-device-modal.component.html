@@ -3,11 +3,11 @@
   <div (click)="hide()" class="close">x</div>
 
   <!-- STEP 1 -->
-  <div *ngIf="currentDevice == null">
+  <div class="search-container" *ngIf="currentDevice === null">
     <h3 i18n="Title add device|Title of add device popup@@addDeviceTitle">Add a device...</h3>
 
     <div>
-      <input type="search" class="search"
+      <input type="search" #searchField class="search" (keyup)="search(searchField.value)"
              i18n-placeholder="Placeholder search|Placeholder for search input@@searchPlaceholder"
              placeholder="Search...">
       <span class="search-icon glyphicon glyphicon-search"></span>
@@ -16,7 +16,7 @@
     <accordion>
       <accordion-group *ngFor="let plugin of _plugins; let first = first" heading="{{plugin.name}}" [isOpen]="first">
         <div *ngFor="let device of plugin.devicesSettings" class="plugin-device"
-             (click)="deviceClicked(plugin, device)">
+             (click)="deviceTypeClicked(plugin, device)">
           <img src="{{device.image}}">
           <div>{{device.name}}</div>
         </div>
@@ -26,11 +26,11 @@
   </div>
 
   <!-- STEP 2 SETTINGS-->
-  <div *ngIf="currentDevice && currentDevice.pairing == 'settings'">
+  <div class="flex_column settings-container" *ngIf="currentDevice && currentDevice.pairing === 'settings'">
     <h3>
       {{currentDevice.name}}
     </h3>
-    <div>
+    <div class="flex_1">
       <br/>
       <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
@@ -38,26 +38,59 @@
           <lisa-field [needFocus]="i==0" [question]="question" [form]="form"></lisa-field>
         </div>
         <br/>
-        <div class="form-buttons">
-          <button (click)="backToSearch()" i18n="Button cancel|Cancel button@@cancelButton">Cancel</button>
-          <button (click)="saveDevice()" type="submit" [disabled]="!form.valid"
-                  i18n="Button save|Save button@@saveButton">Save
-          </button>
-        </div>
         <div *ngIf="error" i18n="Generic error|Generic error message@@baseError" class="error">An error occurred, please
           check your informations and try again
         </div>
       </form>
     </div>
 
+    <div class="flex_button">
+      <button (click)="back()" i18n="Button cancel|Cancel button@@cancelButton">Cancel</button>
+      <button (click)="next()" [disabled]="!form.valid" i18n="Button continue|Continue button@@continueButton">
+        Continue
+      </button>
+    </div>
   </div>
 
   <!-- STEP 2 LIST-->
-  <div *ngIf="currentDevice && currentDevice.pairing == 'list'">
+  <div class="flex_column list-container"
+       *ngIf="(currentDevice && currentDevice.pairing === 'list') || (currentCustomStep.step && currentCustomStep.step.indexOf('_list') !== -1)">
     <h3>
       {{currentDevice.name}}
     </h3>
-    LIST
+    <br/>
+    <div class="flex_1 flex_column">
+      <div *ngIf="!currentCustomStep.singleChoice && availableDevices.length > 0" class="form-row">
+        <input type="checkbox" [checked]="selectAll" (change)="toggleSelectAll()" id="add_all_devices">&nbsp;&nbsp;
+        <label for="add_all_devices" i18n="Select all|Select all label@@labelSelectAll">Select all</label>
+      </div>
+      <div class="scrollable">
+        <div *ngIf="availableDevices.length === 0" i18n="No Device|No Device message@@messageNoDevice">No device
+          available
+        </div>
+        <div *ngFor="let device of availableDevices, let i = index" class="form-row">
+          <div *ngIf="currentCustomStep.singleChoice;then tplRadio else tplCheckbox"></div>
+
+          <ng-template #tplRadio>
+            &nbsp;&nbsp;<input #checkbox type="radio" name="devices[]" id="add_device_{{device.id}}"
+                               (change)="deviceChecked()" value="{{device.id}}" [checked]="isDeviceSelected(device)">&nbsp;&nbsp;
+          </ng-template>
+          <ng-template #tplCheckbox>
+            <input (change)="deviceChecked()" #checkbox type="checkbox" id="add_device_{{device.id}}"
+                   value="{{device.id}}" [checked]="isDeviceSelected(device)">&nbsp;&nbsp;
+          </ng-template>
+
+
+          <label for="add_device_{{device.id}}">{{device.name}}</label>
+        </div>
+      </div>
+    </div>
+    <div class="flex_button">
+      <button (click)="back()" i18n="Button cancel|Cancel button@@cancelButton">Cancel</button>
+      <button (click)="next()" i18n="Button continue|Continue button@@continueButton"
+              [disabled]="availableDevices.length === 0 || !canContinue">Continue
+      </button>
+    </div>
   </div>
 
 </div>

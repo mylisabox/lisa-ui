@@ -37,7 +37,7 @@ export class ButtonComponent implements BaseElement, OnInit {
   }
 
   populateComponent() {
-    this.text = this.infos.text;
+    this.text = WidgetHelpers.get(this.device.data, this.infos.text, this.infos.text);
     this.value = WidgetHelpers.get(this.device.data, this.infos.value, 1);
   }
 }

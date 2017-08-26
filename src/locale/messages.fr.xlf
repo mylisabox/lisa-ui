@@ -24,14 +24,8 @@
         
         <note priority="1" from="description">Cancel button</note>
         <note priority="1" from="meaning">Button cancel</note>
-      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">42</context></context-group></trans-unit>
-      <trans-unit id="saveButton" datatype="html">
-        <source>Save</source>
-        <target>Sauvegarder</target>
-        
-        <note priority="1" from="description">Save button</note>
-        <note priority="1" from="meaning">Button save</note>
-      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">44</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">48</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">89</context></context-group></trans-unit>
+      
       <trans-unit id="favoritesSubmenu" datatype="html">
         <source>Favorites</source>
         <target>Favoris</target>
@@ -199,7 +193,7 @@
         
         <note priority="1" from="description">Generic error message</note>
         <note priority="1" from="meaning">Generic error</note>
-      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">47</context></context-group></trans-unit><trans-unit id="registerButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">41</context></context-group></trans-unit><trans-unit id="registerButton" datatype="html">
         <source>Register
       </source>
         <target state="new">Créé le compte
@@ -219,6 +213,42 @@
         </context-group>
         <note priority="1" from="description">Loading</note>
         <note priority="1" from="meaning">Loading</note>
-      </trans-unit></body>
+      </trans-unit><trans-unit id="continueButton" datatype="html">
+        <source>
+        Continue
+      </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+        <note priority="1" from="description">Continue button</note>
+        <note priority="1" from="meaning">Button continue</note>
+      <target state="new">
+        Continuer
+      </target></trans-unit><trans-unit id="labelSelectAll" datatype="html">
+        <source>Select all</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+        <note priority="1" from="description">Select all label</note>
+        <note priority="1" from="meaning">Select all</note>
+      <target state="new">Tous sélectionner</target></trans-unit><trans-unit id="messageNoDevice" datatype="html">
+        <source>No device
+          available
+        </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+        <note priority="1" from="description">No Device message</note>
+        <note priority="1" from="meaning">No Device</note>
+      <target state="new">Aucun appareil
+          trouvé
+        </target></trans-unit></body>
   </file>
 </xliff>

@@ -3,6 +3,7 @@ export interface PluginDevice {
   id: string
   name: string
   description: string
+  pluginName: string
   driver: string
   template: string
   type: string
