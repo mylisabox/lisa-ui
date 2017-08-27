@@ -1,9 +1,9 @@
 import {Component, ElementRef, Input, OnInit, Renderer2} from "@angular/core";
 import {BaseElement} from "../../../interfaces/base-element";
 import {Device} from "../../../models/device.type";
-import {WidgetHelpers} from "../../../shared/widget-helpers";
 import {Globals} from "../../../common/globals";
 import {AuthService} from "../../../services/auth.service";
+import {ComponentHelpers} from "../../../shared/component-helpers";
 
 @Component({
   selector: 'lisa-camera',
@@ -31,8 +31,8 @@ export class CameraComponent implements BaseElement, OnInit {
   }
 
   populateComponent() {
-    this.img = WidgetHelpers.get(this.device.data, this.infos.image);
-    this.video = WidgetHelpers.get(this.device.data, this.infos.video);
+    this.img = ComponentHelpers.get(this.device.data, this.infos.image);
+    this.video = ComponentHelpers.get(this.device.data, this.infos.video);
     if (!this.img || this.img == '') {
       this.img = Globals.getUrl('/camera/snapshot?token=' + this._authService.getToken() + '&url=' + this.video)
     }

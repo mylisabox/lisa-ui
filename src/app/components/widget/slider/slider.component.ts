@@ -16,7 +16,8 @@ import {ControlValueAccessor} from "@angular/forms";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
 import {Device} from "../../../models/device.type";
 import {BaseElement} from "../../../interfaces/base-element";
-import {WidgetHelpers} from "../../../shared/widget-helpers";
+import {ComponentHelpers} from "../../../shared/component-helpers";
+import {Subject} from "rxjs/Subject";
 
 @Component({
   selector: 'lisa-slider',
@@ -32,7 +33,7 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
   inDrag: boolean;
 
   populateComponent() {
-    this.value = WidgetHelpers.get(this.device.data, this.infos.value);
+    this.value = ComponentHelpers.get(this.device.data, this.infos.value);
   }
 
   @Input() public animate: boolean = true;
@@ -50,7 +51,7 @@ export class SliderComponent implements BaseElement, OnInit, AfterViewInit, Cont
   @Input() public ticksPositions: Array<number> = [];
   @Input() public ticksLabels: Array<string> = [];
   @Input() public ticksSnapBounds: number = 0;
-  @Output() public onChange: EventEmitter<WidgetEvent> = new EventEmitter<WidgetEvent>();
+  @Output() public onChange: Subject<WidgetEvent> = new Subject<WidgetEvent>();
   @Output() public onDragStart: EventEmitter<any> = new EventEmitter();
   @Output() public onDragStop: EventEmitter<any> = new EventEmitter();
   @ViewChild('sliderCtn') private sliderCtn: ElementRef;

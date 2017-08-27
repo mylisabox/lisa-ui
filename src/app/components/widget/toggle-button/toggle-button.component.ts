@@ -1,8 +1,8 @@
-import {Component, OnInit, Input, ElementRef, Renderer2, ViewChild, EventEmitter, Output} from "@angular/core";
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2, ViewChild} from "@angular/core";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
 import {Device} from "../../../models/device.type";
 import {BaseElement} from "../../../interfaces/base-element";
-import {WidgetHelpers} from "../../../shared/widget-helpers";
+import {ComponentHelpers} from "../../../shared/component-helpers";
 
 @Component({
   selector: 'lisa-toggle-button',
@@ -40,6 +40,6 @@ export class ToggleButtonComponent implements BaseElement, OnInit {
   }
 
   populateComponent() {
-    this.value = WidgetHelpers.get(this.device.data, this.infos.value);
+    this.value = ComponentHelpers.get(this.device.data, this.infos.value);
   }
 }

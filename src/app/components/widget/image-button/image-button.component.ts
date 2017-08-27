@@ -1,8 +1,8 @@
-import {Component, OnInit, Input, Renderer2, ElementRef, EventEmitter, Output} from "@angular/core";
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, Renderer2} from "@angular/core";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
 import {BaseElement} from "../../../interfaces/base-element";
 import {Device} from "../../../models/device.type";
-import {WidgetHelpers} from "../../../shared/widget-helpers";
+import {ComponentHelpers} from "../../../shared/component-helpers";
 
 @Component({
   selector: 'lisa-image-button',
@@ -57,7 +57,7 @@ export class ImageButtonComponent implements BaseElement, OnInit {
   }
 
   populateComponent() {
-    this.values = WidgetHelpers.get(this.device.data, this.infos.values, []);
-    this.value = WidgetHelpers.get(this.device.data, this.infos.value, this.infos.value);
+    this.values = ComponentHelpers.get(this.device.data, this.infos.values, []);
+    this.value = ComponentHelpers.get(this.device.data, this.infos.value, this.infos.value);
   }
 }

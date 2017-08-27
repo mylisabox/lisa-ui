@@ -1,8 +1,9 @@
-import {Component, OnInit, Input, Renderer2, ElementRef, Output, EventEmitter, AfterViewInit} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, Input, OnInit, Output, Renderer2} from "@angular/core";
 import {WidgetEvent} from "../../../interfaces/widget-event.type";
 import {BaseElement} from "../../../interfaces/base-element";
 import {Device} from "../../../models/device.type";
-import {WidgetHelpers} from "../../../shared/widget-helpers";
+import {Subject} from "rxjs/Subject";
+import {ComponentHelpers} from "../../../shared/component-helpers";
 
 @Component({
   selector: 'lisa-color-picker',
@@ -17,7 +18,7 @@ export class ColorPickerComponent implements BaseElement, OnInit, AfterViewInit 
   @Input() path: string;
   @Input() name: string;
 
-  @Output() public onChange: EventEmitter<WidgetEvent> = new EventEmitter<WidgetEvent>();
+  @Output() public onChange: Subject<WidgetEvent> = new Subject<WidgetEvent>();
   private isInitialized: boolean = false;
 
   constructor(private _ngEl: ElementRef, private _renderer: Renderer2) {
@@ -45,6 +46,6 @@ export class ColorPickerComponent implements BaseElement, OnInit, AfterViewInit 
   }
 
   populateComponent() {
-    this.value = WidgetHelpers.get(this.device.data, this.infos.value);
+    this.value = ComponentHelpers.get(this.device.data, this.infos.value);
   }
 }

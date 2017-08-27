@@ -3,6 +3,7 @@ import {Http, Response} from "@angular/http";
 import {AuthService} from "./auth.service";
 import {ApiService} from "./api.service";
 import {Observable} from "rxjs";
+import 'rxjs/add/operator/map';
 import {Globals} from "../common/globals";
 import {Dashboard} from "../models/dashboard.type";
 
