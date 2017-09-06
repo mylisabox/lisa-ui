@@ -2,6 +2,21 @@
   display: flex;
 }
 
-img {
+img, span {
   cursor: pointer;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+:host.stretchX img, :host.stretchX span {
+  width: 100%;
+}
+
+:host.stretchY img, :host.stretchY span {
+  height: 100%;
+}
+
+:host.stretchXY img, :host.stretchXY span {
+  height: 100%;
+  width: 100%;
 }

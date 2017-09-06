@@ -13,7 +13,7 @@ export class ImageButtonComponent implements BaseElement, OnInit {
   device: Device;
   infos: any;
   @Input() flex: number = 1;
-  @Input() values: Array<String> | Object = [];
+  @Input() values: Array<String> | Object = null;
   @Input() value: any;
   @Input() name: string;
   @Input() path: string;
@@ -28,27 +28,41 @@ export class ImageButtonComponent implements BaseElement, OnInit {
     this._renderer.setStyle(this._ngEl.nativeElement, 'flex', this.flex + '');
   }
 
+  onImageLoaded(event) {
+    console.log(event.target.width + ' ' + event.target.height + ', ' + this._ngEl.nativeElement.clientWidth + ' ' + this._ngEl.nativeElement.clientHeight)
+
+    if (event.target.width > this._ngEl.nativeElement.clientWidth) {
+      this._renderer.addClass(this._ngEl.nativeElement, 'stretchX')
+    }
+    else if (event.target.height > this._ngEl.nativeElement.clientHeight) {
+      this._renderer.addClass(this._ngEl.nativeElement, 'stretchY')
+    }
+
+    this._renderer.setStyle(this._ngEl.nativeElement, 'flex', this.flex + ' 1 0');
+  }
+
   onClick() {
-    if (Array.isArray(this.values)) {
-      if (this.value + 1 >= (this.values as Array<String>).length) {
-        this.value = 0;
+    if (this.values) {
+      if (Array.isArray(this.values)) {
+        if (this.value + 1 >= (this.values as Array<String>).length) {
+          this.value = 0;
+        }
+        else {
+          this.value++;
+        }
       }
       else {
-        this.value++;
-      }
-    }
-    else {
-      const keys = Object.keys(this.values);
+        const keys = Object.keys(this.values);
 
-      for (let i = 0; i < keys.length; i++) {
-        const key = keys[i];
-        if (key == this.value) {
-          this.value = keys[i + 1] || keys[0];
-          break;
+        for (let i = 0; i < keys.length; i++) {
+          const key = keys[i];
+          if (key == this.value) {
+            this.value = keys[i + 1] || keys[0];
+            break;
+          }
         }
       }
     }
-
     this.onChange.next({
       device: this.device,
       key: this.name,
@@ -57,7 +71,7 @@ export class ImageButtonComponent implements BaseElement, OnInit {
   }
 
   populateComponent() {
-    this.values = ComponentHelpers.get(this.device.data, this.infos.values, []);
+    this.values = ComponentHelpers.get(this.device.data, this.infos.values, null);
     this.value = ComponentHelpers.get(this.device.data, this.infos.value, this.infos.value);
   }
 }

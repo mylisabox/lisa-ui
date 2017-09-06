@@ -63,6 +63,7 @@ export class CameraComponent implements BaseElement, OnInit {
     if (this.src == this.video) {
       this.togglePlay();
     }
+    open(this.video, ':blank');
     //todo open/close a full screen popup with image inside
   }
 }
