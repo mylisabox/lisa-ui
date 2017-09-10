@@ -1,1 +1,6 @@
-<div #target></div>
+<div [class.hidden]="!_isEditMode" class="flex_column flex_1">
+  EDIT MODE
+</div>
+<div [class.hidden]="_isEditMode" class="flex_column flex_1">
+  <div #target></div>
+</div>

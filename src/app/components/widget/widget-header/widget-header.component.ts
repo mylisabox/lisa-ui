@@ -1,4 +1,4 @@
-import {Component, OnInit, Input, Output, EventEmitter} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {Device} from "../../../models/device.type";
 
 @Component({
@@ -13,6 +13,7 @@ export class WidgetHeaderComponent implements OnInit {
   @Output() onRemove: EventEmitter<Device> = new EventEmitter<Device>();
   @Output() onRename: EventEmitter<Device> = new EventEmitter<Device>();
   @Output() onFavorite: EventEmitter<Device> = new EventEmitter<Device>();
+  @Output() onEditMode: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   constructor() {
   }
@@ -29,8 +30,17 @@ export class WidgetHeaderComponent implements OnInit {
       this.device.name = name;
       this.onRename.emit(this.device);
     }
-    this._isEditMode = false;
+    this.setEditMode(false);
     this._isToolbarOpen = false;
+  }
+
+  toggleEditMode() {
+    this.setEditMode(!this._isEditMode);
+  }
+
+  setEditMode(enabled) {
+    this._isEditMode = enabled;
+    this.onEditMode.next(this._isEditMode);
   }
 
   toggleFavorite() {

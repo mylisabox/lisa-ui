@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, ElementRef, Input, OnInit, Renderer, Renderer2, ViewChild} from "@angular/core";
+import {AfterViewInit, Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from "@angular/core";
 import {Room} from "../../models/room.type";
 import {RoomService} from "../../services/room.service";
 import {WebsocketService} from "../../interfaces/websocket-service";
@@ -133,7 +133,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.dashboard.onDrag.subscribe(event => {
+    this.dashboard.onDrag.subscribe(data => {
       //TODO check if above a room line to move it into that room
     });
   }
@@ -230,6 +230,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
 
   askForRemoveRoom(room: Room) {
     console.log('TODO askForRemoveRoom');
+    //TODO modal ask remove
     this._roomApi.destroyItem(room.id).subscribe(
       (room: Room) => {
         this.clearEditRoom();

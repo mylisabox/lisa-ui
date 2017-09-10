@@ -200,7 +200,7 @@ export class AddDeviceModalComponent implements OnInit {
   private next() {
     this.canContinue = false;
     this.stepHistory.push(this.currentCustomStep);
-    if (this.currentCustomStep.step.indexOf('_list') !== -1) {
+    if (this.currentDevice.pairing === 'custom' && this.currentCustomStep.step.indexOf('_list') !== -1) {
       const selectedDevices = [];
       const currentData = this.currentCustomStep;
 
@@ -216,7 +216,7 @@ export class AddDeviceModalComponent implements OnInit {
       this.currentCustomData[this.currentCustomStep.step] = currentData.singleChoice ? selectedDevices[0] : selectedDevices;
       this.goToNextCustomStep();
     }
-    else if (this.currentCustomStep.step == 'settings') {
+    else if (this.currentDevice.pairing === 'settings' || (this.currentDevice.pairing === 'custom' && this.currentCustomStep.step == 'settings')) {
       this.saveDevice();
     } else if (this.currentCustomStep.step == 'list') {
       this.saveDevices();

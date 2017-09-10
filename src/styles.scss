@@ -252,4 +252,12 @@ flex stuff
   align-content: stretch;
 }
 
+.flex_column {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+}
 
+.flex_1 {
+  flex: 1;
+}

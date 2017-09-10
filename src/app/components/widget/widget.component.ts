@@ -37,7 +37,8 @@ export class WidgetLISAComponent extends WidgetComponent implements AfterViewIni
     return this._device;
   }
 
-  @Input() set device(device: Device) {
+  @Input()
+  set device(device: Device) {
     this._device = device;
     this._content.device = device;
   }
@@ -61,6 +62,10 @@ export class WidgetLISAComponent extends WidgetComponent implements AfterViewIni
       this.setSize(size);
     });
     this.setSize(this._content.getWidgetSize());
+  }
+
+  onEditMode(enabled) {
+    this._content.setEditMode(enabled);
   }
 
   onRenameDevice(device: Device): void {

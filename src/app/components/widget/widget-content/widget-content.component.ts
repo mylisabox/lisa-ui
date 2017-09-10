@@ -27,12 +27,14 @@ export class WidgetContentComponent implements OnInit, OnChanges {
   private _isInitialized: boolean;
   @Output() onChange: EventEmitter<WidgetEvent> = new EventEmitter();
   @Output() onSizeChange: EventEmitter<number[]> = new EventEmitter();
+  _isEditMode: boolean = false;
 
   get device(): Device {
     return this._device;
   }
 
-  @Input() set device(device: Device) {
+  @Input()
+  set device(device: Device) {
     this._device = device;
     this._buildContent();
   }
@@ -56,6 +58,10 @@ export class WidgetContentComponent implements OnInit, OnChanges {
     this.onSizeChange.next([this.device.template.widgetWidth || 1, this.device.template.widgetHeight || 1])
     WidgetHelpers.addComponents(this, this.target, this._componentFactory, this.device.template, this.device);
     this.enableEvent();
+  }
+
+  setEditMode(enabled) {
+    this._isEditMode = enabled;
   }
 
   onValueChange(info: WidgetEvent) {
