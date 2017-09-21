@@ -84,7 +84,6 @@ export class ScenesFormComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this._route.params.subscribe(params => {
-      debugger;
       if (params['bot']) {
         const bot = JSON.parse(params['bot']);
         this.questions[0].value = bot.displayName;
