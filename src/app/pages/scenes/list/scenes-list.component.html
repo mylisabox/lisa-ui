@@ -1,0 +1,28 @@
+<div class="table-responsive">
+  <table class="table table-striped table-bordered" *ngIf="states.length > 0">
+    <tr>
+      <th i18n="Name label|Name label@@nameLabel">Name</th>
+      <th i18n="Sentences label|Sentences label@@sentencesLabel">Sentences</th>
+      <th i18n="Responses label|Responses label@@responsesLabel">Responses</th>
+      <th i18n="Commands label|Commands label@@commandsLabel">Commands</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let entry of states">
+      <td>{{entry.displayName}}</td>
+      <td>{{entry.data.sentences.length}}</td>
+      <td>{{entry.data.responses.length}}</td>
+      <td>{{entry.data.commands.length}}</td>
+      <td>
+        <span (click)="goToAddScene(entry)" class="glyphicon glyphicon-edit close"></span>
+        <span (click)="remove(entry)" class="glyphicon glyphicon-trash close"></span>
+      </td>
+    </tr>
+  </table>
+
+  <div *ngIf="states.length === 0" i18n="No scene|no scene message@@noScene">
+    No scene, create one by clicking the + button
+  </div>
+</div>
+<div class="floating-button" (click)="goToAddScene(null)">
+  +
+</div>

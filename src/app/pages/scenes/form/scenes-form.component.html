@@ -1,0 +1,65 @@
+<div class="flex-column">
+
+  <form class="flex-column" [formGroup]="form">
+
+    <div class="form-row">
+      <lisa-field [needFocus]="true" [question]="questions[0]" [form]="form"></lisa-field>
+    </div>
+    <br/>
+    <div class="form-row table no-border">
+      <lisa-field #sentenceInput [question]="questions[1]" [form]="form"></lisa-field>
+      <button i18n="Button add|Add button@@addButton" (click)="addSentence()">Add</button>
+    </div>
+
+    <div class="form-row table no-border">
+      <lisa-field #responseInput [question]="questions[2]" [form]="form"></lisa-field>
+      <button i18n="Button add|Add button@@addButton" (click)="addResponse()">Add</button>
+    </div>
+
+    <div class="form-row table no-border">
+      <lisa-field #commandInput [question]="questions[3]" [form]="form"></lisa-field>
+      <button i18n="Button add|Add button@@addButton" (click)="addCommand()">Add</button>
+    </div>
+
+  </form>
+
+  <div class="flex-column">
+    <div class="flex-1 sentences table">
+      <div class="title" i18n="Scene sentences|Scene sentences@@sceneSentencesLabel">Sentences to trigger actions</div>
+      <div class="cell" *ngFor="let sentence of sentences, let i = index">
+        <div>{{sentence}}</div>
+        <span (click)="removeCommand(i)" class="glyphicon glyphicon-trash close"></span>
+      </div>
+    </div>
+    <div class="flex-1 responses table">
+      <div class="title" i18n="Scene reponses|Scene reponses@@sceneResponsesLabel">Responses available, one will be
+        picked randomly
+      </div>
+      <div class="cell" *ngFor="let response of responses, let i = index">
+        <div>{{response}}</div>
+        <span (click)="removeCommand(i)" class="glyphicon glyphicon-trash close"></span>
+      </div>
+    </div>
+    <div class="flex-1 commands table">
+      <div class="title" i18n="Scene commands|Scene commands@@sceneCommandsLabel">Commands to execute once a trigger
+        sentence is detected
+      </div>
+      <div class="cell" *ngFor="let command of commands, let i = index">
+        <div>{{command}}</div>
+        <span (click)="removeCommand(i)" class="glyphicon glyphicon-trash close"></span>
+      </div>
+    </div>
+  </div>
+
+  <br/>
+  <div *ngIf="error" i18n="Generic error|Generic error message@@baseError" class="error">An error occurred, please
+    check your informations and try again
+  </div>
+
+  <div class="flex-button">
+    <button (click)="back()" i18n="Button cancel|Cancel button@@cancelButton">Cancel</button>
+    <button (click)="next()" [disabled]="!form.valid" i18n="Button continue|Continue button@@continueButton">
+      Continue
+    </button>
+  </div>
+</div>

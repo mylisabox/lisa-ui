@@ -8,7 +8,7 @@ export class FieldService {
   constructor() {
   }
 
-  toFormGroup(questions: Field[]) {
+  toFormGroup(questions: Field[]): FormGroup {
     let group: any = {};
 
     questions.forEach(question => {

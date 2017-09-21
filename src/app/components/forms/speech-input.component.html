@@ -1,0 +1,5 @@
+<div [formGroup]="form">
+  <input #input class="form-control" [formControlName]="question.name"
+         [id]="question.name" [type]="question.type" [value]="question.defaultValue || question.value || ''">
+  <img class="speech" src="/images/icons/microphone.svg" (click)="listenSpeech()">
+</div>

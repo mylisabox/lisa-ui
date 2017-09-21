@@ -18,24 +18,11 @@ export class SpeechService extends ApiService<Voice> {
     this.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
   }
 
-  init() {
-
+  init(onResult: Function): void {
     this._recognition = new this.SpeechRecognition();
     this._recognition.continuous = true;
     this._recognition.interimResults = true;
-    this._recognition.onresult = event => {
-      console.log(event)
-      const last = event.results.length - 1;
-      const result = event.results[last];
-      if (result.isFinal) {
-        const sentence = event.results[last][0].transcript;
-        console.log(sentence);
-        this.sendVoiceCommand(sentence).subscribe(
-          data => console.log(data),
-          error => console.log(error)
-        );
-      }
-    }
+    this._recognition.onresult = onResult
 
     this._recognition.onstart = () => {
       this.isListening = true;
@@ -71,5 +58,4 @@ export class SpeechService extends ApiService<Voice> {
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
-
 }

@@ -1,5 +1,5 @@
 import {ModuleWithProviders} from "@angular/core";
-import {Routes, RouterModule} from "@angular/router";
+import {RouterModule, Routes} from "@angular/router";
 import {HomeComponent} from "./pages/home/home.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {PluginsComponent} from "./pages/plugins/plugins.component";
@@ -10,12 +10,26 @@ import {ProfileComponent} from "./pages/profile/profile.component";
 import {ShopComponent} from "./pages/shop/shop.component";
 import {NotificationComponent} from "./pages/notification/notification.component";
 import {AuthGuard} from "./common/auth.guard";
+import {ScenesFormComponent} from "./pages/scenes/form/scenes-form.component";
+import {ScenesListComponent} from "./pages/scenes/list/scenes-list.component";
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]},
   {path: 'plugins', component: PluginsComponent, canActivate: [AuthGuard]},
-  {path: 'scenes', component: ScenesComponent, canActivate: [AuthGuard]},
+  {
+    path: 'scenes', component: ScenesComponent, canActivate: [AuthGuard],
+    children: [
+      {
+        path: '',
+        children: [
+          {path: 'form', component: ScenesFormComponent},
+          {path: 'list', component: ScenesListComponent},
+          {path: '', component: ScenesListComponent}
+        ]
+      }
+    ]
+  },
   {path: 'shop', component: ShopComponent, canActivate: [AuthGuard]},
   {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
   {path: 'notifications', component: NotificationComponent, canActivate: [AuthGuard]},

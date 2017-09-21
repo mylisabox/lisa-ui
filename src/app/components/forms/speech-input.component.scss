@@ -1,0 +1,9 @@
+@import "../../../variables.scss";
+
+img.speech {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  cursor: pointer;
+  height: 80%;
+}

@@ -24,7 +24,7 @@
         
         <note priority="1" from="description">Cancel button</note>
         <note priority="1" from="meaning">Button cancel</note>
-      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">48</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">89</context></context-group></trans-unit>
+      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">48</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">89</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/scenes/form/scenes-form.component.ts</context><context context-type="linenumber">56</context></context-group></trans-unit>
       
       <trans-unit id="favoritesSubmenu" datatype="html">
         <source>Favorites</source>
@@ -193,7 +193,7 @@
         
         <note priority="1" from="description">Generic error message</note>
         <note priority="1" from="meaning">Generic error</note>
-      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">41</context></context-group></trans-unit><trans-unit id="registerButton" datatype="html">
+      <context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">41</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/scenes/form/scenes-form.component.ts</context><context context-type="linenumber">51</context></context-group></trans-unit><trans-unit id="registerButton" datatype="html">
         <source>Register
       </source>
         <target state="new">Créé le compte
@@ -217,19 +217,13 @@
         <source>
         Continue
       </source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">49</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
-          <context context-type="linenumber">91</context>
-        </context-group>
+        
+        
         <note priority="1" from="description">Continue button</note>
         <note priority="1" from="meaning">Button continue</note>
       <target state="new">
         Continuer
-      </target></trans-unit><trans-unit id="labelSelectAll" datatype="html">
+      </target><context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">49</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context><context context-type="linenumber">91</context></context-group><context-group purpose="location"><context context-type="sourcefile">app/pages/scenes/form/scenes-form.component.ts</context><context context-type="linenumber">57</context></context-group></trans-unit><trans-unit id="labelSelectAll" datatype="html">
         <source>Select all</source>
         <context-group purpose="location">
           <context context-type="sourcefile">app/components/modals/add-device-modal/add-device-modal.component.ts</context>
@@ -249,6 +243,90 @@
         <note priority="1" from="meaning">No Device</note>
       <target state="new">Aucun appareil
           trouvé
-        </target></trans-unit></body>
+        </target></trans-unit><trans-unit id="addButton" datatype="html">
+        <source>Add</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/scenes/form/scenes-form.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/scenes/form/scenes-form.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/scenes/form/scenes-form.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <note priority="1" from="description">Add button</note>
+        <note priority="1" from="meaning">Button add</note>
+      <target state="new">Ajouter</target></trans-unit><trans-unit id="sceneSentencesLabel" datatype="html">
+        <source>Sentences to trigger actions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/scenes/form/scenes-form.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <note priority="1" from="description">Scene sentences</note>
+        <note priority="1" from="meaning">Scene sentences</note>
+      <target state="new">Phrases pour déclencher les commandes</target></trans-unit><trans-unit id="sceneResponsesLabel" datatype="html">
+        <source>Responses available, one will be picked randomly</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/scenes/form/scenes-form.component.ts</context>
+          <context context-type="linenumber">35</context>
+        </context-group>
+        <note priority="1" from="description">Scene reponses</note>
+        <note priority="1" from="meaning">Scene reponses</note>
+      <target state="new">Réponses disponibles, une sera prise au hazard</target></trans-unit><trans-unit id="sceneCommandsLabel" datatype="html">
+        <source>Commands to execute once a trigger sentence is detected</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/scenes/form/scenes-form.component.ts</context>
+          <context context-type="linenumber">42</context>
+        </context-group>
+        <note priority="1" from="description">Scene commands</note>
+        <note priority="1" from="meaning">Scene commands</note>
+      <target state="new">Commandes à exécuter </target></trans-unit><trans-unit id="nameLabel" datatype="html">
+        <source>Name</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/scenes/list/scenes-list.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+        <note priority="1" from="description">Name label</note>
+        <note priority="1" from="meaning">Name label</note>
+      <target state="new">Nom</target></trans-unit><trans-unit id="sentencesLabel" datatype="html">
+        <source>Sentences</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/scenes/list/scenes-list.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+        <note priority="1" from="description">Sentences label</note>
+        <note priority="1" from="meaning">Sentences label</note>
+      <target state="new">Phrases</target></trans-unit><trans-unit id="responsesLabel" datatype="html">
+        <source>Responses</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/scenes/list/scenes-list.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+        <note priority="1" from="description">Responses label</note>
+        <note priority="1" from="meaning">Responses label</note>
+      <target state="new">Réponses</target></trans-unit><trans-unit id="commandsLabel" datatype="html">
+        <source>Commands</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/scenes/list/scenes-list.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Commands label</note>
+        <note priority="1" from="meaning">Commands label</note>
+      <target state="new">Commandes</target></trans-unit><trans-unit id="noScene" datatype="html">
+        <source>
+    No scene, create one by clicking the + button
+  </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/pages/scenes/list/scenes-list.component.ts</context>
+          <context context-type="linenumber">22</context>
+        </context-group>
+        <note priority="1" from="description">no scene message</note>
+        <note priority="1" from="meaning">No scene</note>
+      <target state="new">
+    Aucune scène, cliquez sur le bouton + pour en créer
+  </target></trans-unit></body>
   </file>
 </xliff>

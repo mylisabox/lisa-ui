@@ -37,7 +37,7 @@ export abstract class ApiService<T extends Model> {
 
   public getItem(criteria: any): Observable<T> {
     return this._http.get(`${Globals.getUrl(this._path)}?${this._serialize(criteria)}`, this._buildOptions())
-      .map((res: Response) => res.json())
+      .map((res: Response) => Array.isArray(res.json()) ? res.json()[0] : res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')) as Observable<T>;
   }
 
@@ -65,7 +65,7 @@ export abstract class ApiService<T extends Model> {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')) as Observable<T>;
   }
 
-  public destroyItem(itemId: String): Observable<T> {
+  public destroyItem(itemId: number | string): Observable<T> {
     return this._http.delete(`${Globals.getUrl(this._path)}/${itemId}`, this._buildOptions())
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')) as Observable<T>;

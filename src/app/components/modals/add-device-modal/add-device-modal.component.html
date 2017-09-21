@@ -26,11 +26,11 @@
   </div>
 
   <!-- STEP 2 SETTINGS-->
-  <div class="flex_column settings-container" *ngIf="currentDevice && currentDevice.pairing === 'settings'">
+  <div class="flex-column settings-container" *ngIf="currentDevice && currentDevice.pairing === 'settings'">
     <h3>
       {{currentDevice.name}}
     </h3>
-    <div class="flex_1">
+    <div class="flex-1">
       <br/>
       <form (ngSubmit)="onSubmit()" [formGroup]="form">
 
@@ -44,7 +44,7 @@
       </form>
     </div>
 
-    <div class="flex_button">
+    <div class="flex-button">
       <button (click)="back()" i18n="Button cancel|Cancel button@@cancelButton">Cancel</button>
       <button (click)="next()" [disabled]="!form.valid" i18n="Button continue|Continue button@@continueButton">
         Continue
@@ -53,13 +53,13 @@
   </div>
 
   <!-- STEP 2 LIST-->
-  <div class="flex_column list-container"
+  <div class="flex-column list-container"
        *ngIf="(currentDevice && currentDevice.pairing === 'list') || (currentCustomStep.step && currentCustomStep.step.indexOf('_list') !== -1)">
     <h3>
       {{currentDevice.name}}
     </h3>
     <br/>
-    <div class="flex_1 flex_column">
+    <div class="flex-1 flex-column">
       <div *ngIf="!currentCustomStep.singleChoice && availableDevices.length > 0" class="form-row">
         <input type="checkbox" [checked]="selectAll" (change)="toggleSelectAll()" id="add_all_devices">&nbsp;&nbsp;
         <label for="add_all_devices" i18n="Select all|Select all label@@labelSelectAll">Select all</label>
@@ -85,7 +85,7 @@
         </div>
       </div>
     </div>
-    <div class="flex_button">
+    <div class="flex-button">
       <button (click)="back()" i18n="Button cancel|Cancel button@@cancelButton">Cancel</button>
       <button (click)="next()" i18n="Button continue|Continue button@@continueButton"
               [disabled]="availableDevices.length === 0 || !canContinue">Continue

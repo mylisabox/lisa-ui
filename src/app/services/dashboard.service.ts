@@ -15,14 +15,20 @@ export class DashboardService extends ApiService<Dashboard> {
     super(_http, _authService, '/dashboard')
   }
 
-  getOrderedDeviceForRoom(roomId: string = ''): Observable<Dashboard> {
-    return this._http.get(`${Globals.getUrl(this._path)}/room/${roomId}`, this._buildOptions())
+  getOrderedDeviceForRoom(roomId?: number): Observable<Dashboard> {
+    if (roomId) {
+      localStorage.setItem('roomId', roomId + '');
+    }
+    else {
+      localStorage.removeItem('roomId');
+    }
+    return this._http.get(`${Globals.getUrl(this._path)}/room/${roomId || ''}`, this._buildOptions())
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')) as Observable<Dashboard>
   }
 
-  saveDevicesOrderForRoom(roomId: string = '', widgets: Array<string>): Observable<Dashboard> {
-    return this._http.post(`${Globals.getUrl(this._path)}/room/${roomId}`, widgets, this._buildOptions())
+  saveDevicesOrderForRoom(roomId: number, widgets: Array<string>): Observable<Dashboard> {
+    return this._http.post(`${Globals.getUrl(this._path)}/room/${roomId || ''}`, widgets, this._buildOptions())
       .map((res: Response) => res.json())
       .catch((error: any) => Observable.throw(error.json().error || 'Server error')) as Observable<Dashboard>
   }

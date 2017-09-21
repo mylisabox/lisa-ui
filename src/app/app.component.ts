@@ -1,7 +1,6 @@
 import {Component, OnInit, ViewContainerRef} from "@angular/core";
 import {WebsocketService} from "./interfaces/websocket-service";
 import {AuthService} from "./services/auth.service";
-import {SpeechService} from "./services/speech.service";
 
 @Component({
   selector: 'lisa-root',
@@ -10,7 +9,6 @@ import {SpeechService} from "./services/speech.service";
 })
 export class AppComponent implements OnInit {
   constructor(private _viewContainerRef: ViewContainerRef,
-              private _speechService: SpeechService,
               private _websocketService: WebsocketService,
               private _authService: AuthService) {
   }
@@ -19,6 +17,5 @@ export class AppComponent implements OnInit {
     if (this._authService.isConnected()) {
       this._websocketService.init();
     }
-    this._speechService.init();
   }
 }

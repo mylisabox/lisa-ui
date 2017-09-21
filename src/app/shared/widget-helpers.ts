@@ -15,6 +15,8 @@ import {ButtonComponent} from "../components/widget/button/button.component";
 import {WidgetContentComponent} from "../components/widget/widget-content/widget-content.component";
 import {WidgetEvent} from "../interfaces/widget-event.type";
 import {Observable} from "rxjs";
+import {LabelComponent} from "../components/widget/label/label.component";
+import {SelectorComponent} from "../components/widget/selector/selector.component";
 
 export class WidgetHelpers {
 
@@ -32,6 +34,10 @@ export class WidgetHelpers {
         return CameraComponent;
       case 'button':
         return ButtonComponent;
+      case 'label':
+        return LabelComponent;
+      case 'selector':
+        return SelectorComponent;
       case 'image':
         return ImageComponent;
       case 'image-button':

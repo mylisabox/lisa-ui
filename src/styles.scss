@@ -13,6 +13,10 @@ body {
   padding-top: 60px;
 }
 
+div {
+  position: relative;
+}
+
 a {
   font-size: 16px;
 }
@@ -252,12 +256,69 @@ flex stuff
   align-content: stretch;
 }
 
-.flex_column {
+.flex-column {
   display: flex;
   align-items: stretch;
   flex-direction: column;
 }
 
-.flex_1 {
+.flex-1 {
   flex: 1;
+}
+
+.floating-button {
+  background-color: $themeColor;
+  position: fixed;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  right: 10px;
+  bottom: 10px;
+  color: white;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.floating-button:hover {
+  background-color: $themeColorDarker;
+
+}
+
+.flex-button {
+  align-self: flex-end;
+}
+
+.container {
+  position: inherit;
+}
+
+.table {
+  display: table;
+  border-top: 1px solid $themeColor;
+  border-left: 1px solid $themeColor;
+}
+
+.table.no-border {
+  border: none;
+}
+
+.table.no-border .title, .table.no-border .cell {
+  border: none;
+}
+
+.table .title {
+  text-align: center;
+  padding: 5px;
+  font-weight: bold;
+}
+
+.table .cell {
+  padding: 5px;
+  display: inline-table;
+}
+
+.table .cell, .table .title {
+  border-bottom: 1px solid $themeColor;
+  border-right: 1px solid $themeColor;
 }

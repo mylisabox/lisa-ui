@@ -31,8 +31,8 @@ export class DeviceService extends ApiService<Device> {
       .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 
-  postGroupValue(roomId: String, info: WidgetEvent): Observable<Array<Device>> {
-    return this._http.post(`${Globals.getUrl('/devices/group')}/${roomId}/${info.device.id}`,
+  postGroupValue(roomId: number, info: WidgetEvent): Observable<Array<Device>> {
+    return this._http.post(`${Globals.getUrl('/devices/group')}/${roomId || ''}/${info.device.id}`,
       {
         key: info.key,
         value: info.value

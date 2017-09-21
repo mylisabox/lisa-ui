@@ -151,21 +151,3 @@ dashboard.disabled /deep/ lisa-widget-header {
   color: $lightTextColor;
 }
 
-.floating-button {
-  background-color: $themeColor;
-  position: fixed;
-  border-radius: 20px;
-  width: 40px;
-  height: 40px;
-  right: 10px;
-  bottom: 10px;
-  color: white;
-  text-align: center;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-.floating-button:hover {
-  background-color: $themeColorDarker;
-
-}

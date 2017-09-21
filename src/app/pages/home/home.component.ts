@@ -73,6 +73,15 @@ export class HomeComponent implements OnInit, AfterViewInit {
     this._roomApi.getItems().subscribe(
       (rooms: Room[]) => {
         this._rooms = rooms
+
+        const lastRoom = this._roomApi.getLastLoadedRoom();
+        if (lastRoom) {
+          this.retrieveDevicesForRoom(this._rooms.find(room => room.id === parseInt(lastRoom)));
+          this.toggleRooms();
+        }
+        else {
+          this.loadFavorites();
+        }
       },
       err => console.log(err)
     );
@@ -129,7 +138,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
             break;
         }
       });
-    this.loadFavorites();
+
   }
 
   ngAfterViewInit(): void {
@@ -256,7 +265,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
       this._currentSelectedRoom = room;
       this._dashboardApi.getOrderedDeviceForRoom(this._currentSelectedRoom.id).subscribe(
         dashboard => {
-          console.log(dashboard);
           this._currentDashboard = dashboard;
           this._showDevices(dashboard.widgets);
         },
@@ -282,7 +290,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
   }
 
   saveWidgetOrder(order: Array<string>) {
-    this._dashboardApi.saveDevicesOrderForRoom(this._currentSelectedRoom ? this._currentSelectedRoom.id : '', order).subscribe(
+    this._dashboardApi.saveDevicesOrderForRoom(this._currentSelectedRoom.id, order).subscribe(
       data => {
         console.log(data)
       },

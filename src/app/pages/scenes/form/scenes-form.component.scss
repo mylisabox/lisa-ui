@@ -1,0 +1,19 @@
+.table .cell {
+  width: 100%;
+}
+
+.table .cell div {
+  display: inline;
+}
+
+.form-row.table.no-border * {
+  display: inline-block;
+}
+
+.form-row.table.no-border lisa-field {
+  width: 95%;
+}
+
+.form-row.table.no-border button {
+  margin-left: 5px;
+}

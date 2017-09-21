@@ -1,7 +1,7 @@
 export interface Device {
   id?: string
   name: string
-  roomId?: string
+  roomId?: number
   template?: any
   pluginName?: string
   driver?: string

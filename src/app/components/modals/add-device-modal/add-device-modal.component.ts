@@ -32,7 +32,7 @@ export class AddDeviceModalComponent implements OnInit {
   stepHistory: string[] = [];
   canContinue: boolean;
   error: string;
-  roomId: string;
+  roomId: number;
 
   constructor(private _pluginService: PluginService,
               private _deviceService: DeviceService,
@@ -80,7 +80,7 @@ export class AddDeviceModalComponent implements OnInit {
     this.stepHistory = [];
   }
 
-  show(roomId: string) {
+  show(roomId: number) {
     this.roomId = roomId;
     this._resetFlow();
     this.search('');

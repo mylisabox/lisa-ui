@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, Input, ViewChild} from "@angular/core";
 import {FormGroup} from "@angular/forms";
 import {Field} from "../../models/field.type";
+import {SpeechInputComponent} from "./speech-input.component";
 
 @Component({
   selector: 'lisa-field',
@@ -12,6 +13,8 @@ export class FieldComponent implements AfterViewInit {
   @Input() needFocus: boolean;
   @Input() form: FormGroup;
   @ViewChild('input') input: ElementRef;
+  @ViewChild('speech') speech: SpeechInputComponent;
+  @ViewChild('select') select: ElementRef;
 
   get error() {
     const errors: any = this.form.controls[this.question.name].errors;
@@ -35,10 +38,20 @@ export class FieldComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    if (this.needFocus) {
+    if (this.needFocus && this.input) {
       this.input.nativeElement.focus();
     }
   }
 
+  getValue(): any {
+    if (this.input) {
+      return this.input.nativeElement.value;
+    }
+    else if (this.select) {
+      return this.select.nativeElement.value;
+    } else {
+      return this.speech.getValue();
+    }
+  }
 }
 

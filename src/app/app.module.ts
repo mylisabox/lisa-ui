@@ -46,16 +46,23 @@ import {DeviceService} from "./services/device.service";
 import {FavoriteService} from "./services/favorite.service";
 import {SpaceComponent} from "./components/widget/space/space.component";
 import {DashboardService} from "./services/dashboard.service";
-import {SpeechService} from "./services/speech.service";
 import {AddDeviceModalComponent} from "./components/modals/add-device-modal/add-device-modal.component";
 import {PluginService} from "./services/plugin.service";
 import {FieldComponent} from "./components/forms/field.component";
+import {LabelComponent} from "./components/widget/label/label.component";
+import {SelectorComponent} from "./components/widget/selector/selector.component";
+import {KeysPipe} from "./shared/keys-pipe";
+import {ScenesFormComponent} from "./pages/scenes/form/scenes-form.component";
+import {ScenesListComponent} from "./pages/scenes/list/scenes-list.component";
+import {ChatbotService} from "app/services/chatbot.service";
+import {SpeechInputComponent} from "./components/forms/speech-input.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
+    KeysPipe,
     SettingsComponent,
     ScenesComponent,
     PluginsComponent,
@@ -67,6 +74,8 @@ import {FieldComponent} from "./components/forms/field.component";
     NotificationComponent,
     WidgetLISAComponent,
     VboxComponent,
+    LabelComponent,
+    SelectorComponent,
     HboxComponent,
     CardComponent,
     FieldComponent,
@@ -85,6 +94,9 @@ import {FieldComponent} from "./components/forms/field.component";
     WidgetHeaderComponent,
     WidgetContentComponent,
     SpaceComponent,
+    ScenesFormComponent,
+    SpeechInputComponent,
+    ScenesListComponent,
     AddDeviceModalComponent
   ],
   entryComponents: [
@@ -93,6 +105,8 @@ import {FieldComponent} from "./components/forms/field.component";
     HboxComponent,
     CardComponent,
     SliderComponent,
+    LabelComponent,
+    SelectorComponent,
     ImageButtonComponent,
     ImageComponent,
     ButtonComponent,
@@ -121,7 +135,7 @@ import {FieldComponent} from "./components/forms/field.component";
     DashboardService,
     AuthService,
     PluginService,
-    SpeechService,
+    ChatbotService,
     WebsocketService,
     NotificationService,
     BROWSER_WEBSOCKET_PROVIDERS],

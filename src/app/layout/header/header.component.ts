@@ -5,7 +5,8 @@ import {SpeechService} from "../../services/speech.service";
 @Component({
   selector: 'lisa-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
+  providers: [SpeechService]
 })
 export class HeaderComponent implements OnInit {
   public isMenuCollapsed: boolean = true;
@@ -13,6 +14,19 @@ export class HeaderComponent implements OnInit {
 
   constructor(private _authService: AuthService,
               public _speechService: SpeechService) {
+    this._speechService.init(event => {
+      console.log(event)
+      const last = event.results.length - 1;
+      const result = event.results[last];
+      if (result.isFinal) {
+        const sentence = event.results[last][0].transcript;
+        console.log(sentence);
+        this._speechService.sendVoiceCommand(sentence).subscribe(
+          data => console.log(data),
+          error => console.log(error)
+        );
+      }
+    });
   }
 
   ngOnInit() {

@@ -6,7 +6,11 @@
     <input #input class="form-control" *ngSwitchCase="'textbox'" [formControlName]="question.name"
            [id]="question.name" [type]="question.type" [value]="question.defaultValue || question.value || ''">
 
-    <select class="form-control" [id]="question.name" *ngSwitchCase="'dropdown'" [formControlName]="question.name">
+    <lisa-speech-input #speech *ngSwitchCase="'speech'" [form]="form" [needFocus]="needFocus" [question]="question">
+    </lisa-speech-input>
+
+    <select #select class="form-control" [id]="question.name" *ngSwitchCase="'dropdown'"
+            [formControlName]="question.name">
       <option *ngFor="let opt of question.options" [selected]="(question.defaultValue || question.value || '') === opt.name" [value]="opt.name">{{opt.value}}</option>
     </select>
 
