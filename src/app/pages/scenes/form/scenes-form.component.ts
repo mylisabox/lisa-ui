@@ -35,7 +35,7 @@ export class ScenesFormComponent implements OnInit, AfterViewInit {
       label: 'Name',
       //options?: object,
       minLength: 3,
-      maxLength: 20,
+      maxLength: 50,
       //regexp?: string,
       type: 'text',
       required: true
