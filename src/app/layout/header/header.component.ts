@@ -11,9 +11,11 @@ import {SpeechService} from "../../services/speech.service";
 export class HeaderComponent implements OnInit {
   public isMenuCollapsed: boolean = true;
   public isNotificationCollapsed: boolean = true;
+  isSpeechAvailable: boolean = false;
 
   constructor(private _authService: AuthService,
               public _speechService: SpeechService) {
+    this.isSpeechAvailable = this._speechService.isAvailable()
     this._speechService.init(event => {
       console.log(event)
       const last = event.results.length - 1;

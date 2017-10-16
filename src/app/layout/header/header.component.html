@@ -32,7 +32,7 @@
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li (click)="toggleSpeech()" [ngClass]="{active: _speechService.isListening}">
+        <li *ngIf="isSpeechAvailable" (click)="toggleSpeech()" [ngClass]="{active: _speechService.isListening}">
           <a class="pointer"><span class="glyphicon glyphicon-record"></span></a>
         </li>
         <li routerLink="/profile" routerLinkActive="active" (click)="isMenuCollapsed = true">

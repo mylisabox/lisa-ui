@@ -18,37 +18,46 @@ export class SpeechService extends ApiService<Voice> {
     this.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
   }
 
+  isAvailable(): boolean {
+    return window.SpeechRecognition || window.webkitSpeechRecognition
+  }
+
   init(onResult: Function): void {
-    this._recognition = new this.SpeechRecognition();
-    this._recognition.continuous = true;
-    this._recognition.interimResults = true;
-    this._recognition.onresult = onResult
+    if (this.SpeechRecognition) {
+      this._recognition = new this.SpeechRecognition();
+      this._recognition.continuous = true;
+      this._recognition.interimResults = true;
+      this._recognition.onresult = onResult
 
-    this._recognition.onstart = () => {
-      this.isListening = true;
-    };
+      this._recognition.onstart = () => {
+        this.isListening = true;
+      };
 
-    this._recognition.onspeechend = function () {
-      this.isListening = false;
-    };
+      this._recognition.onspeechend = function () {
+        this.isListening = false;
+      };
 
-    this._recognition.onnomatch = function (event) {
-      this.isListening = false;
-    };
+      this._recognition.onnomatch = function (event) {
+        this.isListening = false;
+      };
 
-    this._recognition.onerror = function (event) {
-      this.isListening = false;
-    };
-
+      this._recognition.onerror = function (event) {
+        this.isListening = false;
+      };
+    }
   }
 
   start() {
-    this._recognition.start();
+    if (this._recognition) {
+      this._recognition.start();
+    }
   }
 
   stop() {
-    this._recognition.stop();
-    this.isListening = false;
+    if (this._recognition) {
+      this._recognition.stop();
+      this.isListening = false;
+    }
   }
 
   sendVoiceCommand(sentence: string) {
