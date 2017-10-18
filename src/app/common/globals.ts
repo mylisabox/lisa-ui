@@ -5,6 +5,6 @@ export const Globals = {
     return window.location.protocol + '//' + Globals.baseUrl + path;
   },
   getWsUrl: function (path) {
-    return 'ws://' + Globals.baseUrl + path;
+    return (window.location.protocol.indexOf('https') !== -1 ? 'wss' : 'ws') + '://' + Globals.baseUrl + path;
   }
 }
