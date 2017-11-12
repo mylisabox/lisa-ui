@@ -1,8 +1,7 @@
-@import "../../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/_variables.scss";
 
 .login-box {
   width: 320px;
-  background-color: lighten($gray-light, 28%);
+  background-color:  rgba(255, 255, 255, 0.7);
 }
 
 .error {

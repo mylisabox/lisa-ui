@@ -28,7 +28,7 @@
       <div class="title" i18n="Scene sentences|Scene sentences@@sceneSentencesLabel">Sentences to trigger actions</div>
       <div class="cell" *ngFor="let sentence of sentences, let i = index">
         <div>{{sentence}}</div>
-        <span (click)="removeCommand(i)" class="glyphicon glyphicon-trash close"></span>
+        <span (click)="removeSentence(i)" class="glyphicon glyphicon-trash close"></span>
       </div>
     </div>
     <div class="flex-1 responses table">
@@ -37,7 +37,7 @@
       </div>
       <div class="cell" *ngFor="let response of responses, let i = index">
         <div>{{response}}</div>
-        <span (click)="removeCommand(i)" class="glyphicon glyphicon-trash close"></span>
+        <span (click)="removeResponse(i)" class="glyphicon glyphicon-trash close"></span>
       </div>
     </div>
     <div class="flex-1 commands table">

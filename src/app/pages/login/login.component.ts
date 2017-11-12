@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
           }
         },
         err => {
+          this.mode = 'register';
           this.pending = false;
         });
     }
