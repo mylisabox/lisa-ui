@@ -1,10 +1,18 @@
+const getPort = function () {
+  const defaultPort = window.location.protocol.indexOf('https') === -1 ? "80" : "443";
+  return window.location.port == "" ? defaultPort : window.location.port;
+};
+
 export const Globals = {
-  baseUrl: window.location.hostname + ':3000/api/v1',
+  baseUrl: window.location.hostname + ':' + getPort() + '/api/v1',
   tokenKey: 'token',
   getUrl: function (path) {
     return window.location.protocol + '//' + Globals.baseUrl + path;
   },
+  getPluginImageUrl: function (pluginId, path) {
+    return window.location.protocol + '//' + Globals.baseUrl + "/plugin/" + pluginId + "/images/" + path;
+  },
   getWsUrl: function (path) {
-    return (window.location.protocol.indexOf('https') !== -1 ? 'wss' : 'ws') + '://' + Globals.baseUrl + path;
+    return (window.location.protocol.indexOf('https') === -1 ? 'ws' : 'wss') + '://' + Globals.baseUrl + path;
   }
 }

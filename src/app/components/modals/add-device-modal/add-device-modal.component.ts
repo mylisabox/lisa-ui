@@ -8,6 +8,7 @@ import {FormGroup} from "@angular/forms";
 import {DeviceService} from "../../../services/device.service";
 import {Device} from "../../../models/device.type";
 import {Field} from "../../../models/field.type";
+import {Globals} from "../../../common/globals";
 
 export function getAccordionConfig(): AccordionConfig {
   return Object.assign(new AccordionConfig(), {closeOthers: true});
@@ -46,6 +47,10 @@ export class AddDeviceModalComponent implements OnInit {
   }
 
   hide() {
+    this.stepHistory = [];
+    this.currentPlugin = null;
+    this.currentCustomStep = null;
+    this.currentCustomData = null;
     this.currentDevice = null;
     this._renderer.addClass(this._ngEl.nativeElement, 'hidden');
   }
@@ -167,7 +172,7 @@ export class AddDeviceModalComponent implements OnInit {
   }
 
   private manageImageStep(image: string) {
-
+    this.currentCustomStep.image = Globals.getPluginImageUrl(this.currentPlugin.id, image)
   }
 
   private goToNextCustomStep() {
@@ -220,6 +225,9 @@ export class AddDeviceModalComponent implements OnInit {
       this.saveDevice();
     } else if (this.currentCustomStep.step == 'list') {
       this.saveDevices();
+    } else if (this.currentCustomStep.step == 'image') {
+      this.currentCustomData[this.currentCustomStep.step] = 'ok';
+      this.goToNextCustomStep();
     }
   }
 

@@ -25,6 +25,24 @@
     </accordion>
   </div>
 
+  <!-- STEP 2 IMAGE-->
+  <div class="flex-column settings-container" *ngIf="(currentDevice && currentDevice.pairing === 'image') ||
+  (currentCustomStep.step && currentCustomStep.step.indexOf('image') !== -1)">
+    <h3>
+      {{currentDevice.name}}
+    </h3>
+    <div class="flex-1 center-block">
+      <img src="{{currentCustomStep.image}}"/>
+    </div>
+
+    <div class="flex-button">
+      <button (click)="back()" i18n="Button cancel|Cancel button@@cancelButton">Cancel</button>
+      <button (click)="next()" i18n="Button continue|Continue button@@continueButton">
+        Continue
+      </button>
+    </div>
+  </div>
+
   <!-- STEP 2 SETTINGS-->
   <div class="flex-column settings-container" *ngIf="currentDevice && currentDevice.pairing === 'settings'">
     <h3>
