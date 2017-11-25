@@ -48,8 +48,7 @@ export class AddDeviceModalComponent implements OnInit {
 
   hide() {
     this.stepHistory = [];
-    this.currentPlugin = null;
-    this.currentCustomStep = null;
+    this.currentCustomStep = {};
     this.currentCustomData = null;
     this.currentDevice = null;
     this._renderer.addClass(this._ngEl.nativeElement, 'hidden');
