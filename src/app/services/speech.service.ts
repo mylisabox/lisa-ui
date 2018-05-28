@@ -1,10 +1,10 @@
 import {Injectable} from "@angular/core";
 import {ApiService} from "./api.service";
-import {Http, Response} from "@angular/http";
 import {AuthService} from "./auth.service";
 import {Voice} from "../models/voice.type";
 import {Globals} from "../common/globals";
 import {Observable} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable()
 export class SpeechService extends ApiService<Voice> {
@@ -12,7 +12,7 @@ export class SpeechService extends ApiService<Voice> {
   isListening: boolean;
   private _recognition: any;
 
-  constructor(protected _http: Http,
+  constructor(protected _http: HttpClient,
               protected _authService: AuthService) {
     super(_http, _authService, '/chatbot');
     this.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
@@ -63,8 +63,6 @@ export class SpeechService extends ApiService<Voice> {
   sendVoiceCommand(sentence: string) {
     return this._http.post(`${Globals.getUrl(this._path)}/interact`, {
       sentence: sentence
-    }, this._buildOptions())
-      .map((res: Response) => res.json())
-      .catch((error: any) => Observable.throw(error.json().error || 'Server error'));
+    }).catch((error: any) => Observable.throw(error.json().error || 'Server error'));
   }
 }

@@ -17,13 +17,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     if (this._authService.isConnected()) {
-      this._router.navigate(['/home']);
+      return this._router.navigate(['/home']);
     }
     else {
       this.pending = true;
-      this._authService.isInitialized().subscribe((response: any) => {
+      this._authService.isInitialized().subscribe((response: object) => {
           this.pending = false;
-          if (!response.json().initialized) {
+          if (!response['initialized']) {
             this.mode = 'register';
           }
         },

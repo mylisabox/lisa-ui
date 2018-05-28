@@ -18,10 +18,9 @@ export class RegisterBoxComponent {
     event.preventDefault();
     this.error = null;
     this.authService.register(identifier, password).subscribe(
-      response => {
-        this.authService.setToken(response.json().token);
+      () => {
         this.websocketService.init();
-        this.router.navigate(['/home']);
+        return this.router.navigate(['/home']);
       },
       error => {
         if (error.status === 0) {

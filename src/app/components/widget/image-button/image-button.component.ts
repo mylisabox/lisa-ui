@@ -29,8 +29,6 @@ export class ImageButtonComponent implements BaseElement, OnInit {
   }
 
   onImageLoaded(event) {
-    console.log(event.target.width + ' ' + event.target.height + ', ' + this._ngEl.nativeElement.clientWidth + ' ' + this._ngEl.nativeElement.clientHeight)
-
     if (event.target.width > this._ngEl.nativeElement.clientWidth) {
       this._renderer.addClass(this._ngEl.nativeElement, 'stretchX')
     }

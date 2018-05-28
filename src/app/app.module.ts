@@ -5,8 +5,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {NgModule} from "@angular/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {appRoutingProviders, routing} from "./app.routing";
-import {HttpModule} from "@angular/http";
-import {AuthGuard, provideAuthGuard} from "./common/auth.guard";
+import {AuthGuard} from "./common/auth.guard";
 import {AuthService} from "./services/auth.service";
 import {RoomService} from "./services/room.service";
 import {AppComponent} from "./app.component";
@@ -17,7 +16,7 @@ import {ScenesComponent} from "./pages/scenes/scenes.component";
 import {PluginsComponent} from "./pages/plugins/plugins.component";
 import {HeaderComponent} from "./layout/header/header.component";
 import {FooterComponent} from "./layout/footer/footer.component";
-import {AccordionModule, AlertModule, CollapseModule, ModalModule} from "ngx-bootstrap";
+import {AccordionModule, CollapseModule} from "ngx-bootstrap";
 import {NgDashboardModule} from "ngx-dashboard";
 import {ShopComponent} from "./pages/shop/shop.component";
 import {NotificationComponent} from "./pages/notification/notification.component";
@@ -56,6 +55,20 @@ import {ScenesFormComponent} from "./pages/scenes/form/scenes-form.component";
 import {ScenesListComponent} from "./pages/scenes/list/scenes-list.component";
 import {ChatbotService} from "app/services/chatbot.service";
 import {SpeechInputComponent} from "./components/forms/speech-input.component";
+import {HttpClientModule} from "@angular/common/http";
+import {JWT_OPTIONS, JwtModule} from "@auth0/angular-jwt";
+import {httpInterceptorProviders} from "./common/interceptors";
+
+export function jwtOptionsFactory(tokenService: AuthService) {
+  return {
+    tokenGetter: () => {
+      return tokenService.getToken();
+    },
+    authScheme: 'JWT ',
+    whitelistedDomains: ['localhost:3000'],
+    //blacklistedRoutes: [Globals.baseUrl + '/auth/login', Globals.baseUrl + '/auth/register']
+  }
+}
 
 @NgModule({
   declarations: [
@@ -117,20 +130,25 @@ import {SpeechInputComponent} from "./components/forms/speech-input.component";
   ],
   imports: [
     AccordionModule.forRoot(),
-    AlertModule.forRoot(),
     CollapseModule.forRoot(),
-    ModalModule.forRoot(),
     ColorPickerModule,
     NgDashboardModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpModule,
+    HttpClientModule,
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+        deps: [AuthService]
+      }
+    }),
     routing
   ],
   providers: [
+    httpInterceptorProviders,
     appRoutingProviders,
-    provideAuthGuard,
     AuthGuard,
     RoomService,
     DeviceService,

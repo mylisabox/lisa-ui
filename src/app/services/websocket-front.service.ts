@@ -57,7 +57,6 @@ export class WebsocketFrontService {
 
     primus.on('error', data => {
       console.log(data);
-      debugger;
     });
 
     primus.join('room');

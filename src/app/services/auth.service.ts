@@ -1,38 +1,40 @@
-import {Injectable} from "@angular/core";
+import {Injectable, Injector} from "@angular/core";
 import {Router} from "@angular/router";
-import {contentHeaders} from "../common/headers";
-import {Http} from "@angular/http";
-import {AuthHttp, JwtHelper, tokenNotExpired} from "angular2-jwt";
 import {Globals} from "../common/globals";
+import {JwtHelperService} from "@auth0/angular-jwt";
+import {HttpClient} from "@angular/common/http";
+import {Auth} from "../models/auth.type";
 
 @Injectable()
 export class AuthService {
   userId: string;
-  private _jwtHelper: JwtHelper = new JwtHelper();
 
-  constructor(private router: Router, private http: Http, private authHttp: AuthHttp) {
+  constructor(private injector: Injector, private router: Router, private http: HttpClient) {
   }
 
   getToken() {
     return localStorage.getItem(Globals.tokenKey)
   }
 
-  setToken(token: string) {
+  private setToken(token: string) {
     localStorage.setItem(Globals.tokenKey, token);
     this._parseToken();
   }
 
   private _parseToken() {
-    const data = this._jwtHelper.decodeToken(this.getToken());
+    const jwtService = this.injector.get(JwtHelperService)
+    const data = jwtService.decodeToken(this.getToken());
     this.userId = data.user.id;
   }
 
   isInitialized() {
-    return this.http.get(Globals.getUrl('/initialized'), {headers: contentHeaders});
+    return this.http.get(Globals.getUrl('/initialized'));
   }
 
   isConnected() {
-    if (this.getToken() && tokenNotExpired(Globals.tokenKey)) {
+    const jwtService = this.injector.get(JwtHelperService)
+
+    if (!jwtService.isTokenExpired()) {
       if (!this.userId) {
         this._parseToken();
       }
@@ -45,20 +47,27 @@ export class AuthService {
 
   login(email, password) {
     const body = JSON.stringify({email, password});
-    return this.http.post(Globals.getUrl('/auth/local'), body, {headers: contentHeaders});
+    return this.http.post<Auth>(Globals.getUrl('/auth/local'), body)
+      .map(response => {
+        this.setToken(response.token)
+        return response
+      });
   }
 
   register(email, password) {
     const body = JSON.stringify({email, password});
-    return this.http.post(Globals.getUrl('/auth/local/register'), body, {headers: contentHeaders});
+    return this.http.post<Auth>(Globals.getUrl('/auth/local/register'), body)
+      .map(response => {
+        this.setToken(response.token)
+        return response
+      });
   }
 
   logout() {
-    console.log(contentHeaders, contentHeaders.toJSON())
-    this.authHttp.get(Globals.getUrl('/auth/logout')).subscribe(
+    return this.http.get(Globals.getUrl('/auth/logout')).subscribe(
       response => {
         localStorage.removeItem(Globals.tokenKey);
-        this.router.navigate(['/login']);
+        return this.router.navigate(['/login']);
       },
       error => {
         alert(error.text());

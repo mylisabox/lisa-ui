@@ -19,10 +19,9 @@ export class LoginBoxComponent {
     event.preventDefault();
     this.error = null;
     this.authService.login(identifier, password).subscribe(
-      response => {
-        this.authService.setToken(response.json().token);
+      () => {
         this.websocketService.init();
-        this.router.navigate(['/home']);
+        return this.router.navigate(['/home']);
       },
       error => {
         switch (error.status) {

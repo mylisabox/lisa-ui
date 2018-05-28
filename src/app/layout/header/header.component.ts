@@ -17,12 +17,10 @@ export class HeaderComponent implements OnInit {
               public _speechService: SpeechService) {
     this.isSpeechAvailable = this._speechService.isAvailable()
     this._speechService.init(event => {
-      console.log(event)
       const last = event.results.length - 1;
       const result = event.results[last];
       if (result.isFinal) {
         const sentence = event.results[last][0].transcript;
-        console.log(sentence);
         this._speechService.sendVoiceCommand(sentence).subscribe(
           data => console.log(data),
           error => console.log(error)
@@ -35,11 +33,11 @@ export class HeaderComponent implements OnInit {
   }
 
   public collapsed(event: any): void {
-    console.log(event);
+
   }
 
   public expanded(event: any): void {
-    console.log(event);
+
   }
 
   public toggleSpeech() {
