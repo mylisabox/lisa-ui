@@ -129,6 +129,7 @@ export function jwtOptionsFactory(tokenService: AuthService) {
     ToggleButtonComponent
   ],
   imports: [
+    BrowserModule.withServerTransition({appId: 'lisa'}),
     AccordionModule.forRoot(),
     CollapseModule.forRoot(),
     ColorPickerModule,

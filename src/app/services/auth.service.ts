@@ -9,7 +9,17 @@ import {Auth} from "../models/auth.type";
 export class AuthService {
   userId: string;
 
-  constructor(private injector: Injector, private router: Router, private http: HttpClient) {
+  constructor(private injector: Injector, private router: Router) {
+  }
+
+  private get http() {
+    //avoid cyclic deps errors
+    return this.injector.get(HttpClient);
+  }
+
+  private get jwtService() {
+    //avoid cyclic deps errors
+    return this.injector.get(JwtHelperService);
   }
 
   getToken() {
@@ -22,8 +32,7 @@ export class AuthService {
   }
 
   private _parseToken() {
-    const jwtService = this.injector.get(JwtHelperService)
-    const data = jwtService.decodeToken(this.getToken());
+    const data = this.jwtService.decodeToken(this.getToken());
     this.userId = data.user.id;
   }
 
@@ -32,9 +41,7 @@ export class AuthService {
   }
 
   isConnected() {
-    const jwtService = this.injector.get(JwtHelperService)
-
-    if (!jwtService.isTokenExpired()) {
+    if (!this.jwtService.isTokenExpired()) {
       if (!this.userId) {
         this._parseToken();
       }
