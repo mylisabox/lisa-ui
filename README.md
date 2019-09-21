@@ -1,6 +1,6 @@
 # L.I.S.A. UI
 
-DEPRECATED: please now use [lisa_flutter](https://github.com/mylisabox/lisa_flutter)
+**DEPRECATED: please now use [lisa_flutter](https://github.com/mylisabox/lisa_flutter)**
 
 Home automation system L.I.S.A. http://mylisabox.com
 
