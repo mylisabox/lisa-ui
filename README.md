@@ -1,5 +1,7 @@
 # L.I.S.A. UI
 
+DEPRECATED: please now use [lisa_flutter](https://github.com/mylisabox/lisa_flutter)
+
 Home automation system L.I.S.A. http://mylisabox.com
 
 This is the front part of L.I.S.A., made with Angular.
